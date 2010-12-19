@@ -45,4 +45,8 @@
     <!-- Lock screen vibrate settings -->
     <string name="lockscreen_vibrate_enabled_title">Vibrate</string>
     <string name="lockscreen_vibrate_enabled_head">Vibrate when unlocking</string>
+
+    <!-- About phone screen, CyanogenMod version -->
+    <string name="mod_version">Hexa ROM version</string>
+    <string name="mod_version_default">Unknown</string>
 </resources>
