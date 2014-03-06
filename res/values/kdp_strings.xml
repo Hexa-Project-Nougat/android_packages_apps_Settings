@@ -538,5 +538,27 @@
     <string name="network_traffic_color_style">Color style</string>
     <string name="network_traffic_color_reset">Reset color</string>
     <string name="network_traffic_color_reset_message">Reset network traffic color to default?</string>
+	
+	<!-- Animation Category -->
+	<string name="kdp_anim_settings_title">Animation Settings</string>
+	
+    <!-- Toast Animation -->
+     <string name="toast_animation_title">Toast animation</string>
+     <string name="toast_none_animation">None</string>
+     <string name="toast_default_animation">Default</string>
+     <string name="toast_fade_animation">Fade</string>
+     <string name="toast_SlideRight_animation">Slide right</string>
+     <string name="toast_SlideLeft_animation">Slide left</string>
+     <string name="toast_Xylon_animation">Xylon</string>
+     <string name="toast_Toko_animation">Toko</string>
+     <string name="toast_Tn_animation">Tn</string>
+     <string name="toast_Honami_animation">Honami</string>
+     <string name="toast_FastFade_animation">Fast fade</string>
+     <string name="toast_GrowFade_animation">Grow fade</string>
+     <string name="toast_GrowFadeCenter_animation">Grow fade center</string>
+     <string name="toast_GrowFadeBottom_animation">Grow fade bottom</string>
+     <string name="toast_Translucent_animation">Translucent</string>
+     <string name="toast_SlideLeftRight_animation">Slide left to right</string>
+     <string name="toast_SlideRightLeft_animation">Slide right to left</string>
 
 </resources>
