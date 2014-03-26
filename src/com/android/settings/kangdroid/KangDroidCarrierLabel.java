@@ -148,7 +148,6 @@ public class KangDroidCarrierLabel extends SettingsPreferenceFragment implements
         super.onResume();
     }
 
-    @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
             final Preference preference) {
         final ContentResolver resolver = this.getContentResolver();

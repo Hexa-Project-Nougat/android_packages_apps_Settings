@@ -23,4 +23,8 @@
     <string name="root_access_apps">Apps only</string>
     <string name="root_access_adb">ADB only</string>
     <string name="root_access_all">Apps and ADB</string>
+	
+    <string name="picker_activities">Activities</string>
+    <string name="select_custom_app_title">Select custom app</string>
+    <string name="select_custom_activity_title">Select custom activity</string>
 </resources>
