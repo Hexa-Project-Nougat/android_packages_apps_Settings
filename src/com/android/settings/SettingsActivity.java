@@ -127,6 +127,7 @@ import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settingslib.drawer.DashboardCategory;
 import com.android.settingslib.drawer.SettingsDrawerActivity;
 import com.android.settingslib.drawer.Tile;
+import com.android.settings.cyanogenmod.PrivacySettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -345,6 +346,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             TestingSettings.class.getName(),
             WifiAPITest.class.getName(),
             WifiInfo.class.getName(),
+			PrivacySettings.class.getName(),
     };
 
 
