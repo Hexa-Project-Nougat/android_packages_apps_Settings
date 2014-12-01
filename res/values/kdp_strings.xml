@@ -26,5 +26,9 @@
     <string name="kdp_version_title">KDP ROM Version</string>
     <!-- Do NOT translate this -->
     <string name="kdp_versoin_default">Alpha - 0</string>
+	
+    <!-- About device screen, CPU and RAM info. -->
+    <string name="cpu_info">CPU</string>
+    <string name="mem_info">RAM</string>
 
 </resources>
