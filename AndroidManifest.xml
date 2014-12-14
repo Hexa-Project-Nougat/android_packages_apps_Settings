@@ -2950,6 +2950,9 @@
                 android:resource="@string/wifi_calling_suggestion_summary" />
         </activity>
 
+        <activity android:name=".kangdroid.gestureanywhere.GestureAnywhereBuilderActivity" />
+        <activity android:name=".kangdroid.gestureanywhere.GestureAnywhereCreateGestureActivity" />
+
         <provider
             android:name=".search.SettingsSearchIndexablesProvider"
             android:authorities="com.android.settings"
