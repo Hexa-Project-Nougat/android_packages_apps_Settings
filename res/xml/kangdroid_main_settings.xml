@@ -25,5 +25,11 @@
            android:key="kdp_carrier_label"
            android:title="@string/carrier_options"
            android:fragment="com.android.settings.kangdroid.KangDroidCarrierLabel" />
+		   
+     <!-- Gesture anywhere -->
+     <PreferenceScreen
+          android:key="gesture_anywhere"
+          android:fragment="com.android.settings.kangdroid.gestureanywhere.GestureAnywhereSettings"
+          android:title="@string/gesture_anywhere_title" />
 
 </PreferenceScreen>
