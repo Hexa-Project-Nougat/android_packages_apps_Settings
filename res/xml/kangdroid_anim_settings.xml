@@ -18,6 +18,17 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 		
 	<PreferenceCategory
+		android:key="kdp_system_anim_category"
+		android:title="@string/kdp_system_anim_category_title" >
+	
+    <PreferenceScreen
+        android:key="system_animation"
+        android:title="@string/system_animation_title"
+        android:fragment="com.crdroid.settings.fragments.AnimationControls" />
+		
+	</PreferenceCategory>
+		
+	<PreferenceCategory
 		android:key="kdp_toast_category"
 		android:title="@string/kdp_toast_category_title">
 		
