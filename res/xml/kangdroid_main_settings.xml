@@ -26,6 +26,11 @@
            android:title="@string/carrier_options"
            android:fragment="com.android.settings.kangdroid.KangDroidCarrierLabel" />
 		   
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="force_expanded_notifications"
+        android:title="@string/force_expanded_notifications_title"
+        android:summary="@string/force_expanded_notifications_summary" />
+		   
     <PreferenceScreen
         android:key="network_traffic_state"
         android:fragment="com.android.settings.kangdroid.NetworkTraffic"
