@@ -667,7 +667,7 @@
     <string name="kdp_doze_timeout_entry_13">13s</string>
     <string name="kdp_doze_timeout_entry_14">14s</string>
     <string name="kdp_doze_timeout_entry_15">15s</string>
-	
+
 	<!-- Doze Brightness TESTING -->
     <string name="kdp_doze_brightness_entry_3">3s</string>
 	<string name="kdp_doze_brightness_entry_4">4s</string>
@@ -678,5 +678,9 @@
     <string name="kdp_doze_brightness_entry_9">9s</string>
     <string name="kdp_doze_brightness_entry_10">10s</string>
     <string name="kdp_doze_brightness_entry_11">11s</string>
+	
+    <!-- Force expanded notifications -->
+    <string name="force_expanded_notifications_title">Force Expanded Notifications</string>
+    <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
 
 </resources>
