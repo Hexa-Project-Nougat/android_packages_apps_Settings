@@ -23,6 +23,16 @@
     <!-- Do NOT translate this -->
     <string name="kdp_versoin_default">Alpha - 0</string>
 	
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#ff000000</string>
+    <string name="set">Set</string>
+    <string name="color_default">Default</string>
+	
     <!-- About device screen, CPU and RAM info. -->
     <string name="cpu_info">CPU</string>
     <string name="mem_info">RAM</string>
