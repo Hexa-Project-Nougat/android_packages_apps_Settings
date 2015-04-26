@@ -173,6 +173,7 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
             return false;
         }
         AlertDialog dialog;
+
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mStatusBarDate) {
             int statusBarDate = Integer.valueOf((String) newValue);
@@ -250,7 +251,25 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
         }
         return false;
     }
-	
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.add(0, MENU_RESET, 0, R.string.reset)
+                .setIcon(R.drawable.ic_settings_reset)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+                showDialogInner(DLG_RESET);
+                return true;
+             default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
     private void parseClockDateFormats() {
         // Parse and repopulate mClockDateFormats's entries based on current date.
         String[] dateEntries = getResources().getStringArray(R.array.status_bar_date_format_entries_values);
