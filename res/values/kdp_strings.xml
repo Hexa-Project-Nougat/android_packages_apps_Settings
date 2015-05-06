@@ -1033,5 +1033,9 @@
     <!-- Disable Quicks settings -->
     <string name="lockscreen_qs_disabled_title">Disable quick settings</string>
     <string name="lockscreen_qs_disabled_summary">Disables quick settings on secure lockscreen</string>
+	
+	<!-- Development Settings -->
+    <!-- Dev Options Enabled by Default -->
+    <string name="show_dev_already_enabled">No Need, Development settings are enabled by default.</string>
 
 </resources>
