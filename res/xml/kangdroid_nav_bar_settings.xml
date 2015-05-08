@@ -86,6 +86,11 @@
 			android:key="kdp_advanced_nav_bar"
 			android:title="@string/kdp_advanced_nav_bar_title">
 
+    <Preference
+        android:key="pa_pie_control"
+        android:title="@string/pa_pie_control_title"
+        android:fragment="com.crdroid.settings.fragments.PieControl" />
+
         <cyanogenmod.preference.CMSystemSettingSwitchPreference
             android:key="navigation_bar_left"
             android:title="@string/navigation_bar_left_title"
