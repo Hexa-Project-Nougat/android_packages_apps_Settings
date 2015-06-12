@@ -19,6 +19,7 @@ package com.android.settings.kangdroid;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.preference.PreferenceCategory;
@@ -27,6 +28,9 @@ import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceGroup;
+import android.support.v7.preference.PreferenceScreen;
 import android.provider.Settings;
 
 import com.android.settings.R;
@@ -48,6 +52,10 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
     private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
 	private static final String PREF_HEADS_UP_TIME_OUT = "heads_up_time_out";
 	private static final String PREF_HEADS_UP_SNOOZE_TIME = "heads_up_snooze_time";
+    private static final String MISSED_CALL_BREATH = "missed_call_breath";
+    private static final String VOICEMAIL_BREATH = "voicemail_breath";
+    private static final String SMS_BREATH = "sms_breath";
+    private static final String BREATHING_NOTIFICATIONS = "breathing_notifications";
 	
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
@@ -58,6 +66,11 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
 	private ListPreference mHeadsUpTimeOut;
 	private ListPreference mHeadsUpSnoozeTime;
 	
+    private SwitchPreference mMissedCallBreath;
+    private SwitchPreference mVoicemailBreath;
+    private SwitchPreference mSmsBreath;
+    private PreferenceGroup mBreathingNotifications;
+	
 	public KangDroidStatusBarSettings() {
 	}
 	
@@ -67,6 +80,7 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
         addPreferencesFromResource(R.xml.kangdroid_status_bar_settings);
 		
 		ContentResolver resolver = getActivity().getContentResolver();
+		final PreferenceScreen prefSet = getPreferenceScreen();
 		
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
         int batteryStyle = CMSettings.System.getInt(resolver,
@@ -118,6 +132,36 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
         updateHeadsUpSnoozeTimeSummary(headsUpSnooze);
         enableStatusBarBatteryDependents(batteryStyle);
 		
+        mMissedCallBreath = (SwitchPreference) findPreference(MISSED_CALL_BREATH);
+        mVoicemailBreath = (SwitchPreference) findPreference(VOICEMAIL_BREATH);
+        mSmsBreath = (SwitchPreference) findPreference(SMS_BREATH);
+
+        mBreathingNotifications = (PreferenceGroup) findPreference(BREATHING_NOTIFICATIONS);
+
+        Context context = getActivity();
+        ConnectivityManager cm = (ConnectivityManager)
+                context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if(cm.isNetworkSupported(ConnectivityManager.TYPE_MOBILE)) {
+
+            mMissedCallBreath.setChecked(Settings.System.getInt(resolver,
+                    Settings.System.KEY_MISSED_CALL_BREATH, 0) == 1);
+            mMissedCallBreath.setOnPreferenceChangeListener(this);
+
+            mVoicemailBreath.setChecked(Settings.System.getInt(resolver,
+                    Settings.System.KEY_VOICEMAIL_BREATH, 0) == 1);
+            mVoicemailBreath.setOnPreferenceChangeListener(this);
+
+            mSmsBreath.setChecked(Settings.Global.getInt(resolver,
+                    Settings.Global.KEY_SMS_BREATH, 0) == 1);
+            mSmsBreath.setOnPreferenceChangeListener(this);
+        } else {
+            prefSet.removePreference(mMissedCallBreath);
+            prefSet.removePreference(mVoicemailBreath);
+            prefSet.removePreference(mSmsBreath);
+            prefSet.removePreference(mBreathingNotifications);
+        }
+		
     }
 	
     @Override
@@ -163,6 +207,21 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
                     Settings.System.HEADS_UP_NOTIFICATION_SNOOZE,
                     headsUpSnooze);
             updateHeadsUpSnoozeTimeSummary(headsUpSnooze);
+            return true;
+        } else if (preference == mMissedCallBreath) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(), MISSED_CALL_BREATH,
+                    value ? 1 : 0);
+            return true;
+        } else if (preference == mVoicemailBreath) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(), VOICEMAIL_BREATH,
+                    value ? 1 : 0);
+            return true;
+        } else if (preference == mSmsBreath) {
+            boolean value = (Boolean) newValue;
+            Settings.Global.putInt(getContentResolver(), SMS_BREATH,
+                    value ? 1 : 0);
             return true;
 		}
         return false;
