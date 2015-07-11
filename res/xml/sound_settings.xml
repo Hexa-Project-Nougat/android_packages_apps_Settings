@@ -90,6 +90,12 @@
                         android:targetClass="com.android.cellbroadcastreceiver.CellBroadcastSettings" />
         </com.android.settingslib.RestrictedPreference>
 
+        <!-- Volume Steps -->
+        <PreferenceScreen
+                android:key="volume_steps"
+                android:title="@string/volume_steps_title"
+                android:fragment="com.android.settings.temasek.VolumeSteps" />
+
         <!-- Other sounds -->
         <Preference
                 android:key="other_sounds"
