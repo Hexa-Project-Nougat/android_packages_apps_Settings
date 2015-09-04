@@ -147,7 +147,7 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
         mFontStyle.setOnPreferenceChangeListener(this);
         mFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.STATUSBAR_CLOCK_FONT_STYLE,
-                4)));
+                0)));
         mFontStyle.setSummary(mFontStyle.getEntry());
 
         setHasOptionsMenu(true);
