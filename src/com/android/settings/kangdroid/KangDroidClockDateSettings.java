@@ -49,7 +49,6 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
-import com.android.settings.temasek.SeekBarPreference;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
@@ -83,7 +82,7 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarDateFormat;
 	private ColorPickerPreference mColorPicker;
 	private ListPreference mFontStyle;
-	private SeekBarPreference mStatusBarDateSize;
+	private ListPreference mFontSize;
 	
 	private boolean mCheckPreferences;
 
@@ -153,11 +152,13 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
                 0)));
         mFontStyle.setSummary(mFontStyle.getEntry());
 		
-        mStatusBarDateSize = (SeekBarPreference) findPreference(PREF_FONT_SIZE);
-        mStatusBarDateSize.setValue(Settings.System.getInt(resolver,
-                Settings.System.STATUSBAR_CLOCK_FONT_SIZE, 14));
-        mStatusBarDateSize.setOnPreferenceChangeListener(this);
-
+        mFontSize = (ListPreference) findPreference(PREF_FONT_SIZE);
+        mFontSize.setOnPreferenceChangeListener(this);
+        mFontSize.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.STATUSBAR_CLOCK_FONT_SIZE, 
+                14)));
+        mFontSize.setSummary(mFontSize.getEntry());
+		 
         setHasOptionsMenu(true);
         mCheckPreferences = true;
         return prefSet;
@@ -256,10 +257,12 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
                     Settings.System.STATUSBAR_CLOCK_FONT_STYLE, val);
             mFontStyle.setSummary(mFontStyle.getEntries()[index]);
             return true;
-        } else if (preference == mStatusBarDateSize) {
-            int width = ((Integer)newValue).intValue();
-            Settings.System.putInt(resolver,
-                    Settings.System.STATUSBAR_CLOCK_FONT_SIZE, width);
+        } else if (preference == mFontSize) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mFontSize.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_CLOCK_FONT_SIZE, val);
+            mFontSize.setSummary(mFontSize.getEntries()[index]);
             return true;
         }
         return false;
