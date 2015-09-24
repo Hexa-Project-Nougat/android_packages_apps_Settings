@@ -23,6 +23,7 @@ import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.preference.SlimSeekBarPreference;
 import android.provider.Settings;
 import android.provider.SearchIndexableResource;
 
@@ -38,11 +39,18 @@ import java.util.List;
 
 public class KangDroidMainSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
 	
-
+	private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
+	
+	private SlimSeekBarPreference mOnTheGoAlphaPref;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_main_settings);
+        mOnTheGoAlphaPref = (SlimSeekBarPreference) findPreference(PREF_ON_THE_GO_ALPHA);
+        mOnTheGoAlphaPref.setDefault(50);
+        mOnTheGoAlphaPref.setInterval(1);
+        mOnTheGoAlphaPref.setOnPreferenceChangeListener(this);
     }
 	
     @Override
@@ -51,6 +59,12 @@ public class KangDroidMainSettings extends SettingsPreferenceFragment implements
     }
 	
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if (preference == mOnTheGoAlphaPref) {
+            float val = Float.parseFloat((String) newValue);
+            Settings.System.putFloat(mCr, Settings.System.ON_THE_GO_ALPHA,
+                    val / 100);
+            return true;
+        }
         return false;
     }
 	
