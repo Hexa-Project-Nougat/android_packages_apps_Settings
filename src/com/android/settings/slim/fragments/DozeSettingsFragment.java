@@ -43,6 +43,9 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
+import java.lang.Integer;
+import java.lang.Float;
+
 public class DozeSettingsFragment extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
@@ -83,7 +86,7 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
         // Doze timeout seekbar
         mDozeTimeout = (ListPreference) findPreference(KEY_DOZE_TIMEOUT);
 		mDozeTimeout.setOnPreferenceChangeListener(this);
-        mDozeTimeout.setValue(3000);
+        mDozeTimeout.setValue(Integer.toString(3000));
         mDozeTimeout.setSummary(mDozeTimeout.getEntry());
         
 
@@ -114,7 +117,7 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
                 com.android.internal.R.integer.config_screenBrightnessSettingMaximum);
         float defaultBrightness = (mDefaultBrightnessScale * 100);
         mDozeBrightness = (ListPreference) findPreference(KEY_DOZE_BRIGHTNESS);
-		mDozeBrightness.setValue((int) defaultBrightness);
+		mDozeBrightness.setValue(Float.toString(defaultBrightness));
 		mDozeBrightness.setSummary(mDozeBrightness.getEntry());
         mDozeBrightness.setOnPreferenceChangeListener(this);
 
@@ -153,7 +156,7 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
         if (preference == mDozeBrightness) {
             float valNav = Float.parseFloat((String) newValue);
 			int index = mDozeBrightness.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putFloat(getActivity().getContentResolver(),
                     Settings.System.DOZE_BRIGHTNESS, valNav / 100);
 			mDozeBrightness.setSummary(mDozeBrightness.getEntries()[index]);
         }
@@ -170,12 +173,6 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
         final Activity activity = getActivity();
 
         // Update doze preferences
-        if (mDozeTimeout != null) {
-            final int statusDozeTimeout = Settings.System.getInt(getContentResolver(),
-                    Settings.System.DOZE_TIMEOUT, dozeTimeoutDefault(activity));
-            // minimum 100 is 1 interval of the 100 multiplier
-            mDozeTimeout.setInitValue((statusDozeTimeout / 100) - 1);
-        }
         if (mDozeTriggerPickup != null) {
             int value = Settings.System.getInt(getContentResolver(),
                     Settings.System.DOZE_TRIGGER_PICKUP, 1);
@@ -195,11 +192,6 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
             int value = Settings.System.getInt(getContentResolver(),
                     Settings.System.DOZE_SCHEDULE, 1);
             mDozeSchedule.setChecked(value != 0);
-        }
-        if (mDozeBrightness != null) {
-            mBrightnessScale = Settings.System.getFloat(getContentResolver(),
-                    Settings.System.DOZE_BRIGHTNESS, mDefaultBrightnessScale);
-            mDozeBrightness.setInitValue((int) (mBrightnessScale * 100));
         }
     }
 
