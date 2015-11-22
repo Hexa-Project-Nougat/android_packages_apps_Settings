@@ -20,5 +20,10 @@
            android:key="kdp_status_bar_clock_and_date_key"
            android:title="@string/kdp_status_bar_clock_and_date"
            android:fragment="com.android.settings.kangdroid.KangDroidClockDateSettings" />
+		   
+    <PreferenceScreen
+           android:key="kdp_carrier_label"
+           android:title="@string/carrier_options"
+           android:fragment="com.android.settings.kangdroid.KangDroidCarrierLabel" />
 
 </PreferenceScreen>
