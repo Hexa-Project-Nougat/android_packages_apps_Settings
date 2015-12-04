@@ -67,6 +67,20 @@
             android:summary="@string/screenshot_crop_and_share_summary"
             android:defaultValue="false" />
 
+        <!-- App Circle Bar -->
+        <PreferenceScreen android:key="app_circle_bar"
+                android:title="@string/app_circle_bar_title">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                    android:targetClass="com.android.settings.kangdroid.activity.AppCircleBarActivity" />
+        </PreferenceScreen>
+		
+        <PreferenceScreen
+            android:key="app_circle_bar"
+            android:fragment="com.android.settings.rr.AppCircleBar"
+            android:title="@string/app_circle_bar_title"
+            android:icon="@drawable/rr_appcirclebar_icon" />
+
         <!-- Transparency Settings -->
         <PreferenceScreen android:key="trans_porn"
                 android:title="@string/trans">

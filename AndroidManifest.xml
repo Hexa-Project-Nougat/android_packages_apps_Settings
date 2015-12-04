@@ -3345,6 +3345,8 @@
 		<activity android:name="com.android.settings.kangdroid.activity.LockScreenWeatherSettingsActivity" />
 		
 		<activity android:name="com.android.settings.kangdroid.activity.SmartBarSettingsActivity" />
+		
+		<activity android:name="com.android.settings.kangdroid.activity.AppCircleBarActivity" />
 
         <activity android:name="Settings$SmartBarSettingsActivity"
                   android:taskAffinity="com.android.settings"
