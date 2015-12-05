@@ -70,7 +70,7 @@ import java.util.Objects;
 
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
-public class SoundSettings extends SettingsPreferenceFragment implements Indexable {
+public class SoundSettings extends SettingsPreferenceFragment implements Indexable, OnPreferenceChangeListener {
     private static final String TAG = "SoundSettings";
 
     private static final String KEY_MEDIA_VOLUME = "media_volume";
@@ -84,6 +84,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private static final String KEY_WIFI_DISPLAY = "wifi_display";
     private static final String KEY_ZEN_MODE = "zen_mode";
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
+    // volume rocker reorient
+    private static final String SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
 
     private static final String SELECTED_PREFERENCE_KEY = "selected_preference";
     private static final int REQUEST_CODE = 200;
@@ -120,6 +122,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private PackageManager mPm;
     private UserManager mUserManager;
     private RingtonePreference mRequestPreference;
+    private SwitchPreference mSwapVolumeButtons;
 
     @Override
     protected int getMetricsCategory() {
@@ -141,6 +144,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         }
 
         addPreferencesFromResource(R.xml.sound_settings);
+		
+        final ContentResolver resolver = getContentResolver();
+        final PreferenceScreen prefScreen = getPreferenceScreen();
+        final Resources res = getResources();
 
         initVolumePreference(KEY_MEDIA_VOLUME, AudioManager.STREAM_MUSIC,
                 com.android.internal.R.drawable.ic_audio_media_mute);
@@ -187,6 +194,13 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                 mRequestPreference = (RingtonePreference) findPreference(selectedPreference);
             }
         }
+		
+        // volume rocker reorient
+        mSwapVolumeButtons = (SwitchPreference) findPreference(SWAP_VOLUME_BUTTONS);
+        mSwapVolumeButtons.setOnPreferenceChangeListener(this);
+        int swapVolumeButtons = Settings.System.getInt(getContentResolver(),
+                SWAP_VOLUME_BUTTONS, 0);
+        mSwapVolumeButtons.setChecked(swapVolumeButtons != 0);
     }
 
     @Override
@@ -258,6 +272,17 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         if (mRequestPreference != null) {
             outState.putString(SELECTED_PREFERENCE_KEY, mRequestPreference.getKey());
         }
+    }
+	
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mSwapVolumeButtons) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(), SWAP_VOLUME_BUTTONS,
+                    value ? 1 : 0);
+            return true;
+        }
+        return false;
     }
 
     // === Volumes ===

@@ -780,5 +780,9 @@
 	
 	<!-- Gesture Anywhere Category -->
 	<string name="kdp_gesture_anywhere">Gesture Anywhere Customization</string>
+	
+    <!-- Volume Key Rotation -->
+    <string name="swap_volume_buttons_title">Reorient</string>
+    <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
 
 </resources>
