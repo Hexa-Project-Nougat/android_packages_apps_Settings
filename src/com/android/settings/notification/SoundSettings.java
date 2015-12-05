@@ -84,8 +84,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private static final String KEY_WIFI_DISPLAY = "wifi_display";
     private static final String KEY_ZEN_MODE = "zen_mode";
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
-    // volume rocker reorient
     private static final String SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
+	private static final String VOLUME_ROCKER_WAKE = "volume_rocker_wake";
 
     private static final String SELECTED_PREFERENCE_KEY = "selected_preference";
     private static final int REQUEST_CODE = 200;
@@ -123,6 +123,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private UserManager mUserManager;
     private RingtonePreference mRequestPreference;
     private SwitchPreference mSwapVolumeButtons;
+	private SwitchPreference mVolumeRockerWake;
 
     @Override
     protected int getMetricsCategory() {
@@ -201,6 +202,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         int swapVolumeButtons = Settings.System.getInt(getContentResolver(),
                 SWAP_VOLUME_BUTTONS, 0);
         mSwapVolumeButtons.setChecked(swapVolumeButtons != 0);
+		
+        mVolumeRockerWake = (SwitchPreference) findPreference(VOLUME_ROCKER_WAKE);
+        mVolumeRockerWake.setOnPreferenceChangeListener(this);
+        int volumeRockerWake = Settings.System.getInt(getContentResolver(),
+                VOLUME_ROCKER_WAKE, 0);
+        mVolumeRockerWake.setChecked(volumeRockerWake != 0);
     }
 
     @Override
@@ -279,6 +286,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         if (preference == mSwapVolumeButtons) {
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getContentResolver(), SWAP_VOLUME_BUTTONS,
+                    value ? 1 : 0);
+            return true;
+        } else if (preference == mVolumeRockerWake) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(), VOLUME_ROCKER_WAKE,
                     value ? 1 : 0);
             return true;
         }
