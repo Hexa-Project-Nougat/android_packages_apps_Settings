@@ -17,6 +17,7 @@
 package com.android.settings.kangdroid;
 
 import android.content.Context;
+import android.content.ContentResolver;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.support.v7.preference.ListPreference;
