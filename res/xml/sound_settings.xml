@@ -101,10 +101,19 @@
         android:title="@string/swap_volume_buttons_title"
         android:summary="@string/swap_volume_buttons_summary" />
 
-    <SwitchPreference
+   <SwitchPreference
         android:key="volume_rocker_wake"
         android:summary="@string/volume_rocker_wake_summary"
-        android:title="@string/volume_rocker_wake_title" />
+        android:title="@string/volume_rocker_wake_title"
+        android:defaultValue="false"
+        android:disableDependentsState="true" />
+
+    <SwitchPreference
+        android:key="volume_rocker_music_controls"
+        android:summary="@string/volume_rocker_music_controls_summary"
+        android:title="@string/volume_rocker_music_controls_title"
+        android:defaultValue="true"
+        android:dependency="volume_rocker_wake" />
 
         <!-- Other sounds -->
         <Preference
