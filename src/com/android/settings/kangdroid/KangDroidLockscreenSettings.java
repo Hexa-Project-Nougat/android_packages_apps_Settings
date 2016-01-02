@@ -25,7 +25,7 @@ import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
 import android.provider.SearchIndexableResource;
-import com.android.settings.kangdroid.SeekBarPreference;
+import com.android.settings.SeekBarPreference;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -39,18 +39,21 @@ import java.util.List;
 
 public class KangDroidLockscreenSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
 	
-	private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
+	private static final String LOCKSCREEN_MAX_NOTIF_CONFIG = "lockscreen_max_notif_cofig";
 	
-	private SeekBarPreference mOnTheGoAlphaPref;
+	private SeekBarPreference mMaxKeyguardNotifConfig;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_lockscreen_settings);
-        mOnTheGoAlphaPref = (SeekBarPreference) findPreference(PREF_ON_THE_GO_ALPHA);
-        mOnTheGoAlphaPref.setValue(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.ON_THE_GO_ALPHA, 50));
-        mOnTheGoAlphaPref.setOnPreferenceChangeListener(this);
+		ContentResolver resolver = getActivity().getContentResolver();
+		
+        mMaxKeyguardNotifConfig = (SeekBarPreference) findPreference(LOCKSCREEN_MAX_NOTIF_CONFIG);
+        int kgconf = Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, 5);
+        mMaxKeyguardNotifConfig.setProgress(kgconf);
+        mMaxKeyguardNotifConfig.setOnPreferenceChangeListener(this);
     }
 	
     @Override
@@ -58,13 +61,14 @@ public class KangDroidLockscreenSettings extends SettingsPreferenceFragment impl
         super.onResume();
     }
 	
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mOnTheGoAlphaPref) {
-            float val = Float.parseFloat((String) objValue);
-            Settings.System.putFloat(getActivity().getContentResolver(), Settings.System.ON_THE_GO_ALPHA,
-                    val / 100);
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+		ContentResolver resolver = getActivity().getContentResolver();
+		if (preference == mMaxKeyguardNotifConfig) {
+            int kgconf = (Integer) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, kgconf);
             return true;
-        }
+		}
         return false;
     }
 	
