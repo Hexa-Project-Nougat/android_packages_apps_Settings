@@ -17,6 +17,8 @@
 package com.android.settings.kangdroid;
 
 import android.content.Context;
+import android.content.ContentResolver;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.support.v7.preference.ListPreference;
@@ -40,8 +42,10 @@ import java.util.List;
 public class KangDroidLockscreenSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
 	
 	private static final String LOCKSCREEN_MAX_NOTIF_CONFIG = "lockscreen_max_notif_cofig";
+	private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
 	
 	private SeekBarPreference mMaxKeyguardNotifConfig;
+	private ListPreference mLockClockFonts;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,12 @@ public class KangDroidLockscreenSettings extends SettingsPreferenceFragment impl
                 Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, 5);
         mMaxKeyguardNotifConfig.setProgress(kgconf);
         mMaxKeyguardNotifConfig.setOnPreferenceChangeListener(this);
+		
+        mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
+        mLockClockFonts.setValue(String.valueOf(Settings.System.getInt(
+                resolver, Settings.System.LOCK_CLOCK_FONTS, 0)));
+        mLockClockFonts.setSummary(mLockClockFonts.getEntry());
+        mLockClockFonts.setOnPreferenceChangeListener(this);
     }
 	
     @Override
@@ -67,6 +77,12 @@ public class KangDroidLockscreenSettings extends SettingsPreferenceFragment impl
             int kgconf = (Integer) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, kgconf);
+            return true;
+		} else if (preference == mLockClockFonts) {
+            Settings.System.putInt(resolver, Settings.System.LOCK_CLOCK_FONTS,
+                    Integer.valueOf((String) newValue));
+            mLockClockFonts.setValue(String.valueOf(newValue));
+            mLockClockFonts.setSummary(mLockClockFonts.getEntry());
             return true;
 		}
         return false;
