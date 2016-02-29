@@ -48,6 +48,8 @@ public class ColorPickerPreference extends Preference implements
     private int mValue = Color.BLACK;
     private float mDensity = 0;
     private boolean mAlphaSliderEnabled = true;
+    int mAndroidColor = 0x00000000;
+    int mDarkKatColor = mAndroidColor;
 
     private EditText mEditText;
 
@@ -183,6 +185,11 @@ public class ColorPickerPreference extends Preference implements
      */
     public void setAlphaSliderEnabled(boolean enable) {
         mAlphaSliderEnabled = enable;
+    }
+	
+    public void setDefaultColors(int androidColor, int darkkatColor) {
+        mAndroidColor = androidColor;
+        mDarkKatColor = darkkatColor;
     }
 
     /**

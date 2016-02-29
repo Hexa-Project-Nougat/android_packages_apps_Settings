@@ -1854,8 +1854,11 @@
     <string name="network_icons_cat_airplane_mode_colors_title">Airplane mode colors</string>
     <string name="status_bar_notification_icons">Notification icons colors</string>
     <string name="network_status_icons_cat_status_colors_title">Statusbar icons color</string>
-	
+    <string name="apply_status_colors_summary">Use Only If Colors Are Not Applied. Tap To Apply</string>
+    <string name="apply_status_colors">Apply Colors</string>
     <string name="status_bar_color_enable">Statusbar Colors</string>
     <string name="statusbar_color_switch">Custom Icon Colors</string>
     <string name="statusbar_color_switch_summary">Enable/Disable Custom Icon Colors</string>
+	<string name="dlg_reset_android">Stock</string>
+	<string name="dlg_reset_rr">Hexa Default</string>
 </resources>
