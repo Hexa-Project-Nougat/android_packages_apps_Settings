@@ -42,8 +42,10 @@ import java.util.List;
 public class KangDroidOtherSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
 	
     private static final String FLASHLIGHT_NOTIFICATION = "flashlight_notification";
+	private static final String KEY_DOZE_FRAGMENT = "doze_fragment";
 
     private SwitchPreference mFlashlightNotification;
+	private PreferenceScreen mDozeFragement;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,11 +58,18 @@ public class KangDroidOtherSettings extends SettingsPreferenceFragment implement
         mFlashlightNotification.setOnPreferenceChangeListener(this);
         mFlashlightNotification.setChecked((Settings.System.getInt(resolver,
                 Settings.System.FLASHLIGHT_NOTIFICATION, 0) == 1));
+		mDozeFragement = (PreferenceScreen) findPreference(KEY_DOZE_FRAGMENT);
     }
 	
     @Override
     public void onResume() {
         super.onResume();
+        boolean dozeEnabled = Settings.Secure.getInt(
+                getContentResolver(), Settings.Secure.DOZE_ENABLED, 1) != 0;
+        if (mDozeFragement != null) {
+            mDozeFragement.setSummary(dozeEnabled
+                    ? R.string.summary_doze_enabled : R.string.summary_doze_disabled);
+        }
     }
 	
 	@Override
