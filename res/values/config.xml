@@ -80,5 +80,9 @@
 
     <!-- When true enable gesture setting. -->
     <bool name="config_gesture_settings_enabled">false</bool>
+	
+    <!-- Fling default long swipe thresholds as percentage of bar width/height-->
+    <item name="config_flingMinLongSwipeThreshold" format="float" type="dimen">0.20</item>
+    <item name="config_flingMaxLongSwipeThreshold" format="float" type="dimen">0.50</item>
 
 </resources>
