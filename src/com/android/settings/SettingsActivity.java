@@ -133,6 +133,8 @@ import com.android.settingslib.drawer.DashboardCategory;
 import com.android.settingslib.drawer.SettingsDrawerActivity;
 import com.android.settingslib.drawer.Tile;
 import com.android.settings.kangdroid.KangDroidMainSettings;
+import com.android.settings.rr.FlingSettings;
+import com.android.settings.rr.SmartbarSettings;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -367,6 +369,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             MasterClear.class.getName(),
             NightDisplaySettings.class.getName(),
 			KangDroidMainSettings.class.getName(),
+            FlingSettings.class.getName(),
+            SmartbarSettings.class.getName(),
     };
 
 
