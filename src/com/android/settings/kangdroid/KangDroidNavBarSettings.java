@@ -1,3 +1,4 @@
+
 /*
  * Copyright (C) 2016 The CyanogenMod project
  *
@@ -16,6 +17,8 @@
 
 package com.android.settings.kangdroid;
 
+import android.app.Activity;
+
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -26,6 +29,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.RemoteException;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.ListPreference;
@@ -41,6 +45,11 @@ import android.view.WindowManagerGlobal;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.internal.utils.du.ActionConstants;
+import com.android.internal.utils.du.Config;
+import com.android.internal.utils.du.DUActionUtils;
+import com.android.internal.utils.du.Config.ButtonConfig;
+import com.android.settings.kangdroid.KangDroidSeekBarPreference;
 
 import java.util.List;
 
@@ -51,20 +60,36 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "SystemSettings";
 
-    private static final String DISABLE_NAV_KEYS = "disable_nav_keys";
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
     private static final String KEY_NAVIGATION_HOME_LONG_PRESS = "navigation_home_long_press";
     private static final String KEY_NAVIGATION_HOME_DOUBLE_TAP = "navigation_home_double_tap";
     private static final String KEY_NAVIGATION_RECENTS_LONG_PRESS = "navigation_recents_long_press";
     private static final String CATEGORY_NAVBAR = "navigation_bar_category";
+	private static final String NAVBAR_VISIBILITY = "navbar_visibility";
+    private static final String KEY_NAVBAR_MODE = "navbar_mode";
+    private static final String KEY_AOSP_NAVBAR_SETTINGS = "aosp_navbar_settings";
+    private static final String KEY_FLING_NAVBAR_SETTINGS = "fling_settings";
+    private static final String KEY_SMARTBAR_SETTINGS = "smartbar_settings";
+    private static final String KEY_NAVIGATION_BAR_SIZE = "navigation_bar_size";
+	
+    private static final String KEY_NAVIGATION_HEIGHT_PORT = "navbar_height_portrait";
+    private static final String KEY_NAVIGATION_HEIGHT_LAND = "navbar_height_landscape";
+    private static final String KEY_NAVIGATION_WIDTH = "navbar_width";
 
     private SwitchPreference mDisableNavigationKeys;
     private SwitchPreference mNavigationBarLeftPref;
     private ListPreference mNavigationHomeLongPressAction;
     private ListPreference mNavigationHomeDoubleTapAction;
     private ListPreference mNavigationRecentsLongPressAction;
-
-    private PreferenceCategory mNavigationPreferencesCat;
+	
+    private SwitchPreference mNavbarVisibility;
+    private ListPreference mNavbarMode;
+    private PreferenceScreen mFlingSettings;
+    private PreferenceScreen mSmartbarSettings;
+	
+    private KangDroidSeekBarPreference mBarHeightPort;
+    private KangDroidSeekBarPreference mBarHeightLand;
+    private KangDroidSeekBarPreference mBarWidth;
 	
 	public static final int KEY_MASK_HOME = 0x01;
 
@@ -103,17 +128,13 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
         final Resources res = getResources();
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
+		Activity activity = getActivity();
 
         mHandler = new Handler();
 		
 		final int deviceKeys = getResources().getInteger(
 			                com.android.internal.R.integer.config_deviceHardwareKeys);
 		final boolean hasHomeKey = (deviceKeys & KEY_MASK_HOME) != 0;
-
-        // Force Navigation bar related options
-        mDisableNavigationKeys = (SwitchPreference) findPreference(DISABLE_NAV_KEYS);
-
-        mNavigationPreferencesCat = (PreferenceCategory) findPreference(CATEGORY_NAVBAR);
 
         // Navigation bar left
         mNavigationBarLeftPref = (SwitchPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
@@ -137,56 +158,51 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
         mNavigationHomeDoubleTapAction = initActionList(KEY_NAVIGATION_HOME_DOUBLE_TAP,
                 homeDoubleTapAction);
 
-        // Hide navigation bar home settings if we have a hardware home key
-        // so that action config options aren't duplicated.
-        if (hasHomeKey) {
-                mNavigationPreferencesCat.removePreference(mNavigationHomeLongPressAction);
-                mNavigationPreferencesCat.removePreference(mNavigationHomeDoubleTapAction);
-        }
-
         // Navigation bar recents long press activity needs custom setup
         mNavigationRecentsLongPressAction =
                 initRecentsLongPressAction(KEY_NAVIGATION_RECENTS_LONG_PRESS);
 
         final CMHardwareManager hardware = CMHardwareManager.getInstance(getActivity());
 
-        // Only visible on devices that does not have a navigation bar already,
-        // and don't even try unless the existing keys can be disabled
-        boolean needsNavigationBar = false;
-        if (hardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE)) {
-            try {
-                IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
-                needsNavigationBar = wm.needsNavigationBar();
-            } catch (RemoteException e) {
-            }
+		
+        mNavbarVisibility = (SwitchPreference) findPreference(NAVBAR_VISIBILITY);
+        mNavbarMode = (ListPreference) findPreference(KEY_NAVBAR_MODE);
+        mFlingSettings = (PreferenceScreen) findPreference(KEY_FLING_NAVBAR_SETTINGS);
+        mSmartbarSettings = (PreferenceScreen) findPreference(KEY_SMARTBAR_SETTINGS);
 
-            if (needsNavigationBar) {
-                prefScreen.removePreference(mDisableNavigationKeys);
-            } else {
-                // Remove keys that can be provided by the navbar
-                updateDisableNavkeysOption();
-                mNavigationPreferencesCat.setEnabled(mDisableNavigationKeys.isChecked());
-            }
-        } else {
-            prefScreen.removePreference(mDisableNavigationKeys);
+        boolean showing = Settings.Secure.getInt(getContentResolver(),
+                Settings.Secure.NAVIGATION_BAR_VISIBLE,
+                DUActionUtils.hasNavbarByDefault(getActivity()) ? 1 : 0) != 0;
+        updateBarVisibleAndUpdatePrefs(showing);
+        mNavbarVisibility.setOnPreferenceChangeListener(this);
+
+        int mode = Settings.Secure.getInt(getContentResolver(), Settings.Secure.NAVIGATION_BAR_MODE,
+                0);
+
+        // Smartbar moved from 2 to 0, deprecating old navbar
+        if (mode == 2) {
+            mode = 0;
         }
+        updateBarModeSettings(mode);
+        mNavbarMode.setOnPreferenceChangeListener(this);
+		
+        int size = Settings.Secure.getIntForUser(getContentResolver(),
+                Settings.Secure.NAVIGATION_BAR_HEIGHT, 100, UserHandle.USER_CURRENT);
+        mBarHeightPort = (KangDroidSeekBarPreference) findPreference(KEY_NAVIGATION_HEIGHT_PORT);
+        mBarHeightPort.setValue(size);
+        mBarHeightPort.setOnPreferenceChangeListener(this);
 
-        try {
-            // Only show the navigation bar category on devices that have a navigation bar
-            // unless we are forcing it via development settings
-            boolean forceNavbar = CMSettings.Global.getInt(getContentResolver(),
-                    CMSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0) == 1;
-            boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar()
-                    || forceNavbar;
-
-            if (!hasNavBar && (needsNavigationBar ||
-                    !hardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE))) {
-                    // Hide navigation bar category
-                    prefScreen.removePreference(mNavigationPreferencesCat);
-            }
-        } catch (RemoteException e) {
-            Log.e(TAG, "Error getting navigation bar status");
-        }
+           int sizeone = Settings.Secure.getIntForUser(getContentResolver(),
+                    Settings.Secure.NAVIGATION_BAR_WIDTH, 100, UserHandle.USER_CURRENT);
+            mBarWidth = (KangDroidSeekBarPreference) findPreference(KEY_NAVIGATION_WIDTH);
+            mBarWidth.setValue(sizeone);
+            mBarWidth.setOnPreferenceChangeListener(this);
+			
+           int sizetwo = Settings.Secure.getIntForUser(getContentResolver(),
+                    Settings.Secure.NAVIGATION_BAR_HEIGHT_LANDSCAPE, 100, UserHandle.USER_CURRENT);
+            mBarHeightLand = (KangDroidSeekBarPreference) findPreference(KEY_NAVIGATION_HEIGHT_LAND);
+            mBarHeightLand.setValue(sizetwo);
+            mBarHeightLand.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -302,54 +318,57 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
             CMSettings.Secure.putString(getContentResolver(),
                     CMSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY, putString);
             return true;
+		} else if (preference == mNavbarMode) {
+	            int mode = Integer.parseInt(((String) newValue).toString());
+	            Settings.Secure.putInt(getContentResolver(),
+	                    Settings.Secure.NAVIGATION_BAR_MODE, mode);
+	            updateBarModeSettings(mode);
+	            return true;
+        } else if (preference == mNavbarVisibility) {
+	            boolean showing = ((Boolean)newValue);
+            Settings.Secure.putInt(getContentResolver(), Settings.Secure.NAVIGATION_BAR_VISIBLE,
+                    showing ? 1 : 0);
+            updateBarVisibleAndUpdatePrefs(showing);
+	            return true;
+        } else if (preference == mBarHeightPort) {
+            int val = (Integer) newValue;
+            Settings.Secure.putIntForUser(getContentResolver(),
+                    Settings.Secure.NAVIGATION_BAR_HEIGHT, val, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mBarHeightLand) {
+            int val = (Integer) newValue;
+            Settings.Secure.putIntForUser(getContentResolver(),
+                    Settings.Secure.NAVIGATION_BAR_HEIGHT_LANDSCAPE, val, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mBarWidth) {
+            int val = (Integer) newValue;
+            Settings.Secure.putIntForUser(getContentResolver(),
+                    Settings.Secure.NAVIGATION_BAR_WIDTH, val, UserHandle.USER_CURRENT);
+            return true;
         }
         return false;
-    }
-
-    private static void writeDisableNavkeysOption(Context context, boolean enabled) {
-        CMSettings.Global.putInt(context.getContentResolver(),
-                CMSettings.Global.DEV_FORCE_SHOW_NAVBAR, enabled ? 1 : 0);
-    }
-
-    private void updateDisableNavkeysOption() {
-        boolean enabled = CMSettings.Global.getInt(getActivity().getContentResolver(),
-                CMSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0) != 0;
-
-        mDisableNavigationKeys.setChecked(enabled);
-    }
-
-    public static void restoreKeyDisabler(Context context) {
-        CMHardwareManager hardware = CMHardwareManager.getInstance(context);
-        if (!hardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE)) {
-            return;
-        }
-
-        writeDisableNavkeysOption(context, CMSettings.Global.getInt(context.getContentResolver(),
-                CMSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0) != 0);
     }
 
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
-        if (preference == mDisableNavigationKeys) {
-            mDisableNavigationKeys.setEnabled(false);
-            mNavigationPreferencesCat.setEnabled(false);
-            writeDisableNavkeysOption(getActivity(), mDisableNavigationKeys.isChecked());
-            updateDisableNavkeysOption();
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mDisableNavigationKeys.setEnabled(true);
-                    mNavigationPreferencesCat.setEnabled(mDisableNavigationKeys.isChecked());
-                }
-            }, 1000);
-        }
-
         return super.onPreferenceTreeClick(preference);
     }
 	
     @Override
     protected int getMetricsCategory() {
         return MetricsEvent.KANGDROID;
+    }
+	
+    private void updateBarModeSettings(int mode) {
+        mNavbarMode.setValue(String.valueOf(mode));
+        mSmartbarSettings.setEnabled(mode == 0);
+        mSmartbarSettings.setSelectable(mode == 0);
+        mFlingSettings.setEnabled(mode == 1);
+        mFlingSettings.setSelectable(mode == 1);
+    }
+
+    private void updateBarVisibleAndUpdatePrefs(boolean showing) {
+        mNavbarVisibility.setChecked(showing);
     }
 }
