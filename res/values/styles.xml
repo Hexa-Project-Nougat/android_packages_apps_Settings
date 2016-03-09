@@ -434,5 +434,7 @@
         <item name="android:paddingStart">56dp</item>
         <item name="android:paddingEnd">56dp</item>
     </style>
+	
+	<style name="Theme.SettingsDialog" parent="@android:style/Theme.Material.Light.Dialog.NoActionBar" />
 
 </resources>
