@@ -1042,5 +1042,11 @@
     <string name="night_bright_min">Minimum brightness</string>
     <string name="night_bright_low">Low brightness</string>
     <string name="night_bright_medium">Medium brightness</string>
+	
+   <!-- Application Settings -->
+   <!-- Manage applications: show substratum overlays -->
+   <string name="filter_substratum_apps">Substratum overlays</string>
+   <string name="menu_show_substratum">Show overlays</string>
+   <string name="menu_hide_substratum">Hide overlays</string>
 
 </resources>
