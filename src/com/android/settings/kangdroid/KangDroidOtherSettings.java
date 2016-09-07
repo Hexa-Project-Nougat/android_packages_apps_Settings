@@ -23,6 +23,7 @@ import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
 import android.provider.SearchIndexableResource;
 import com.android.settings.kangdroid.SeekBarPreference;
@@ -39,10 +40,21 @@ import java.util.List;
 
 public class KangDroidOtherSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
 	
+    private static final String FLASHLIGHT_NOTIFICATION = "flashlight_notification";
+
+    private SwitchPreference mFlashlightNotification;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_other_settings);
+		
+		final ContentResolver resolver = getActivity().getContentResolver();
+
+        mFlashlightNotification = (SwitchPreference) findPreference(FLASHLIGHT_NOTIFICATION);
+        mFlashlightNotification.setOnPreferenceChangeListener(this);
+        mFlashlightNotification.setChecked((Settings.System.getInt(resolver,
+                Settings.System.FLASHLIGHT_NOTIFICATION, 0) == 1));
     }
 	
     @Override
@@ -50,9 +62,16 @@ public class KangDroidOtherSettings extends SettingsPreferenceFragment implement
         super.onResume();
     }
 	
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if  (preference == mFlashlightNotification) {
+            boolean checked = ((SwitchPreference)preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                   Settings.System.FLASHLIGHT_NOTIFICATION, checked ? 1:0);
+            return true;
+        }
         return false;
-    }
+     }
 	
     @Override
     protected int getMetricsCategory() {

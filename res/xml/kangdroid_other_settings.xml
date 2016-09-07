@@ -20,5 +20,17 @@
          android:key="gesture_anywhere"
          android:fragment="com.android.settings.kangdroid.gestureanywhere.GestureAnywhereSettings"
          android:title="@string/gesture_anywhere_title" />
+		 
+	<PreferenceCategory
+		android:key="kdp_flash_light_notification"
+		android:title="@string/kdp_flash_light_notification_title">
+
+    <SwitchPreference
+         android:key="flashlight_notification"
+         android:title="@string/flashlight_notification_title"
+         android:summary="@string/flashlight_notification_summary"
+         android:defaultValue="false" />
+		 
+	 </PreferenceCategory>
 		
 </PreferenceScreen>
