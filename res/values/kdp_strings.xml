@@ -361,5 +361,10 @@
 	<string name="kdp_clock_date_settings_title">Clock &amp; Date Customiaztion</string>
 	<!-- Other StatusBar Category -->
 	<string name="kdp_other_status_bar_settings_title">Other StatusBar Customization</string>
+	
+    <!-- Flashlight notification -->
+	<string name="kdp_flash_light_notification_title">FlaashLight Notification Customization</string>
+    <string name="flashlight_notification_title">Flashlight notification</string>
+    <string name="flashlight_notification_summary">Enable notification for when the flashlight is on</string>
 
 </resources>
