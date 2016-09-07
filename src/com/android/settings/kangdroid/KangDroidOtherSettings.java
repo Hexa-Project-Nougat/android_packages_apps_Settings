@@ -23,6 +23,7 @@ import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
 import android.provider.SearchIndexableResource;
 import com.android.settings.kangdroid.SeekBarPreference;
@@ -39,18 +40,21 @@ import java.util.List;
 
 public class KangDroidOtherSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
 	
-	private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
-	
-	private SeekBarPreference mOnTheGoAlphaPref;
+    private static final String FLASHLIGHT_NOTIFICATION = "flashlight_notification";
+
+    private SwitchPreference mFlashlightNotification;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_other_settings);
-        mOnTheGoAlphaPref = (SeekBarPreference) findPreference(PREF_ON_THE_GO_ALPHA);
-        mOnTheGoAlphaPref.setValue(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.ON_THE_GO_ALPHA, 50));
-        mOnTheGoAlphaPref.setOnPreferenceChangeListener(this);
+		
+		final ContentResolver resolver = getActivity().getContentResolver();
+
+        mFlashlightNotification = (SwitchPreference) findPreference(FLASHLIGHT_NOTIFICATION);
+        mFlashlightNotification.setOnPreferenceChangeListener(this);
+        mFlashlightNotification.setChecked((Settings.System.getInt(resolver,
+                Settings.System.FLASHLIGHT_NOTIFICATION, 0) == 1));
     }
 	
     @Override
@@ -58,15 +62,16 @@ public class KangDroidOtherSettings extends SettingsPreferenceFragment implement
         super.onResume();
     }
 	
+	@Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mOnTheGoAlphaPref) {
-            float val = Float.parseFloat((String) objValue);
-            Settings.System.putFloat(getActivity().getContentResolver(), Settings.System.ON_THE_GO_ALPHA,
-                    val / 100);
+        if  (preference == mFlashlightNotification) {
+            boolean checked = ((SwitchPreference)preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                   Settings.System.FLASHLIGHT_NOTIFICATION, checked ? 1:0);
             return true;
         }
         return false;
-    }
+     }
 	
     @Override
     protected int getMetricsCategory() {
