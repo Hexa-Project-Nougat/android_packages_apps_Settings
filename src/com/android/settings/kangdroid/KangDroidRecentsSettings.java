@@ -17,15 +17,17 @@
 package com.android.settings.kangdroid;
 
 import android.content.Context;
+import android.content.ContentResolver;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.preference.PreferenceCategory;
+import android.preference.PreferenceScreen;
 import android.support.v7.preference.ListPreference;
+import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
-import android.provider.SearchIndexableResource;
-import com.android.settings.kangdroid.SeekBarPreference;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -38,11 +40,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KangDroidRecentsSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
+
+    private static final String IMMERSIVE_RECENTS = "immersive_recents";
+
+    private ListPreference mImmersiveRecents;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_main_settings);
+		
+		final ContentResolver resolver = getActivity().getContentResolver();
+		
+        mImmersiveRecents = (ListPreference) findPreference(IMMERSIVE_RECENTS);
+        mImmersiveRecents.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.IMMERSIVE_RECENTS, 0)));
+        mImmersiveRecents.setSummary(mImmersiveRecents.getEntry());
+        mImmersiveRecents.setOnPreferenceChangeListener(this);
+
     }
 	
     @Override
@@ -50,7 +65,16 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
         super.onResume();
     }
 	
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mImmersiveRecents) {
+            Settings.System.putInt(getContentResolver(), Settings.System.IMMERSIVE_RECENTS,
+                    Integer.valueOf((String) newValue));
+            mImmersiveRecents.setValue(String.valueOf(newValue));
+            mImmersiveRecents.setSummary(mImmersiveRecents.getEntry());
+            return true;
+        }
         return false;
     }
 	
