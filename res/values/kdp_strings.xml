@@ -1061,5 +1061,10 @@
     <string name="filter_substratum_icons">Substratum icon overlays</string>
     <string name="menu_show_substratum_icons">Show icon overlays</string>
     <string name="menu_hide_substratum_icons">Hide icon overlays</string>
+	
+    <!-- Dashboard suggestions -->
+    <string name="dashboard_category">Dashboard options</string>
+    <string name="disable_suggestions_title">Disable suggestions</string>
+    <string name="disable_suggestions_summary">Disable the suggestions that appear on top of the dashboard</string>
 
 </resources>
