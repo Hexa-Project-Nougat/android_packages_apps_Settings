@@ -14,6 +14,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+	
+	<!-- KDP Default strings -->
+	<string name="hexa_title">Hexa Customizations</string>
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Advanced reboot</string>
     <string name="advanced_reboot_dialog_title">Advanced reboot menu</string>
