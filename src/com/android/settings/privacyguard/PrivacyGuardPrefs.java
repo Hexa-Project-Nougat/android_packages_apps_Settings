@@ -19,10 +19,10 @@ package com.android.settings.privacyguard;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceScreen;
+import android.support.v7.preference.CheckBoxPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v7.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.view.LayoutInflater;
@@ -34,7 +34,7 @@ import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
-import cyanogenmod.providers.CMSettings;
+import android.provider.Settings;
 
 public class PrivacyGuardPrefs extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
@@ -55,8 +55,8 @@ public class PrivacyGuardPrefs extends SettingsPreferenceFragment implements
         mPrivacyGuardDefault = (CheckBoxPreference) findPreference(KEY_PRIVACY_GUARD_DEFAULT);
         mPrivacyGuardDefault.setOnPreferenceChangeListener(this);
 
-        mPrivacyGuardDefault.setChecked(Settings.Secure.getInt(getContentResolver(),
-                CMSettings.Secure.PRIVACY_GUARD_DEFAULT, 0) == 1);
+        mPrivacyGuardDefault.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.PRIVACY_GUARD_DEFAULT, 0) == 1);
     }
 
     @Override
@@ -75,15 +75,10 @@ public class PrivacyGuardPrefs extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mPrivacyGuardDefault) {
             boolean value = (Boolean) newValue;
-            Settings.Secure.putInt(getContentResolver(),
-                    CMSettings.Secure.PRIVACY_GUARD_DEFAULT, value ? 1 : 0);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.PRIVACY_GUARD_DEFAULT, value ? 1 : 0);
             return true;
         }
         return false;
-    }
-
-    @Override
-    protected int getMetricsCategory() {
-        return MetricsLogger.DONT_TRACK_ME_BRO;
     }
 }

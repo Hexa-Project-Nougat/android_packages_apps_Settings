@@ -53,9 +53,4 @@ public class KangDroidPowerMenuSettings extends SettingsPreferenceFragment imple
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         return false;
     }
-	
-    protected int getMetricsCategory()
-    {
-	return MetricsLogger.APPLICATION;
-    }
 }
