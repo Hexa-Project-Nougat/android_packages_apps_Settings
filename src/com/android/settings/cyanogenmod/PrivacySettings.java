@@ -21,7 +21,7 @@ import android.os.Bundle;
 //import android.preference.PreferenceScreen;
 //import com.android.settings.Utils;
 
-import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -38,7 +38,7 @@ public class PrivacySettings extends SettingsPreferenceFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DONT_TRACK_ME_BRO;
+        return MetricsEvent.TESTING;
     }
 
     @Override

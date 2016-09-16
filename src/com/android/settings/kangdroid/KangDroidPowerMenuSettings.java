@@ -31,7 +31,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
-import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,5 +52,10 @@ public class KangDroidPowerMenuSettings extends SettingsPreferenceFragment imple
 	
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         return false;
+    }
+	
+    @Override
+    protected int getMetricsCategory() {
+        return MetricsEvent.TESTING;
     }
 }
