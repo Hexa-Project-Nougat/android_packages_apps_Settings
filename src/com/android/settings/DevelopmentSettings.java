@@ -1988,8 +1988,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             return true;
         } else if (preference == mAdvancedReboot) {
             Settings.Secure.putInt(getContentResolver(), Settings.Secure.ADVANCED_REBOOT,
-                    Integer.valueOf((String) value));
-            mAdvancedReboot.setValue(String.valueOf(value));
+                    Integer.valueOf((String) newValue));
+            mAdvancedReboot.setValue(String.valueOf(newValue));
         }
         return false;
     }
