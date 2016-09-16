@@ -494,8 +494,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
 		
         mAdvancedReboot = (ListPreference) findPreference(KEY_ADVANCED_REBOOT);
-            mAdvancedReboot.setValue(String.valueOf(Settings.System.getInt(
-                    getContentResolver(), Settings.System.ADVANCED_REBOOT, 0)));
+            mAdvancedReboot.setValue(String.valueOf(Settings.Secure.getInt(
+                    getContentResolver(), Settings.Secure.ADVANCED_REBOOT, 1)));
             mAdvancedReboot.setOnPreferenceChangeListener(this);
     }
 
@@ -1987,7 +1987,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeSimulateColorSpace(newValue);
             return true;
         } else if (preference == mAdvancedReboot) {
-            Settings.System.putInt(getContentResolver(), Settings.System.ADVANCED_REBOOT,
+            Settings.Secure.putInt(getContentResolver(), Settings.Secure.ADVANCED_REBOOT,
                     Integer.valueOf((String) value));
             mAdvancedReboot.setValue(String.valueOf(value));
         }
