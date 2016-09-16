@@ -214,6 +214,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String SHORTCUT_MANAGER_RESET_KEY = "reset_shortcut_manager_throttling";
 
     private static final int REQUEST_CODE_ENABLE_OEM_UNLOCK = 0;
+	
+	private static final String KEY_ADVANCED_REBOOT = "advanced_reboot";
 
     private static final int[] MOCK_LOCATION_APP_OPS = new int[] {AppOpsManager.OP_MOCK_LOCATION};
 
@@ -279,6 +281,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private ListPreference mTransitionAnimationScale;
     private ListPreference mAnimatorDurationScale;
     private ListPreference mOverlayDisplayDevices;
+	private ListPreference mAdvancedReboot;
 
     private SwitchPreference mWebViewMultiprocess;
     private ListPreference mWebViewProvider;
@@ -489,6 +492,11 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             removePreference(COLOR_TEMPERATURE_KEY);
             mColorTemperaturePreference = null;
         }
+		
+        mAdvancedReboot = (ListPreference) findPreference(KEY_ADVANCED_REBOOT);
+            mAdvancedReboot.setValue(String.valueOf(Settings.System.getInt(
+                    getContentResolver(), Settings.System.ADVANCED_REBOOT, 0)));
+            mAdvancedReboot.setOnPreferenceChangeListener(this);
     }
 
     private ListPreference addListPreference(String prefKey) {
@@ -1978,6 +1986,10 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         } else if (preference == mSimulateColorSpace) {
             writeSimulateColorSpace(newValue);
             return true;
+        } else if (preference == mAdvancedReboot) {
+            Settings.System.putInt(getContentResolver(), Settings.System.ADVANCED_REBOOT,
+                    Integer.valueOf((String) value));
+            mAdvancedReboot.setValue(String.valueOf(value));
         }
         return false;
     }

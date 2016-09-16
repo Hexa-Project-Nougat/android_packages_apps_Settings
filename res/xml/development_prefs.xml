@@ -38,6 +38,15 @@
         android:title="@string/keep_screen_on"
         android:summary="@string/keep_screen_on_summary"
         settings:useAdditionalSummary="true" />
+		
+        <ListPreference
+            android:key="advanced_reboot"
+            android:title="@string/advanced_reboot_title"
+            android:dialogTitle="@string/advanced_reboot_dialog_title"
+            android:entries="@array/advanced_reboot_entries"
+            android:entryValues="@array/advanced_reboot_values"
+            android:summary="%s"
+            android:persistent="false" />
 
     <ListPreference
         android:key="hdcp_checking"
