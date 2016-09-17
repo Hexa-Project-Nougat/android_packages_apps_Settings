@@ -176,6 +176,5 @@ public class KangDroidCarrierLabel extends SettingsPreferenceFragment implements
             alert.setNegativeButton(getString(android.R.string.cancel), null);
             alert.show();
         }
-        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 }
