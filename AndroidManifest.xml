@@ -130,8 +130,16 @@
 
         <activity android:name=".Settings$WirelessSettings"
             android:label="@string/header_category_wireless_networks">
-            <intent-filter android:priority="4">
+            <intent-filter android:priority="5">
                 <action android:name="com.android.settings.category.wireless" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+		
+        <activity android:name=".Settings$OwlsNestSettings"
+            android:label="@string/hexa_title">
+            <intent-filter android:priority="4">
+                <action android:name="com.android.settings.category.kangdroid" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -985,7 +993,7 @@
                 android:value="true" />
         </activity>
 		
-	<!-- RR settings -->
+	<!-- Hexa settings -->
         <activity android:name="Settings$KangDroidMainSettingsActivity"
                 android:label="@string/hexa_title"
                 android:icon="@drawable/ic_settings_statusbar">
@@ -996,7 +1004,7 @@
             <meta-data android:name="com.android.settings.category"
                 android:value="com.android.settings.category.kangdroid" />
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.kangdroid.KangDroidMainSettingsActivity" />
+                android:value="com.android.settings.kangdroid.KangDroidMainSettings" />
         </activity>
 
         <!-- Keep compatibility with old shortcuts. -->
