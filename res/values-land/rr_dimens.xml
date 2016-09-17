@@ -17,19 +17,21 @@
 
     <!-- Color picker -->
 
-    <!-- Action bar -->
+    <!-- Dialog -->
 
-    <!-- Height of the action bar -->
-    <dimen name="color_picker_action_bar_height">48dp</dimen>
+    <!-- Dialog action bar -->
 
-    <!-- Color buttons -->
+    <!-- Height of the color picker dialog action bar -->
+    <dimen name="color_picker_dialog_action_bar_height">48dp</dimen>
 
-    <!-- Top margin of the color picker color buttons scroll view -->
-    <dimen name="color_picker_color_buttons_scroll_view_margin_top">16dp</dimen>
+    <!-- Dialog color buttons -->
 
-    <!-- Start margin of the color picker color buttons title -->
-    <dimen name="color_picker_color_buttons_title_margin_start">8dp</dimen>
+    <!-- Top margin of the color picker dialog color buttons scroll view -->
+    <dimen name="color_picker_dialog_color_buttons_scroll_view_margin_top">16dp</dimen>
 
-    <!-- Start margin of the color picker color buttons layout  -->
-    <dimen name="color_picker_color_buttons_layout_margin_start">4dp</dimen>
+    <!-- Left margin of the color picker dialog buttons title -->
+    <dimen name="color_picker_dialog_color_buttons_title_margin_left">8dp</dimen>
+
+    <!-- Left margin of the color picker dialog color buttons layout  -->
+    <dimen name="color_picker_dialog_color_buttons_layout_margin_left">4dp</dimen>
 </resources>
