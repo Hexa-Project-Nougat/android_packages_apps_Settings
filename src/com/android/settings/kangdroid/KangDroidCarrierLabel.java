@@ -139,6 +139,30 @@ public class KangDroidCarrierLabel extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, width);
             return true;
+        } else if (preference == mCustomCarrierLabel) {
+		    AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+		    alert.setTitle(R.string.custom_carrier_label_title);
+		    alert.setMessage(R.string.custom_carrier_label_explain);
+
+		    // Set an EditText view to get user input
+		    final EditText input = new EditText(getActivity());
+		    input.setText(TextUtils.isEmpty(mCustomCarrierLabelText) ? "" : mCustomCarrierLabelText);
+		    input.setSelection(input.getText().length());
+		    alert.setView(input);
+		    alert.setPositiveButton(getString(android.R.string.ok),
+		            new DialogInterface.OnClickListener() {
+		                public void onClick(DialogInterface dialog, int whichButton) {
+		                    String value = ((Spannable) input.getText()).toString().trim();
+		                    Settings.System.putString(resolver, Settings.System.CUSTOM_CARRIER_LABEL, value);
+		                    updateCustomLabelTextSummary();
+		                    Intent i = new Intent();
+		                    i.setAction(Intent.ACTION_CUSTOM_CARRIER_LABEL_CHANGED);
+		                    getActivity().sendBroadcast(i);
+		        }
+		    });
+		    alert.setNegativeButton(getString(android.R.string.cancel), null);
+		    alert.show();
+           return true;
          }
          return false;
     }
@@ -146,35 +170,5 @@ public class KangDroidCarrierLabel extends SettingsPreferenceFragment implements
     @Override
     public void onResume() {
         super.onResume();
-    }
-
-    @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
-            final Preference preference) {
-        final ContentResolver resolver = this.getContentResolver();
-        if (preference.getKey().equals(CUSTOM_CARRIER_LABEL)) {
-            AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-            alert.setTitle(R.string.custom_carrier_label_title);
-            alert.setMessage(R.string.custom_carrier_label_explain);
-
-            // Set an EditText view to get user input
-            final EditText input = new EditText(getActivity());
-            input.setText(TextUtils.isEmpty(mCustomCarrierLabelText) ? "" : mCustomCarrierLabelText);
-            input.setSelection(input.getText().length());
-            alert.setView(input);
-            alert.setPositiveButton(getString(android.R.string.ok),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            String value = ((Spannable) input.getText()).toString().trim();
-                            Settings.System.putString(resolver, Settings.System.CUSTOM_CARRIER_LABEL, value);
-                            updateCustomLabelTextSummary();
-                            Intent i = new Intent();
-                            i.setAction(Intent.ACTION_CUSTOM_CARRIER_LABEL_CHANGED);
-                            getActivity().sendBroadcast(i);
-                }
-            });
-            alert.setNegativeButton(getString(android.R.string.cancel), null);
-            alert.show();
-        }
     }
 }
