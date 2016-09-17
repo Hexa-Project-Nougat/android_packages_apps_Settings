@@ -17,10 +17,10 @@
 package com.android.settings.slim.fragments;
 
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceScreen;
-import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.SwitchPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceScreen;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +29,7 @@ import android.widget.ListView;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 public class LockscreenShortcutFragment extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
@@ -41,7 +41,7 @@ public class LockscreenShortcutFragment extends SettingsPreferenceFragment imple
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.APPLICATION;
+        return MetricsEvent.APPLICATION;
     }
 
     @Override

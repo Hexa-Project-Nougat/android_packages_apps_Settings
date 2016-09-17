@@ -31,13 +31,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.UserHandle;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceCategory;
-import android.preference.PreferenceScreen;
+import android.support.v7.preference.CheckBoxPreference;
+import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v7.preference.Preference.OnPreferenceClickListener;
+import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceScreen;
 import android.preference.RingtonePreference;
 import android.preference.SeekBarPreference;
 import android.provider.Settings;
@@ -56,7 +56,7 @@ import com.android.settings.util.CMDProcessor;
 import com.android.settings.util.Helpers;
 import com.android.settings.util.AppMultiSelectListPreference;
 
-import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import java.io.File;
 import java.lang.Thread;
@@ -76,7 +76,7 @@ public class AppCircleBar extends SettingsPreferenceFragment implements
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.APPLICATION;
+        return MetricsEvent.APPLICATION;
     }
 
     @Override

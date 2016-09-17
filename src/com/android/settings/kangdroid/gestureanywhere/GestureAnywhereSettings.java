@@ -19,18 +19,18 @@ package com.android.settings.kangdroid.gestureanywhere;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
+import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v7.preference.PreferenceScreen;
+import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.Gravity;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.kangdroid.SeekBarPreference;
 
-import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 public class GestureAnywhereSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
@@ -53,7 +53,7 @@ public class GestureAnywhereSettings extends SettingsPreferenceFragment implemen
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.APPLICATION;
+        return MetricsEvent.APPLICATION;
     }
 
     @Override
