@@ -21,7 +21,7 @@
     <!-- About phone screen, KDP version -->
     <string name="kdp_version_title">KDP ROM Version</string>
     <!-- Do NOT translate this -->
-    <string name="kdp_versoin_default">Alpha - 0</string>
+    <string name="kdp_version_default">Alpha - 0</string>
 	
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
@@ -32,6 +32,8 @@
     <string name="hex_hint">#ff000000</string>
     <string name="set">Set</string>
     <string name="color_default">Default</string>
+	<string name="reset">Reset</string>
+	<string name="default_string">Default</string>
 	
     <!-- About device screen, CPU and RAM info. -->
     <string name="cpu_info">CPU</string>
