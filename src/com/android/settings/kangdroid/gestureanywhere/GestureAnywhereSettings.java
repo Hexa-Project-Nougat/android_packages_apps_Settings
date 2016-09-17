@@ -143,12 +143,6 @@ public class GestureAnywhereSettings extends SettingsPreferenceFragment implemen
         return false;
     }
 
-    @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        boolean value;
-        return true;
-    }
-
     private void updatePositionSummary(int value) {
         mPositionPref.setSummary(mPositionPref.getEntries()[mPositionPref.findIndexOfValue("" + value)]);
         Settings.System.putInt(getContentResolver(),

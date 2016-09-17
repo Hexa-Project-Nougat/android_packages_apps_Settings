@@ -86,7 +86,6 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
             mSeekBar.setEnabled(!disableDependent);
     }
 
-    @Override
     protected View onCreateView(ViewGroup parent){
 
         RelativeLayout layout =  null;
@@ -102,9 +101,7 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
         return layout;
     }
 
-    @Override
     public void onBindView(View view) {
-        super.onBindView(view);
         try
         {
             // move our seekbar to the new view we've been given
