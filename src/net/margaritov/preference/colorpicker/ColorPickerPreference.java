@@ -28,7 +28,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v7.preference.Preference;
+import android.preference.Preference;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -126,8 +126,10 @@ public class ColorPickerPreference extends Preference implements
         onColorChanged(restoreValue ? getValue() : (Integer) defaultValue);
     }
 
-    public void onBindView(View view) {
+    @Override
+    protected void onBindView(View view) {
         mView = view;
+        super.onBindView(view);
 
         setPreview();
     }
