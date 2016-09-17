@@ -28,7 +28,7 @@ import android.util.AttributeSet;
 
 import com.android.settings.R;
 
-public class ColorViewButton extends LinearLayout {
+public class ColorPickerColorButton extends LinearLayout {
 
 	private ImageView mColorView;
 	private TextView mHexView;
@@ -36,27 +36,24 @@ public class ColorViewButton extends LinearLayout {
 	private int mBorderColor = 0xff6E6E6E;
 	private int mColor = Color.WHITE;
 
-	public ColorViewButton(Context context) {
+	public ColorPickerColorButton(Context context) {
 		this(context, null);
 	}
 
-	public ColorViewButton(Context context, AttributeSet attrs) {
+	public ColorPickerColorButton(Context context, AttributeSet attrs) {
 		this(context, attrs, 0);
 	}
 
-	public ColorViewButton(Context context, AttributeSet attrs, int defStyle) {
+	public ColorPickerColorButton(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        final Resources res = getContext().getResources();
-        final int drawableSize = (int) res.getDimension(R.dimen.color_picker_dialog_button_drawable_size);
 
 	    mColorView = (ImageView) findViewById(R.id.color_button_color);
 	    mHexView = (TextView) findViewById(R.id.color_button_hex);
-        mColorView.setImageDrawable(new ColorViewCircleDrawable(getContext(), drawableSize));
     }
 
 	public void setColor(int color) {
@@ -64,8 +61,13 @@ public class ColorViewButton extends LinearLayout {
         if (mColorView == null || mHexView == null) {
             return;
         }
-        ((ColorViewCircleDrawable) mColorView.getDrawable()).setColor(mColor);
+        if (mColorView.getDrawable() != null
+                && mColorView.getDrawable() instanceof LayerDrawable) {
+            ((LayerDrawable) mColorView.getDrawable()).findDrawableByLayerId(R.id.color_fill)
+                    .setColorFilter(mColor, Mode.MULTIPLY);
+        }
         mHexView.setText(ColorPickerPreference.convertToARGB(mColor));
+
 	}
 
 	public int getColor() {
@@ -77,20 +79,25 @@ public class ColorViewButton extends LinearLayout {
         if (mColorView == null) {
             return;
         }
-        ((ColorViewCircleDrawable) mColorView.getDrawable()).setBorderColor(mBorderColor);
+        if (mColorView.getDrawable() != null
+                && mColorView.getDrawable() instanceof LayerDrawable) {
+            ((LayerDrawable) mColorView.getDrawable()).findDrawableByLayerId(R.id.boarder)
+                    .setColorFilter(mBorderColor, Mode.MULTIPLY);
+        }
 	}
 
 	public int getBorderColor() {
 		return mBorderColor;
 	}
 
-    public void setShowFavoriteIcon(boolean show) {
-        if (mColorView == null || mHexView == null) {
+    public void setImageResource(int resId) {
+        if (mColorView == null) {
             return;
         }
-        ((ColorViewCircleDrawable) mColorView.getDrawable()).setShowFavoriteIcon(show);
-        if (show) {
-            mHexView.setText(getContext().getResources().getString(R.string.empty_title));
+
+        if (resId > 0) {
+            mColorView.setImageResource(resId);
         }
     }
+
 }

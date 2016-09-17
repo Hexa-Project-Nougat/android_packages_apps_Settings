@@ -85,7 +85,7 @@ public class ColorPickerDialog extends Dialog implements
 
     private LinearLayout mActionBarMain;
     private ImageButton mBackButton;
-    private ApplyColorButton mApplyColorButton;
+    private ColorPickerApplyColorButton mApplyColorButton;
     private ImageButton mMoreButton;
 
     private LinearLayout mActionBarEditHex;
@@ -176,7 +176,7 @@ public class ColorPickerDialog extends Dialog implements
         mBackButton.setOnClickListener(this);
 
         mApplyColorButton =
-                (ApplyColorButton) mColorPickerView.findViewById(R.id.apply_color_button);
+                (ColorPickerApplyColorButton) mColorPickerView.findViewById(R.id.apply_color_button);
         mApplyColorButton.setColor(mInitialColor);
         mApplyColorButton.applySetIconAlpha(0f);
         mApplyColorButton.showSetIcon(false);
@@ -224,14 +224,13 @@ public class ColorPickerDialog extends Dialog implements
             int resId = ta.getResourceId(i, 0);
             int buttonNumber = i + 1;
             String tag = String.valueOf(buttonNumber);
-            ColorViewButton button = (ColorViewButton) mColorPickerView.findViewById(resId);
+            ColorPickerColorButton button = (ColorPickerColorButton) mColorPickerView.findViewById(resId);
             button.setTag(tag);
             button.setOnLongClickListener(this);
             if (getFavoriteButtonValue(button) != 0) {
+                button.setImageResource(R.drawable.color_picker_color_button_color);
                 button.setColor(getFavoriteButtonValue(button));
                 button.setOnClickListener(this);
-            } else {
-                button.setShowFavoriteIcon(true);
             }
         }
 
@@ -268,7 +267,7 @@ public class ColorPickerDialog extends Dialog implements
 
             for (int j=0; j<8; j++) {
                 int buttonResId = buttons.getResourceId(j, 0);
-                ColorViewButton button = (ColorViewButton) layout.findViewById(buttonResId);
+                ColorPickerColorButton button = (ColorPickerColorButton) layout.findViewById(buttonResId);
                 button.setColor(mResources.getColor(colors.getResourceId(j, 0)));
                 button.setOnClickListener(this);
             }
@@ -493,9 +492,9 @@ public class ColorPickerDialog extends Dialog implements
             mAnimationType = HELP_SCREEN_VISIBILITY;
             mHelpScreenVisible = true;
             mAnimator.start();
-        } else if (v instanceof ColorViewButton) {
+        } else if (v instanceof ColorPickerColorButton) {
             try {
-                int newColor = ((ColorViewButton) v).getColor();
+                int newColor = ((ColorPickerColorButton) v).getColor();
                 if (newColor != mOldColorValue) {
                     mColorPicker.setColor(newColor, true);
                 }
@@ -505,11 +504,11 @@ public class ColorPickerDialog extends Dialog implements
 
     @Override
     public boolean onLongClick(View v) {
-        ColorViewButton button = (ColorViewButton) v;
+        ColorPickerColorButton button = (ColorPickerColorButton) v;
         if (!v.hasOnClickListeners()) {
+            button.setImageResource(R.drawable.color_picker_color_button_color);
             button.setOnClickListener(this);
         }
-        button.setShowFavoriteIcon(false);
         button.setColor(mApplyColorButton.getColor());
         writeFavoriteButtonValue(button);
         return true;
@@ -625,14 +624,14 @@ public class ColorPickerDialog extends Dialog implements
         return preferences.getBoolean(FAVORITES_VISIBLE, true);
     }
 
-    private void writeFavoriteButtonValue(ColorViewButton button) {
+    private void writeFavoriteButtonValue(ColorPickerColorButton button) {
         SharedPreferences preferences =
                 getContext().getSharedPreferences(PREFERENCE_NAME, Activity.MODE_PRIVATE);
         preferences.edit().putInt(FAVORITE_COLOR_BUTTON + (String) button.getTag(),
                 button.getColor()).commit();
     }
 
-    private int getFavoriteButtonValue(ColorViewButton button) {
+    private int getFavoriteButtonValue(ColorPickerColorButton button) {
         SharedPreferences preferences =
                 getContext().getSharedPreferences(PREFERENCE_NAME, Activity.MODE_PRIVATE);
         return preferences.getInt(FAVORITE_COLOR_BUTTON + (String) button.getTag(), 0);

@@ -19,6 +19,8 @@ package net.margaritov.preference.colorpicker;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.PorterDuff.Mode;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.FrameLayout;
@@ -26,7 +28,7 @@ import android.view.View;
 
 import com.android.settings.R;
 
-public class ApplyColorButton extends FrameLayout {
+public class ColorPickerApplyColorButton extends FrameLayout {
 
 	private ImageView mColorView;
 	private ImageView mColorSet;
@@ -34,27 +36,24 @@ public class ApplyColorButton extends FrameLayout {
 	private int mBorderColor = 0xff6E6E6E;
 	private int mColor = Color.WHITE;
 
-	public ApplyColorButton(Context context) {
+	public ColorPickerApplyColorButton(Context context) {
 		this(context, null);
 	}
 
-	public ApplyColorButton(Context context, AttributeSet attrs) {
+	public ColorPickerApplyColorButton(Context context, AttributeSet attrs) {
 		this(context, attrs, 0);
 	}
 
-	public ApplyColorButton(Context context, AttributeSet attrs, int defStyle) {
+	public ColorPickerApplyColorButton(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        final Resources res = getContext().getResources();
-        final int drawableSize = (int) res.getDimension(R.dimen.color_picker_dialog_button_drawable_size);
 
 	    mColorView = (ImageView) findViewById(R.id.apply_color_button_color);
 	    mColorSet = (ImageView) findViewById(R.id.apply_color_button_set);
-        mColorView.setImageDrawable(new ColorViewCircleDrawable(getContext(), drawableSize));
     }
 
 	public void setColor(int color) {
@@ -62,7 +61,12 @@ public class ApplyColorButton extends FrameLayout {
         if (mColorView == null) {
             return;
         }
-        ((ColorViewCircleDrawable) mColorView.getDrawable()).setColor(mColor);
+        if (mColorView.getDrawable() != null
+                && mColorView.getDrawable() instanceof LayerDrawable) {
+            ((LayerDrawable) mColorView.getDrawable()).findDrawableByLayerId(R.id.color_fill)
+                    .setColorFilter(mColor, Mode.MULTIPLY);
+        }
+
 	}
 
 	public int getColor() {
@@ -74,7 +78,11 @@ public class ApplyColorButton extends FrameLayout {
         if (mColorView == null) {
             return;
         }
-        ((ColorViewCircleDrawable) mColorView.getDrawable()).setBorderColor(mBorderColor);
+        if (mColorView.getDrawable() != null
+                && mColorView.getDrawable() instanceof LayerDrawable) {
+            ((LayerDrawable) mColorView.getDrawable()).findDrawableByLayerId(R.id.boarder)
+                    .setColorFilter(mBorderColor, Mode.MULTIPLY);
+        }
 	}
 
 	public int getBorderColor() {
