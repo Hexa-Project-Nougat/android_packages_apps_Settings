@@ -988,7 +988,7 @@
 	<!-- RR settings -->
         <activity android:name="Settings$KangDroidMainSettingsActivity"
                 android:label="@string/hexa_title"
-                android:icon="@drawable/ic_settings_statusbar.xml">
+                android:icon="@drawable/ic_settings_statusbar">
             <intent-filter android:priority="1">
                 <action android:name="com.android.settings.action.SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />

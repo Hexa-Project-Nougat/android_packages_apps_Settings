@@ -58,7 +58,7 @@ import java.util.List;
 import java.util.Map;
 
 public class KangDroidClockDateSettings extends SettingsPreferenceFragment
-        implements OnPreferenceChangeListener, Indexable {
+        implements OnPreferenceChangeListener {
 
     private static final String TAG = "KangDroidClockDateSettings";
 
@@ -107,9 +107,9 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
             return null;
         }
 
-        mStatusBarDate = (ListPreference) findPreference(STATUS_BAR_DATE);
-        mStatusBarDateStyle = (ListPreference) findPreference(STATUS_BAR_DATE_STYLE);
-        mStatusBarDateFormat = (ListPreference) findPreference(STATUS_BAR_DATE_FORMAT);
+        mStatusBarDate = (ListPreference) prefSet.findPreference(STATUS_BAR_DATE);
+        mStatusBarDateStyle = (ListPreference) prefSet.findPreference(STATUS_BAR_DATE_STYLE);
+        mStatusBarDateFormat = (ListPreference) prefSet.findPreference(STATUS_BAR_DATE_FORMAT);
 
         int showDate = Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_DATE, 0);
@@ -131,7 +131,7 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
 
         parseClockDateFormats();
 		
-        mColorPicker = (ColorPickerPreference) findPreference(PREF_COLOR_PICKER);
+        mColorPicker = (ColorPickerPreference) prefSet.findPreference(PREF_COLOR_PICKER);
         mColorPicker.setOnPreferenceChangeListener(this);
         int intColor = Settings.System.getInt(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_CLOCK_COLOR, -2);
@@ -145,14 +145,14 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
         }
         mColorPicker.setNewPreviewColor(intColor);
 		
-        mFontStyle = (ListPreference) findPreference(PREF_FONT_STYLE);
+        mFontStyle = (ListPreference) prefSet.findPreference(PREF_FONT_STYLE);
         mFontStyle.setOnPreferenceChangeListener(this);
         mFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.STATUSBAR_CLOCK_FONT_STYLE,
                 0)));
         mFontStyle.setSummary(mFontStyle.getEntry());
 		
-        mStatusBarClockFontSize = (ListPreference) findPreference(PREF_STATUS_BAR_CLOCK_FONT_SIZE);
+        mStatusBarClockFontSize = (ListPreference) prefSet.findPreference(PREF_STATUS_BAR_CLOCK_FONT_SIZE);
         mStatusBarClockFontSize.setOnPreferenceChangeListener(this);
         mStatusBarClockFontSize.setValue(Integer.toString(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.STATUSBAR_CLOCK_FONT_SIZE, 
@@ -332,8 +332,8 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
             return frag;
         }
 
-        StatusBarSettings getOwner() {
-            return (StatusBarSettings) getTargetFragment();
+        KangDroidClockDateSettings getOwner() {
+            return (KangDroidClockDateSettings) getTargetFragment();
         }
 
         @Override

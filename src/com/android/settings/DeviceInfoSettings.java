@@ -595,4 +595,19 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
 	        return result;
 	    }
+		
+	    /**
+	     * Reads a line from the specified file.
+	     * @param filename the file to read from
+	     * @return the first line, if any.
+	     * @throws IOException if the file couldn't be read
+	     */
+	    private static String readLine(String filename) throws IOException {
+	        BufferedReader reader = new BufferedReader(new FileReader(filename), 256);
+	        try {
+	            return reader.readLine();
+	        } finally {
+	            reader.close();
+	        }
+	    }
 }
