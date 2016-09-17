@@ -37,11 +37,5 @@
           android:key="gesture_anywhere"
           android:fragment="com.android.settings.kangdroid.gestureanywhere.GestureAnywhereSettings"
           android:title="@string/gesture_anywhere_title" />
-		  
-    <!-- App circle bar -->
-    <PreferenceScreen
-         android:key="app_circle_bar"
-         android:fragment="com.android.settings.kangdroid.AppCircleBar"
-         android:title="@string/app_circle_bar_title"/>
 
 </PreferenceScreen>
