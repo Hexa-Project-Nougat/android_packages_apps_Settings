@@ -16,4 +16,9 @@
 	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
 	android:title="@string/hexa_title" >
 
+    <PreferenceScreen
+           android:key="kdp_status_bar_clock_and_date_key"
+           android:title="@string/kdp_status_bar_clock_and_date"
+           android:fragment="com.android.settings.kangdroid.KangDroidClockDateSettings" />
+
 </PreferenceScreen>
