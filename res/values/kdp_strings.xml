@@ -38,6 +38,7 @@
     <string name="color_default">Default</string>
 	<string name="reset">Reset</string>
 	<string name="default_string">Default</string>
+	<string name="reset_message">Reset</string>
 	
     <!-- About device screen, CPU and RAM info. -->
     <string name="cpu_info">CPU</string>
