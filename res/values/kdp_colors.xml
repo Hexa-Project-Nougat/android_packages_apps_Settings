@@ -20,6 +20,7 @@
 
     <!-- Color Picker colors -->
     <drawable name="darkkat_bg_blue_grey">@*android:color/primary_material_dark</drawable>
+
     <color name="black">@*android:color/primary_material_dark</color>
     <color name="white">@android:color/white</color>
     <color name="darkkat_blue_grey">@*android:color/primary_material_dark</color>
@@ -51,7 +52,5 @@
     <!-- Colors of the help screen -->
     <color name="dialog_color_picker_help_background">#e0000000</color>
 	<color name="dialog_color_picker_help_summary_text_color">#b3ffffff</color>
-	
-	<color name="theme_accent">#ff009688</color>
 	
 </resources>
