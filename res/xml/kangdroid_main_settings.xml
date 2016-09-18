@@ -43,7 +43,7 @@
           android:fragment="com.android.settings.kangdroid.gestureanywhere.GestureAnywhereSettings"
           android:title="@string/gesture_anywhere_title" />
 		
-    <CustomSeekBarPreference
+    <com.android.settings.kangdroid.SeekBarPreference
         android:key="on_the_go_alpha"
         android:title="@string/onthego_alpha_title"
         android:summary="@string/onthego_alpha_summary"
