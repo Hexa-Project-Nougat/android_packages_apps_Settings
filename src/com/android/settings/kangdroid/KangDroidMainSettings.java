@@ -23,9 +23,9 @@ import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
-import android.preference.CustomSeekBarPreference;
 import android.provider.Settings;
 import android.provider.SearchIndexableResource;
+import com.android.settings.kangdroid.SeekBarPreference;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -41,15 +41,15 @@ public class KangDroidMainSettings extends SettingsPreferenceFragment implements
 	
 	private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
 	
-	private CustomSeekBarPreference mOnTheGoAlphaPref;
+	private SeekBarPreference mOnTheGoAlphaPref;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_main_settings);
-        mOnTheGoAlphaPref = (CustomSeekBarPreference) findPreference(PREF_ON_THE_GO_ALPHA);
-        mOnTheGoAlphaPref.setDefault(50);
-        mOnTheGoAlphaPref.setInterval(1);
+        mOnTheGoAlphaPref = (SeekBarPreference) findPreference(PREF_ON_THE_GO_ALPHA);
+        mOnTheGoAlphaPref.setValue(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.ON_THE_GO_ALPHA, 50));
         mOnTheGoAlphaPref.setOnPreferenceChangeListener(this);
     }
 	
@@ -60,8 +60,8 @@ public class KangDroidMainSettings extends SettingsPreferenceFragment implements
 	
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mOnTheGoAlphaPref) {
-            float val = Float.parseFloat((String) newValue);
-            Settings.System.putFloat(mCr, Settings.System.ON_THE_GO_ALPHA,
+            float val = Float.parseFloat((String) objValue);
+            Settings.System.putFloat(getActivity().getContentResolver(), Settings.System.ON_THE_GO_ALPHA,
                     val / 100);
             return true;
         }
