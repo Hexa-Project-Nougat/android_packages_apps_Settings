@@ -45,7 +45,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
-import com.android.settings.kangdroid.SeekBarPreference;
+import com.android.settings.SeekBarPreference;
 
 public class KangDroidCarrierLabel extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
@@ -100,8 +100,8 @@ public class KangDroidCarrierLabel extends SettingsPreferenceFragment implements
         mCarrierColorPicker.setNewPreviewColor(intColor);
 
         mStatusBarCarrierSize = (SeekBarPreference) findPreference(STATUS_BAR_CARRIER_FONT_SIZE);
-        mStatusBarCarrierSize.setValue(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, 14));
+		mStatusBarCarrierSize.setMax(17);
+		mStatusBarCarrierSize.setProgress(1);
         mStatusBarCarrierSize.setOnPreferenceChangeListener(this);
 
     }
