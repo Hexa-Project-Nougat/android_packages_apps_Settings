@@ -1029,5 +1029,9 @@
     <!-- Disable Quicks settings -->
     <string name="lockscreen_qs_disabled_title">Disable quick settings</string>
     <string name="lockscreen_qs_disabled_summary">Disables quick settings on secure lockscreen</string>
+	
+    <!-- Vendor version -->
+    <string name="vendor_version">Vendor version</string>
+    <string name="vendor_version_default">Unknown</string>
 
 </resources>

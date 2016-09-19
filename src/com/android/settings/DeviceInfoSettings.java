@@ -87,6 +87,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String MBN_VERSION_PATH = "/persist/speccfg/mbnversion";
     private static final String QGP_VERSION_PATH = "/persist/speccfg/qgpversion";
     private static final String KEY_MOD_API_LEVEL = "mod_api_level";
+	private static final String KEY_VENDOR_VERSION = "vendor_version";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -224,6 +225,15 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
         removePreferenceIfActivityMissing(
                 "safety_info", "android.settings.SHOW_SAFETY_AND_REGULATORY_INFO");
+		
+        String vendorfingerprint = SystemProperties.get("ro.vendor.build.fingerprint");
+        if (vendorfingerprint != null && !TextUtils.isEmpty(vendorfingerprint)) {
+            String[] splitfingerprint = vendorfingerprint.split("/");
+            String vendorid = splitfingerprint[3];
+            setStringSummary(KEY_VENDOR_VERSION, vendorid);
+        } else {
+            getPreferenceScreen().removePreference(findPreference(KEY_VENDOR_VERSION));
+        }
     }
 
     @Override
