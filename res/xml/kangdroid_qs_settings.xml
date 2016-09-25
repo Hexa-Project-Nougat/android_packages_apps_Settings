@@ -73,6 +73,12 @@
 	<PreferenceCategory
 		android:key="kdp_qs_animation_category"
 		android:title="@string/kdp_qs_animation_category_title" >
+		
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="qs_fancy_animation"
+        android:title="@string/qs_fancy_animation_title"
+        android:summary="@string/qs_fancy_animation_summary"
+        android:defaultValue="true" />
 
     <ListPreference
         android:key="qs_tile_animation_style"

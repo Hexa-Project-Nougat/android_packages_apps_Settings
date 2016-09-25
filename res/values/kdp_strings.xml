@@ -893,5 +893,9 @@
     <string name="wallpaper_intra_close_title">Wallpaper intra close animation</string>
     <string name="animation_duration_title">Animation duration</string>
     <string name="animation_duration_default">Default</string>
+	
+	<!-- Fancy tiles animation -->
+    <string name="qs_fancy_animation_title">Fancy QS animation</string>
+    <string name="qs_fancy_animation_summary">Animate when pulling down the statusbar</string>
 
 </resources>
