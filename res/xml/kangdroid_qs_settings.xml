@@ -27,6 +27,11 @@
         android:summary="@string/qs_advanced_data_summary"
         android:defaultValue="false" />
 	
+    <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+        android:key="qs_show_brightness"
+        android:title="@string/show_brightness"
+        android:defaultValue="true" />
+	
 	<PreferenceCategory
 		android:key="kdp_qs_animation_category"
 		android:title="@string/kdp_qs_animation_category_title" >
