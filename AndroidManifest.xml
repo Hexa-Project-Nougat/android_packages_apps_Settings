@@ -3375,6 +3375,9 @@
 		
 		<!-- StatusBar Weather -->
 		<activity android:name="com.android.settings.kangdroid.activity.StatusBarWeatherActivity" />
+		
+		<!-- Lockscreen Weather -->
+		<activity android:name="com.android.settings.kangdroid.activity.LockScreenWeatherSettingsActivity" />
 
     </application>
 </manifest>
