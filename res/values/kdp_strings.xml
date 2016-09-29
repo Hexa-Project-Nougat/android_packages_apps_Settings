@@ -844,4 +844,8 @@
     <string name="privacy_guard_advanced_settings_title">Advanced</string>
     <string name="privacy_guard_notification_title">Show notification</string>
 
+    <!-- QuickSettings haptic feedback -->
+    <string name="quick_settings_vibrate_title">Vibrate on touch</string>
+    <string name="quick_settings_vibrate_summary">Vibrate when touching tiles</string>
+
 </resources>
