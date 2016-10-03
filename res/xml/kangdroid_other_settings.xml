@@ -44,5 +44,10 @@
             android:title="@string/allow_signature_fake"
             android:summary="@string/allow_signature_fake_summary"
             android:defaultValue="false" />
+
+       <Preference
+             android:key="trans_porn"
+             android:title="@string/trans"
+             android:fragment="com.crdroid.settings.fragments.TransparencyPornFragment" />
 		
 </PreferenceScreen>
