@@ -37,16 +37,12 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KangDroidMainSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
-	
-	private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
-	
-	private SeekBarPreference mOnTheGoAlphaPref;
+public class KangDroidStatusBarSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.kangdroid_main_settings);
+        addPreferencesFromResource(R.xml.kangdroid_status_bar_settings);
     }
 	
     @Override
