@@ -23,9 +23,9 @@
     <string name="cancel">Cancel</string>
 	
     <!-- About phone screen, KDP version -->
-    <string name="kdp_version_title">KDP ROM Version</string>
+    <string name="kdp_version_title">HEXA ROM Version</string>
     <!-- Do NOT translate this -->
-    <string name="kdp_version_default">Alpha - 0</string>
+    <string name="kdp_version_default">Alpha - 1</string>
 	
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
@@ -198,9 +198,6 @@
     <string name="network_traffic_color_reset">Reset color</string>
     <string name="network_traffic_color_reset_message">Reset network traffic color to default?</string>
 	
-	<!-- Animation Category -->
-	<string name="kdp_anim_settings_title">Animation Settings</string>
-	
     <!-- Toast Animation -->
      <string name="toast_animation_title">Toast animation</string>
      <string name="toast_none_animation">None</string>
@@ -281,10 +278,7 @@
     <!-- Disabling immersive mode messages -->
     <string name="disable_immersive_message_title">Disable Immersive Mode Messages</string>
     <string name="disable_immersive_message_summary">This will hide all Immersive Mode Messages</string>
-	
-	<!-- Lockscreen Settings Fragment -->
-	<string name="hexa_lockscreen_settings">LockScreen Settings</string>
-	
+
     <!-- Lockscreen notif count -->
     <string name="lockscreen_maxnotif_title">Lockscreen notification count</string>
     <string name="lockscreen_maxnotif_sumary">Enable adjustment of max lockscreen notifications</string>
@@ -306,5 +300,21 @@
     <string name="lock_clock_font_condensed_bold_italic">Condensed Bold Italic</string>
     <string name="lock_clock_font_medium_normal">Medium</string>
     <string name="lock_clock_font_medium_italic">Medium Italic</string>
+	
+	<!-- StatusBar Settings -->
+	<string name="kdp_status_bar_settings_cat">StatusBar Customization</string>
+	<string name="kdp_status_bar_settings_title">Hexa StatusBar Settings</string>
+	
+	<!-- Animation Settings -->
+	<string name="kdp_anim_category_title">Animation Customization</string>
+	<string name="kdp_anim_settings_title">Hexa Animation Settings</string>
+	
+	<!-- Locscreen Settings -->
+	<string name="kdp_lockscreen_settings_category_title">Lockscreen Customization</string>
+	<string name="hexa_lockscreen_settings">Hexa Lockscreen Settings</string>
+	
+	<!-- Other Settings -->
+	<string name="kdp_other_settings_category_title">Other Customization</string>
+	<string name="kdp_other_settings_pref_title">Other Hexa Settings </string>
 
 </resources>

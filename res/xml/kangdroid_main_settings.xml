@@ -15,53 +15,49 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
 	android:title="@string/hexa_title" >
-
+	
+	<PreferenceCategory
+		android:key="kdp_status_bar_settings_cat"
+		android:title="@string/kdp_status_bar_settings_cat">
+		
     <PreferenceScreen
-           android:key="kdp_status_bar_clock_and_date_key"
-           android:title="@string/kdp_status_bar_clock_and_date"
-           android:fragment="com.android.settings.kangdroid.KangDroidClockDateSettings" />
-		   
-    <PreferenceScreen
-           android:key="kdp_carrier_label"
-           android:title="@string/carrier_options"
-           android:fragment="com.android.settings.kangdroid.KangDroidCarrierLabel" />
-		   
-    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-        android:key="force_expanded_notifications"
-        android:title="@string/force_expanded_notifications_title"
-        android:summary="@string/force_expanded_notifications_summary" />
-
-    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-        android:key="disable_immersive_message"
-        android:title="@string/disable_immersive_message_title"
-        android:summary="@string/disable_immersive_message_summary" />
-		   
-    <PreferenceScreen
-        android:key="network_traffic_state"
-        android:fragment="com.android.settings.kangdroid.NetworkTraffic"
-		android:summary="@string/network_traffic_summary"
-		android:title="@string/network_traffic_title" />
+        android:key="kdp_status_bar_settings"
+        android:title="@string/kdp_status_bar_settings_title"
+        android:fragment="com.android.settings.kangdroid.KangDroidStatusBarSettings" />	
+		
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_anim_category"
+		android:title="@string/kdp_anim_category_title">
 		
     <PreferenceScreen
         android:key="kdp_anim_settings"
         android:title="@string/kdp_anim_settings_title"
         android:fragment="com.android.settings.kangdroid.KangDroidAnimSettings" />
 		
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_lockscreen_settings_category"
+		android:title="@string/kdp_lockscreen_settings_category_title">
+		
     <PreferenceScreen
         android:key="kdp_lockscreen_settings_pref"
         android:title="@string/hexa_lockscreen_settings"
         android:fragment="com.android.settings.kangdroid.KangDroidLockscreenSettings" />
-		   
-     <!-- Gesture anywhere -->
-     <PreferenceScreen
-          android:key="gesture_anywhere"
-          android:fragment="com.android.settings.kangdroid.gestureanywhere.GestureAnywhereSettings"
-          android:title="@string/gesture_anywhere_title" />
 		
-    <com.android.settings.kangdroid.SeekBarPreference
-        android:key="on_the_go_alpha"
-        android:title="@string/onthego_alpha_title"
-        android:summary="@string/onthego_alpha_summary"
-        android:dependency="power_menu_onthego_enabled" />
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_other_settings_category"
+		android:title="@string/kdp_other_settings_category_title">
+		
+    <PreferenceScreen
+        android:key="kdp_other_settings_pref"
+        android:title="@string/kdp_other_settings_pref_title"
+        android:fragment="com.android.settings.kangdroid.KangDroidOtherSettings" />
+		
+	</PreferenceCategory>
 
 </PreferenceScreen>
