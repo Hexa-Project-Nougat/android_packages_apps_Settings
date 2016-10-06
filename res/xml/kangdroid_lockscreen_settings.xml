@@ -15,5 +15,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
 	android:title="@string/hexa_lockscreen_settings" >
-
+	
+    <PreferenceScreen
+        android:key="slim_lockscreen_shortcut"
+        android:title="@string/slim_lockscreen_shortcut_kdp"
+        android:fragment="com.android.settings.slim.fragments.LockscreenShortcutFragment" />
+		
 </PreferenceScreen>
