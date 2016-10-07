@@ -49,8 +49,10 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import android.text.format.DateFormat;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
+import com.android.settings.kangdroid.utils.CMSystemSettingListPreference;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -60,6 +62,8 @@ import java.util.Map;
 public class KangDroidClockDateSettings extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener {
 
+    private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock";
+    private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
     private static final String TAG = "KangDroidClockDateSettings";
 
     private static final String STATUS_BAR_DATE = "status_bar_date";
@@ -77,6 +81,8 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
 
     private static final int DLG_RESET = 0;
 
+    private CMSystemSettingListPreference mStatusBarClock;
+    private CMSystemSettingListPreference mStatusBarAmPm;
     private ListPreference mStatusBarDate;
     private ListPreference mStatusBarDateStyle;
     private ListPreference mStatusBarDateFormat;
@@ -105,6 +111,14 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
         } catch (Exception e) {
             Log.e(TAG, "can't access systemui resources",e);
             return null;
+        }
+		
+        mStatusBarClock = (CMSystemSettingListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
+        mStatusBarAmPm = (CMSystemSettingListPreference) findPreference(STATUS_BAR_AM_PM);
+
+        if (DateFormat.is24HourFormat(getActivity())) {
+            mStatusBarAmPm.setEnabled(false);
+            mStatusBarAmPm.setSummary(R.string.status_bar_am_pm_info);
         }
 
         mStatusBarDate = (ListPreference) prefSet.findPreference(STATUS_BAR_DATE);
@@ -174,6 +188,13 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
+        // Adjust clock position for RTL if necessary
+        Configuration config = getResources().getConfiguration();
+        if (config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+                mStatusBarClock.setEntries(getActivity().getResources().getStringArray(
+                        R.array.status_bar_clock_style_entries_rtl));
+                mStatusBarClock.setSummary(mStatusBarClock.getEntry());
+        }
     }
 
     @Override
