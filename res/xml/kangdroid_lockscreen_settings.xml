@@ -15,30 +15,42 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
 	android:title="@string/hexa_lockscreen_settings" >
+	
+	<PreferenceCategory
+		android:key="kdp_lockscreen_clock_fonts"
+		android:title="@string/kdp_lockscreen_clock_fonts_title">
+	
+    <ListPreference
+         android:key="lock_clock_fonts"
+         android:title="@string/lock_clock_font_title"
+         android:dialogTitle="@string/lock_clock_font_dialog_title"
+         android:entries="@array/lock_clock_fonts_entries"
+         android:entryValues="@array/lock_clock_fonts_values"
+         android:summary="@string/lock_clock_font_summary"
+         android:persistent="false" />
+		 
+	 </PreferenceCategory>
+	 
+	 <PreferenceCategory
+		 android:key="kdp_lockscreen_notification"
+		 android:title="@string/kdp_lockscreen_notification_title">
 		
-        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-               android:key="lock_screen_custom_notif"
-               android:title="@string/lockscreen_maxnotif_title"
-               android:summary="@string/lockscreen_maxnotif_sumary"
-               android:defaultValue="false" />
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+         android:key="lock_screen_custom_notif"
+         android:title="@string/lockscreen_maxnotif_title"
+         android:summary="@string/lockscreen_maxnotif_sumary"
+         android:defaultValue="false" />
 
-        <com.android.settings.SeekBarPreference
-               android:key="lockscreen_max_notif_cofig"
-               android:title="@string/lockscreen_maxnotif_config"
-               android:max="8"
-               settings:minimum="3"
-               settings:unitsLeft=""
-               settings:unitsRight=""
-               android:persistent="false"
-               android:dependency="lock_screen_custom_notif" />
-
-   <ListPreference
-        android:key="lock_clock_fonts"
-        android:title="@string/lock_clock_font_title"
-        android:dialogTitle="@string/lock_clock_font_dialog_title"
-        android:entries="@array/lock_clock_fonts_entries"
-        android:entryValues="@array/lock_clock_fonts_values"
-        android:summary="@string/lock_clock_font_summary"
-        android:persistent="false" />
+    <com.android.settings.SeekBarPreference
+         android:key="lockscreen_max_notif_cofig"
+         android:title="@string/lockscreen_maxnotif_config"
+         android:max="8"
+         settings:minimum="3"
+         settings:unitsLeft=""
+         settings:unitsRight=""
+         android:persistent="false"
+         android:dependency="lock_screen_custom_notif" />
+		 
+	 </PreferenceCategory>
 		
 </PreferenceScreen>

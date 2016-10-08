@@ -17,12 +17,22 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 		
+	<PrefereceCategory
+		android:key="kdp_toast_category"
+		android:title="@string/kdp_toast_category_title">
+		
     <ListPreference
         android:key="toast_animation"
         android:title="@string/toast_animation_title"
         android:entries="@array/toast_animation_entries"
         android:entryValues="@array/toast_animation_values"
         android:persistent="false" />
+		
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_listpreference_category"
+		android:title="@string/kdp_listpreference_category_title">
 		
     <!-- List view animation -->
     <ListPreference
@@ -41,6 +51,12 @@
         android:entryValues="@array/listview_interpolator_values"
         android:defaultValue="0" />
 		
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_other_anim"
+		android:title="@string/kdp_other_anim_title">
+		
     <ListPreference 
         android:key="pref_scrollingcache"
         android:dialogTitle="@string/pref_scrollingcache_title"
@@ -48,6 +64,7 @@
         android:summary="@string/pref_scrollingcache_summary"
         android:entries="@array/entries_scrollingcache"
         android:entryValues="@array/values_scrollingcache" />
-
+		
+	</PreferenceCategory>
 
 </PreferenceScreen>
