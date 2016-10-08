@@ -746,5 +746,31 @@
 	<!-- Main PowerMenu Customization Category -->
 	<string name="kdp_power_menu_category_title">Power Menu Customization</string>
 	<string name="kdp_power_menu_pref_title">Hexa Power Menu Settings</string>
+	
+	<!-- Toast Category -->
+	<string name="kdp_toast_category_title">Toast Animation Customization</string>
+	<!-- ListPreference Category -->
+	<string name="kdp_listpreference_category_title">ListPreference Animation Customization</string>
+	<!-- Other Animation Category -->
+	<string name="kdp_other_anim_title">Other Animation Customization</string>
+	
+	<!-- Main Carrier Customization -->
+	<string name="kdp_main_carrier_title">Main Carrier Customization</string>
+	<!-- Advanced Carrier Customization -->
+	<string name="kdp_advanced_carrier_title">Advanced Carrier Customization</string>
+	
+	<!-- Lock Clock Fonts Category -->
+	<string name="kdp_lockscreen_clock_fonts_title">Lockscreen Fonts Customization</string>
+	<!-- Lockscreen Notfication Category -->
+	<string name="kdp_lockscreen_notification_title">Lockscreen Notification Customization</string>
+	<!-- Lockscreen Shortcut Category -->
+	<string name="kdp_lockscreen_shortcut_title">Lockscreen Shortcut Customization</string>
+	
+	<!-- Main StatusBar Category -->
+	<string name="kdp_main_status_bar_settings_title">Main StatusBar Customization</string>
+	<!-- Clock and Date Settings Category -->
+	<string name="kdp_clock_date_settings_title">Clock &amp; Date Customiaztion</string>
+	<!-- Other StatusBar Category -->
+	<string name="kdp_other_status_bar_settings_title">Other StatusBar Customization</string>
 
 </resources>
