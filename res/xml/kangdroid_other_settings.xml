@@ -20,22 +20,5 @@
          android:key="gesture_anywhere"
          android:fragment="com.android.settings.kangdroid.gestureanywhere.GestureAnywhereSettings"
          android:title="@string/gesture_anywhere_title" />
-		 
-   <PreferenceCategory
-		 android:key="pref_otg"
-		 android:title="pref_otg_title">
-	  
-   <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-       android:key="power_menu_onthego_enabled"
-       android:title="@string/power_menu_onthego_title"
-       android:defaultValue="false" />
-	
-   <com.android.settings.kangdroid.SeekBarPreference
-       android:key="on_the_go_alpha"
-       android:title="@string/onthego_alpha_title"
-       android:summary="@string/onthego_alpha_summary"
-       android:dependency="power_menu_onthego_enabled" />
-	   
-   </PreferenceCategory>
 		
 </PreferenceScreen>

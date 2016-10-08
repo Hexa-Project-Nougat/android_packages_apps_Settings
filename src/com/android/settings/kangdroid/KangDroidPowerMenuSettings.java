@@ -32,17 +32,28 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.settings.SeekBarPreference;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class KangDroidPowerMenuSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
+
+	private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
 	
+	private SeekBarPreference mOnTheGoAlphaPref;	
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_power_menu);
+		
+        mOnTheGoAlphaPref = (SeekBarPreference) findPreference(PREF_ON_THE_GO_ALPHA);
+		int otgalpha = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.ON_THE_GO_ALPHA, 50);
+		mOnTheGoAlphaPref.setProgress(otgalpha);
+        mOnTheGoAlphaPref.setOnPreferenceChangeListener(this);
+
     }
 	
     @Override
@@ -50,7 +61,13 @@ public class KangDroidPowerMenuSettings extends SettingsPreferenceFragment imple
         super.onResume();
     }
 	
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mOnTheGoAlphaPref) {
+			int otgalpha = (Integer) newValue;
+			Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.ON_THE_GO_ALPHA, otgalpha);
+            return true;
+        }
         return false;
     }
 	

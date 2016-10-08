@@ -39,18 +39,10 @@ import java.util.List;
 
 public class KangDroidOtherSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
 	
-	private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
-	
-	private SeekBarPreference mOnTheGoAlphaPref;
-	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_other_settings);
-        mOnTheGoAlphaPref = (SeekBarPreference) findPreference(PREF_ON_THE_GO_ALPHA);
-        mOnTheGoAlphaPref.setValue(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.ON_THE_GO_ALPHA, 50));
-        mOnTheGoAlphaPref.setOnPreferenceChangeListener(this);
     }
 	
     @Override
@@ -59,12 +51,6 @@ public class KangDroidOtherSettings extends SettingsPreferenceFragment implement
     }
 	
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mOnTheGoAlphaPref) {
-            float val = Float.parseFloat((String) objValue);
-            Settings.System.putFloat(getActivity().getContentResolver(), Settings.System.ON_THE_GO_ALPHA,
-                    val / 100);
-            return true;
-        }
         return false;
     }
 	
