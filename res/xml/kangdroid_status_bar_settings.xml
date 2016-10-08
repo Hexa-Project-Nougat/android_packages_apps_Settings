@@ -15,16 +15,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings" >
 	
-    <PreferenceScreen
-           android:key="kdp_status_bar_clock_and_date_key"
-           android:title="@string/kdp_status_bar_clock_and_date"
-           android:fragment="com.android.settings.kangdroid.KangDroidClockDateSettings" />
-		   
-    <PreferenceScreen
-           android:key="kdp_carrier_label"
-           android:title="@string/carrier_options"
-           android:fragment="com.android.settings.kangdroid.KangDroidCarrierLabel" />
-		   
+	<PreferenceCategory
+		android:key="kdp_main_status_bar_settings"
+		android:title="@string/kdp_main_status_bar_settings_title">
+	
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="force_expanded_notifications"
         android:title="@string/force_expanded_notifications_title"
@@ -34,11 +28,35 @@
         android:key="disable_immersive_message"
         android:title="@string/disable_immersive_message_title"
         android:summary="@string/disable_immersive_message_summary" />
+		
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_clock_date_settings"
+		android:title="@string/kdp_clock_date_settings_title">
+	
+    <PreferenceScreen
+           android:key="kdp_status_bar_clock_and_date_key"
+           android:title="@string/kdp_status_bar_clock_and_date"
+           android:fragment="com.android.settings.kangdroid.KangDroidClockDateSettings" />
+		   
+   </PreferenceCategory>
+   
+   <PreferenceCategory
+	   android:key="kdp_other_status_bar_settings"
+	   android:title="@string/kdp_other_status_bar_settings_title">
+		   
+    <PreferenceScreen
+           android:key="kdp_carrier_label"
+           android:title="@string/carrier_options"
+           android:fragment="com.android.settings.kangdroid.KangDroidCarrierLabel" />
 		   
     <PreferenceScreen
         android:key="network_traffic_state"
         android:fragment="com.android.settings.kangdroid.NetworkTraffic"
 		android:summary="@string/network_traffic_summary"
 		android:title="@string/network_traffic_title" />
+		
+	</PreferenceCategory>
 		
 </PreferenceScreen>
