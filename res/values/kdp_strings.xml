@@ -742,5 +742,9 @@
 	<string name="kdp_clock_font_category_title">Clock Font Customization</string>
 	<!-- Main Date Category -->
 	<string name="kdp_date_category_title">Date Customization</string>
+	
+	<!-- Main PowerMenu Customization Category -->
+	<string name="kdp_power_menu_category_title">Power Menu Customization</string>
+	<string name="kdp_power_menu_pref_title">Hexa Power Menu Settings</string>
 
 </resources>

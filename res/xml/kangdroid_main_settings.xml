@@ -50,6 +50,17 @@
 	</PreferenceCategory>
 	
 	<PreferenceCategory
+		android:key="kdp_power_menu_category"
+		android:title="@string/kdp_power_menu_category_title">
+		
+    <PreferenceScreen
+        android:key="kdp_power_menu_pref"
+        android:title="@string/kdp_power_menu_pref_title"
+        android:fragment="com.android.settings.kangdroid.KangDroidPowerMenuSettings" />
+		
+	</PreferenceCategory>
+	
+	<PreferenceCategory
 		android:key="kdp_other_settings_category"
 		android:title="@string/kdp_other_settings_category_title">
 		
