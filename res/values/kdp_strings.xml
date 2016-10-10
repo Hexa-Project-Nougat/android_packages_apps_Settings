@@ -366,5 +366,8 @@
 	<string name="kdp_flash_light_notification_title">FlaashLight Notification Customization</string>
     <string name="flashlight_notification_title">Flashlight notification</string>
     <string name="flashlight_notification_summary">Enable notification for when the flashlight is on</string>
+	
+	<!-- Gesture Anywhere Category -->
+	<string name="kdp_gesture_anywhere">Gesture Anywhere Customization</string>
 
 </resources>
