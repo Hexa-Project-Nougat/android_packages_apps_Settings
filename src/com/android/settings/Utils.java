@@ -648,11 +648,6 @@ public final class Utils extends com.android.settingslib.Utils {
         UserInfo userInfo = userManager.getUserInfo(userId);
         return (userInfo != null) ? userInfo.isManagedProfile() : false;
     }
-	
-    /* returns whether the device has volume rocker or not. */
-    public static boolean hasVolumeRocker(Context context) {
-        return context.getResources().getBoolean(R.bool.has_volume_rocker);
-    }
 
     /**
      * Returns the target user for a Settings activity.

@@ -94,10 +94,6 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
     private static final SettingPref PREF_VOLUME_ADJUST_SOUNDS = new SettingPref(
             TYPE_SYSTEM, KEY_VOLUME_ADJUST_SOUNDS, System.VOLUME_ADJUST_SOUNDS_ENABLED,
             DEFAULT_ON) {
-        @Override
-        public boolean isApplicable(Context context) {
-            return Utils.hasVolumeRocker(context);
-        }
     };
 
     private static final SettingPref PREF_TOUCH_SOUNDS = new SettingPref(
