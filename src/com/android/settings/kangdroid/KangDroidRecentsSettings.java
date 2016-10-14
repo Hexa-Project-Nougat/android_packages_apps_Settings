@@ -48,7 +48,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.kangdroid_main_settings);
+        addPreferencesFromResource(R.xml.kangdroid_recents_settings);
 		
 		final ContentResolver resolver = getActivity().getContentResolver();
 		
