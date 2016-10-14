@@ -17,13 +17,24 @@
 	android:title="@string/hexa_title" >
 	
 	<PreferenceCategory
-		android:key="kdp_status_bar_settings_cat"
+		android:key="kdp_status_bar_settings_cat_not_title"
 		android:title="@string/kdp_status_bar_settings_cat">
 		
     <PreferenceScreen
         android:key="kdp_status_bar_settings"
         android:title="@string/kdp_status_bar_settings_title"
         android:fragment="com.android.settings.kangdroid.KangDroidStatusBarSettings" />	
+		
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_recents_settings_category"
+		android:title="@string/kdp_recents_settings_category_title">
+		
+    <PreferenceScreen
+        android:key="kdp_recents_settings"
+        android:title="@string/kdp_recents_settings_title"
+        android:fragment="com.android.settings.kangdroid.KangDroidRecentsSettings" />	
 		
 	</PreferenceCategory>
 	

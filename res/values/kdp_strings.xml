@@ -370,4 +370,8 @@
 	<!-- Gesture Anywhere Category -->
 	<string name="kdp_gesture_anywhere">Gesture Anywhere Customization</string>
 
+	<!-- KangDroid Recents Settings -->
+	<string name="kdp_recents_settings_category_title">Recents Customization</string>
+	<string name="kdp_recents_settings_title">Hexa Recents Settings</string>
+
 </resources>
