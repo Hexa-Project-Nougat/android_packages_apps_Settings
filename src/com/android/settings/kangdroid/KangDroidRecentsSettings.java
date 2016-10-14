@@ -54,7 +54,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
 		
         mImmersiveRecents = (ListPreference) findPreference(IMMERSIVE_RECENTS);
         mImmersiveRecents.setValue(String.valueOf(Settings.System.getInt(
-                getContentResolver(), Settings.System.IMMERSIVE_RECENTS, 0)));
+                getContentResolver(), Settings.System.RECENTS_FULL_SCREEN, 0)));
         mImmersiveRecents.setSummary(mImmersiveRecents.getEntry());
         mImmersiveRecents.setOnPreferenceChangeListener(this);
 
@@ -69,7 +69,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mImmersiveRecents) {
-            Settings.System.putInt(getContentResolver(), Settings.System.IMMERSIVE_RECENTS,
+            Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_FULL_SCREEN,
                     Integer.valueOf((String) newValue));
             mImmersiveRecents.setValue(String.valueOf(newValue));
             mImmersiveRecents.setSummary(mImmersiveRecents.getEntry());
