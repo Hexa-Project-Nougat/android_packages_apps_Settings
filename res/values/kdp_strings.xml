@@ -809,5 +809,9 @@
     <string name="immersive_recents_fullscreen">Fullscreen</string>
     <string name="immersive_recents_statusbar">Statusbar only</string>
     <string name="immersive_recents_navbar">Navbar only</string>
+	
+	<!-- Quick Settings category -->
+	<string name="kdp_quick_settings_category_title">Quick Settings Customizations</string>
+	<string name="kdp_quick_settings_title">Hexa QS Settings </string>
 
 </resources>
