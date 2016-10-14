@@ -797,5 +797,8 @@
     <string name="status_bar_notif_count_title">Show notification count</string>
     <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
 
+	<!-- KangDroid Recents Settings -->
+	<string name="kdp_recents_settings_category_title">Recents Customization</string>
+	<string name="kdp_recents_settings_title">Hexa Recents Settings</string>
 
 </resources>

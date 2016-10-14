@@ -37,7 +37,7 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KangDroidMainSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
+public class KangDroidRecentsSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
