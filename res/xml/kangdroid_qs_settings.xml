@@ -17,7 +17,7 @@
 	
 	<PreferenceCategory
 		android:key="kdp_qs_animation_category"
-		android:title="@string/kdp_qs_animation_category_title"
+		android:title="@string/kdp_qs_animation_category_title" >
 
     <ListPreference
         android:key="qs_tile_animation_style"
