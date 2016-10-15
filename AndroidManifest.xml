@@ -3305,5 +3305,12 @@
 		<!-- Lockscreen Weather -->
 		<activity android:name="com.android.settings.kangdroid.activity.LockScreenWeatherSettingsActivity" />
 
+        <activity android:name="Settings$SmartBarSettingsActivity"
+                  android:taskAffinity="com.android.settings"
+                  android:label="@string/domain_urls_title">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="com.crdroid.settings.fragments.SmartbarSettings" />
+        </activity>
+
     </application>
 </manifest>
