@@ -2,7 +2,7 @@ package com.android.settings.kangdroid.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.android.settings.rr.FlingSettings;
+import com.crdroid.settings.fragments.FlingSettings;
 
 public class FlingSettingsActivity extends Activity {
 

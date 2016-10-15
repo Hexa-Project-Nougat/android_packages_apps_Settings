@@ -21,6 +21,50 @@
 			android:key="kdp_main_nav_bar"
 			android:title="@string/kdp_main_nav_bar_title">
 			
+    <SwitchPreference
+        android:key="navbar_visibility"
+        android:title="@string/navbar_visibility" />
+
+        <ListPreference
+            android:entries="@array/systemui_navbar_mode_entries"
+            android:entryValues="@array/systemui_navbar_mode_values"
+            android:key="navbar_mode"
+            android:title="@string/navbar_mode" />
+			
+	        <!-- Weather Settings -->
+	       <Preference
+	           android:id="@+id/smartbar_settings"
+	           android:title="@string/smartbar_settings_title">
+	           <intent
+	               android:action="android.intent.action.MAIN"
+	               android:targetClass="com.android.Settings$SmartBarSettingsActivity"
+	               android:targetPackage="com.android.settings" >
+	           </intent>
+	       </Preference>
+		   
+           <!-- Gesture Anywhere Settings -->
+           <PreferenceScreen android:key="gesture_anywhere"
+                   android:title="@string/gesture_anywhere_title">
+               <intent android:action="android.intent.action.MAIN"
+                       android:targetPackage="com.android.settings"
+                       android:targetClass="com.android.settings.kangdroid.activity.SmartBarSettingsActivity" />
+           </PreferenceScreen>
+
+        <PreferenceScreen
+            android:key="smartbar_settings"
+            android:title="@string/smartbar_settings_title"
+            android:fragment="com.crdroid.settings.fragments.SmartbarSettings" />
+
+        <PreferenceScreen
+            android:key="fling_settings"
+            android:title="@string/fling_settings"
+            android:fragment="com.crdroid.settings.fragments.FlingSettings" />
+
+        <PreferenceScreen
+            android:key="pulse_settings"
+            android:title="@string/pulse_settings"
+            android:fragment="com.crdroid.settings.fragments.PulseSettings" />
+
 <!--        <PreferenceScreen
             android:key="navigation_bar"
             android:title="@string/navigation_bar_title">
@@ -32,6 +76,28 @@
 		<PreferenceCategory
 			android:key="kdp_size_nav_bar"
 			android:title="@string/kdp_size_nav_bar_title">
+			
+            <com.android.settings.kangdroid.KangDroidSeekBarPreference
+                 android:key="navbar_height_portrait"
+                 android:title="@string/portrait_title"
+                 android:max="135"
+                 settings:min="65"
+                 settings:units="%" />
+
+            <com.android.settings.kangdroid.KangDroidSeekBarPreference
+                 android:key="navbar_height_landscape"
+                 android:title="@string/land_hor_title"
+                 android:max="135"
+                 settings:min="65"
+                 settings:units="%" />
+
+            <com.android.settings.kangdroid.KangDroidSeekBarPreference
+                 android:key="navbar_width"
+                 android:title="@string/land_vert_title"
+                 android:max="135"
+                 settings:min="65"
+                 settings:units="%" />
+				 
 		</PreferenceCategory>
 
 		
