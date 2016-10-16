@@ -42,6 +42,7 @@ import android.widget.ListView;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.settings.SeekBarPreference;
 
 import java.lang.Integer;
 import java.lang.Float;
@@ -58,7 +59,7 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
 
     private static final String SYSTEMUI_METADATA_NAME = "com.android.systemui";
 
-    private ListPreference mDozeTimeout;
+    private SeekBarPreference mDozeTimeout;
     private SwitchPreference mDozeTriggerPickup;
     private SwitchPreference mDozeTriggerSigmotion;
     private SwitchPreference mDozeTriggerNotification;
@@ -84,10 +85,11 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.doze_settings);
 
         // Doze timeout seekbar
-        mDozeTimeout = (ListPreference) findPreference(KEY_DOZE_TIMEOUT);
+        mDozeTimeout = (SeekBarPreference) findPreference(KEY_DOZE_TIMEOUT);
+		int dozeTimeOut = Settings.System.getInt(getActivity().getContentResolver(),
+			Settings.System.DOZE_TIMEOUT, 3000);
+		mDozeTimeout.setProgress(dozeTimeOut);
 		mDozeTimeout.setOnPreferenceChangeListener(this);
-        mDozeTimeout.setValue(Integer.toString(3000));
-        mDozeTimeout.setSummary(mDozeTimeout.getEntry());
         
 
         // Doze triggers
@@ -127,11 +129,10 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mDozeTimeout) {
-            int dozeTimeout = Integer.valueOf((String) newValue);
-			int index = mDozeTimeout.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.DOZE_TIMEOUT, dozeTimeout);
-			mDozeTimeout.setSummary(mDozeTimeout.getEntries()[index]);
+			int dozeTimeOut = (Integer) newValue;
+			Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.DOZE_TIMEOUT, dozeTimeOut);
+            return true;
         }
         if (preference == mDozeTriggerPickup) {
             boolean value = (Boolean) newValue;
