@@ -839,5 +839,8 @@
 	
 	<!-- Tiles Animation Category -->
 	<string name="kdp_qs_animation_category_title">QS Animation</string>
+	
+	<!-- Privacy Guard -->
+	<string name="kdp_privacy_settings_cat">Privacy Settings</string>
 
 </resources>
