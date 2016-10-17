@@ -19,14 +19,11 @@
         android:key="doze_settings"
         android:title="@string/doze_settings_title">
 
-    <com.android.settings.SeekBarPreference
+    <ListPreference
             android:key="doze_timeout"
-			android:title="@string/doze_timeout_title"
-			android:min="100"
-			android:max="10000"
-            settings:unitsLeft=""
-            settings:unitsRight=""
-			android:persistent="false" />
+			android:entries="@array/hexa_doze_timeout_entry"
+			android:entryValues="@array/hexa_doze_timeout_values"
+			android:title="@string/doze_timeout_title"/>
 
     <SwitchPreference
             android:key="doze_trigger_pickup"
