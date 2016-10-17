@@ -29,7 +29,7 @@ import android.widget.ImageView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
-import org.cyanogenmod.cmparts.R;
+import com.android.settings.R;
 import org.cyanogenmod.cmparts.privacyguard.PrivacyGuardManager.AppInfo;
 
 import java.util.Arrays;

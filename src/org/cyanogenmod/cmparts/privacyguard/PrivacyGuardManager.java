@@ -51,7 +51,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.cyanogenmod.cmparts.R;
+import com.android.settings.R;
 
 import java.util.ArrayList;
 import java.util.Collections;

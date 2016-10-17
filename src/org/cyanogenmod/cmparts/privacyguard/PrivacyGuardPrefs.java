@@ -28,9 +28,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import org.cyanogenmod.cmparts.R;
+import com.android.settings.R;
 
-import cyanogenmod.providers.CMSettings;
+import android.provider.Settings;
 
 public class PrivacyGuardPrefs extends PreferenceFragment implements
         OnPreferenceChangeListener {
@@ -55,9 +55,9 @@ public class PrivacyGuardPrefs extends PreferenceFragment implements
         mPrivacyGuardDefault = (SwitchPreference) findPreference(KEY_PRIVACY_GUARD_DEFAULT);
         mPrivacyGuardDefault.setOnPreferenceChangeListener(this);
 
-        mPrivacyGuardDefault.setChecked(CMSettings.Secure.getInt(
+        mPrivacyGuardDefault.setChecked(Settings.System.getInt(
                 getActivity().getContentResolver(),
-                CMSettings.Secure.PRIVACY_GUARD_DEFAULT, 0) == 1);
+                Settings.System.PRIVACY_GUARD_DEFAULT, 0) == 1);
     }
 
     @Override
@@ -76,8 +76,8 @@ public class PrivacyGuardPrefs extends PreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mPrivacyGuardDefault) {
             boolean value = (Boolean) newValue;
-            CMSettings.Secure.putInt(getActivity().getContentResolver(),
-                    CMSettings.Secure.PRIVACY_GUARD_DEFAULT, value ? 1 : 0);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.PRIVACY_GUARD_DEFAULT, value ? 1 : 0);
             return true;
         }
         return false;

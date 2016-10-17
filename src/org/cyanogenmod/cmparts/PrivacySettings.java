@@ -20,6 +20,8 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceActivity.Header;
 
+import com.android.settings.R;
+
 import java.util.List;
 
 /**
