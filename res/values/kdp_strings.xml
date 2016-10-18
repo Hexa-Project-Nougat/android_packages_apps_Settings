@@ -695,5 +695,9 @@
 	<string name="kdp_main_nav_bar_title">Main NavBar Customization</string>
 	<string name="kdp_advanced_nav_bar_title">Other NavBar Customization</string>
 	<string name="kdp_size_nav_bar_title">NavBar Dimension Customizatoin</string>
+	
+    <!-- Allow fake signature -->
+    <string name="allow_signature_fake">Allow signature spoofing</string>
+    <string name="allow_signature_fake_summary">Allow apps to bypass security systems by pretending to be a different app.</string>
 
 </resources>
