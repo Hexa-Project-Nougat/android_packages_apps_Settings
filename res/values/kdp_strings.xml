@@ -119,6 +119,9 @@
     <string name="show_carrier_keyguard">Keyguard carrier</string>
     <string name="show_carrier_statusbar">Status bar carrier</string>
     <string name="show_carrier_enabled">Enabled</string>
+    <string name="number_of_notifications_title">Number of notifications</string>
+    <string name="carrier_label_hide_label_title">Hide on notifications</string>
+    <string name="carrier_label_number_of_notification_icons_title">Max Number of icons before hiding</string>
 	
     <!-- Gesture Anywhere -->
     <string name="gesture_anywhere_title">Gesture Anywhere</string>

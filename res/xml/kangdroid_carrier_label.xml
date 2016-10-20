@@ -56,6 +56,20 @@
             android:dialogTitle="@string/status_bar_carrier_font_style_title"
             android:entryValues="@array/status_bar_carrier_entries_values"
             android:title="@string/status_bar_carrier_font_style_title" />
+			
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="hide_carrier_max_switch"
+            android:title="@string/carrier_label_hide_label_title" />
+		
+          <com.android.settings.SeekBarPreference
+            android:key="hide_carrier_max_notification"
+            android:title="@string/carrier_label_number_of_notification_icons_title"
+            android:max="6"
+            settings:minimum="1"
+            settings:unitsLeft=""
+            settings:unitsRight=""
+			android:layout="@layout/preference_iconless_slider"
+            android:dependency="hide_carrier_max_switch" />
 		
 	</PreferenceCategory>
 
