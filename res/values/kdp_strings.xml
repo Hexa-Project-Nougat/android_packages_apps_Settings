@@ -865,5 +865,11 @@
     <string name="qs_rows_landscape_title">Rows (landscape)</string>
     <string name="qs_columns_title">Columns</string>
 	<string name="sysui_qqs_count_title">Small QS tiles</string>
+	
+	<!-- HexaProject Information -->
+	<string name="kdp_device_info_title">Hexa-Project Info</string>
+	<string name="kdp_device_info_summary">See information of Hexa-Project</string>
+	<string name="kdp_kangdroid_title">Hexa-Project Information</string>
+	<string name="kdp_device_hardware_info_title">Device Hardware Information</string>
 
 </resources>
