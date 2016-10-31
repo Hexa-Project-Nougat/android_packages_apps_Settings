@@ -21,12 +21,12 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.UserHandle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -37,6 +37,7 @@ import com.android.internal.widget.LockPatternView;
 import com.android.internal.widget.LockPatternView.Cell;
 import com.android.internal.widget.LockPatternView.DisplayMode;
 import com.android.settings.notification.RedactionInterstitial;
+import com.android.setupwizardlib.GlifLayout;
 import com.google.android.collect.Lists;
 
 import java.util.ArrayList;
@@ -113,6 +114,8 @@ public class ChooseLockPattern extends SettingsActivity {
         super.onCreate(savedInstanceState);
         CharSequence msg = getText(R.string.lockpassword_choose_your_pattern_header);
         setTitle(msg);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.content_parent);
+        layout.setFitsSystemWindows(false);
     }
 
     @Override
@@ -394,17 +397,19 @@ public class ChooseLockPattern extends SettingsActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            mPatternSize = getActivity().getIntent().getByteExtra("pattern_size",
-                    LockPatternUtils.PATTERN_SIZE_DEFAULT);
-            LockPatternView.Cell.updateSize(mPatternSize);
-            mAnimatePattern = Collections.unmodifiableList(Lists.newArrayList(
-                    LockPatternView.Cell.of(0, 0, mPatternSize),
-                    LockPatternView.Cell.of(0, 1, mPatternSize),
-                    LockPatternView.Cell.of(1, 1, mPatternSize),
-                    LockPatternView.Cell.of(2, 1, mPatternSize)
-                    ));
-
-            return inflater.inflate(R.layout.choose_lock_pattern, container, false);
+		            mPatternSize = getActivity().getIntent().getByteExtra("pattern_size",
+		                    LockPatternUtils.PATTERN_SIZE_DEFAULT);
+		            LockPatternView.Cell.updateSize(mPatternSize);
+		            mAnimatePattern = Collections.unmodifiableList(Lists.newArrayList(
+		                    LockPatternView.Cell.of(0, 0, mPatternSize),
+		                    LockPatternView.Cell.of(0, 1, mPatternSize),
+		                    LockPatternView.Cell.of(1, 1, mPatternSize),
+		                    LockPatternView.Cell.of(2, 1, mPatternSize)
+		                    ));
+            final GlifLayout layout = (GlifLayout) inflater.inflate(
+                    R.layout.choose_lock_pattern, container, false);
+            layout.setHeaderText(getActivity().getTitle());
+            return layout;
         }
 
         @Override
