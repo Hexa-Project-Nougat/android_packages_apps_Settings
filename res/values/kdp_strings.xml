@@ -1147,6 +1147,7 @@
 	<string name="navbar_tint_switch">Navigation Button Tint</string>
 	<string name="navbar_button_color">Navigation Bar Buttons</string>
 	<string name="navbar_button_custom_icon_switch_title">Add color filter to application buttons</string>
+	<string name="image_exceeds_max_allowed_size">Image must not exceed 512x512</string>
 	
     <!-- Doze pulse options -->
     <string name="summary_doze_enabled">Enabled</string>
