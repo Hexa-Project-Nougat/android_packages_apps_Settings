@@ -45,6 +45,7 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
+	private static final String PREF_HEADS_UP_TIME_OUT = "heads_up_time_out";
 	
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
@@ -52,6 +53,7 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
     private CMSystemSettingListPreference mStatusBarBattery;
     private CMSystemSettingListPreference mStatusBarBatteryShowPercent;
     private CMSystemSettingListPreference mQuickPulldown;
+	private ListPreference mHeadsUpTimeOut;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,23 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
         mStatusBarBattery.setOnPreferenceChangeListener(this);
         enableStatusBarBatteryDependents(mStatusBarBattery.getIntValue(2));
         updatePulldownSummary(mQuickPulldown.getIntValue(0));
+		
+        Resources systemUiResources;
+        try {
+            systemUiResources = getPackageManager().getResourcesForApplication("com.android.systemui");
+        } catch (Exception e) {
+            return;
+        }
+
+        int defaultTimeOut = systemUiResources.getInteger(systemUiResources.getIdentifier(
+                    "com.android.systemui:integer/heads_up_notification_decay", null, null));
+        mHeadsUpTimeOut = (ListPreference) findPreference(PREF_HEADS_UP_TIME_OUT);
+        mHeadsUpTimeOut.setOnPreferenceChangeListener(this);
+        int headsUpTimeOut = Settings.System.getInt(getContentResolver(),
+                Settings.System.HEADS_UP_TIMEOUT, defaultTimeOut);
+        mHeadsUpTimeOut.setValue(String.valueOf(headsUpTimeOut));
+        updateHeadsUpTimeOutSummary(headsUpTimeOut);
+		
     }
 	
     @Override
@@ -80,7 +99,15 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
         int batteryStyle = Integer.valueOf((String) newValue);
         enableStatusBarBatteryDependents(batteryStyle);
 
-        return true;
+		if (preference == mHeadsUpTimeOut) {
+            int headsUpTimeOut = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.HEADS_UP_TIMEOUT,
+                    headsUpTimeOut);
+            updateHeadsUpTimeOutSummary(headsUpTimeOut);
+            return true;
+		}
+        return false;
     }
 	
     private void enableStatusBarBatteryDependents(int batteryIconStyle) {
@@ -109,5 +136,11 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
     @Override
     protected int getMetricsCategory() {
         return MetricsEvent.APPLICATION;
+    }
+	
+    private void updateHeadsUpTimeOutSummary(int value) {
+        String summary = getResources().getString(R.string.heads_up_time_out_summary,
+                value / 1000);
+        mHeadsUpTimeOut.setSummary(summary);
     }
 }
