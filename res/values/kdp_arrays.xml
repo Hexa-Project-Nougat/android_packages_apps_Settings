@@ -827,15 +827,23 @@
         <item>10000</item>
     </string-array>
 	
-    <!-- Heads up timeout -->
-    <string name="heads_up_category">Heads up</string>
-    <string name="heads_up_time_out_title">Time out</string>
-    <string name="heads_up_time_out_summary">Peeking notifications will show for <xliff:g id="number">%d</xliff:g> seconds</string>
-    <string name="heads_up_time_out_2sec">2 seconds</string>
-    <string name="heads_up_time_out_4sec">4 seconds</string>
-    <string name="heads_up_time_out_5sec">5 seconds</string>
-    <string name="heads_up_time_out_6sec">6 seconds</string>
-    <string name="heads_up_time_out_8sec">8 seconds</string>
-    <string name="heads_up_time_out_10sec">10 seconds</string>
+    <!-- Heads up snooze -->
+    <string-array name="heads_up_snooze_entries">
+        <item>@string/disabled</item>
+        <item>@string/heads_up_snooze_1min</item>
+        <item>@string/heads_up_snooze_5min</item>
+        <item>@string/heads_up_snooze_10min</item>
+        <item>@string/heads_up_snooze_15min</item>
+        <item>@string/heads_up_snooze_20min</item>
+    </string-array>
+
+    <string-array name="heads_up_snooze_values" translatable="false">
+        <item>0</item>
+        <item>60000</item>
+        <item>300000</item>
+        <item>600000</item>
+        <item>900000</item>
+        <item>1200000</item>
+    </string-array>
 
 </resources>
