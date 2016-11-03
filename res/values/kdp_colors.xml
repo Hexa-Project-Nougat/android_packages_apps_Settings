@@ -2,5 +2,5 @@
 
 <resources>
 	<color name="action_picker_fab_background">@color/theme_accent</color>
-	<color name="theme_accent">#ff009688</color>
+	<color name="theme_accent">@android:color/white</color>
 </resources>
