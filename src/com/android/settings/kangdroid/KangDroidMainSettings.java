@@ -56,6 +56,6 @@ public class KangDroidMainSettings extends SettingsPreferenceFragment implements
 	
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.APPLICATION;
+        return MetricsEvent.KANGDROID;
     }
 }

@@ -495,7 +495,7 @@ public class ActionListViewSettings extends ListFragment implements
                 .setIcon(R.drawable.ic_settings_backup) // use the backup icon
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         menu.add(0, MENU_ADD, 0, R.string.shortcut_action_add)
-                .setIcon(R.drawable.ic_menu_add_dark)
+                .setIcon(R.drawable.ic_settings_about)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         menu.add(0, MENU_HELP, 0, R.string.help_label)
                 .setIcon(R.drawable.ic_settings_about)
