@@ -702,64 +702,6 @@
         <item>@string/volume_steps_5</item>
     </string-array>
 	
-    <!-- Doze Timeout -->
-    <string-array name="hexa_doze_timeout_entry" translatable="false">
-		<item>@string/kdp_doze_timeout_entry_3</item>
-        <item>@string/kdp_doze_timeout_entry_4</item>
-        <item>@string/kdp_doze_timeout_entry_5</item>
-        <item>@string/kdp_doze_timeout_entry_6</item>
-        <item>@string/kdp_doze_timeout_entry_7</item>
-        <item>@string/kdp_doze_timeout_entry_8</item>
-        <item>@string/kdp_doze_timeout_entry_9</item>
-        <item>@string/kdp_doze_timeout_entry_10</item>
-        <item>@string/kdp_doze_timeout_entry_11</item>
-        <item>@string/kdp_doze_timeout_entry_12</item>
-        <item>@string/kdp_doze_timeout_entry_13</item>
-        <item>@string/kdp_doze_timeout_entry_14</item>
-        <item>@string/kdp_doze_timeout_entry_15</item>
-    </string-array>
-
-    <string-array name="hexa_doze_timeout_values" translatable="false">
-		<item>3000</item>
-        <item>4000</item>
-        <item>5000</item>
-        <item>6000</item>
-        <item>7000</item>
-        <item>8000</item>
-        <item>9000</item>
-        <item>10000</item>
-        <item>11000</item>
-        <item>12000</item>
-        <item>13000</item>
-        <item>14000</item>
-        <item>15000</item>
-    </string-array>
-	
-    <!-- Doze Brightness -->
-    <string-array name="hexa_doze_brightness_entry" translatable="false">
-		<item>@string/kdp_doze_brightness_entry_3</item>
-        <item>@string/kdp_doze_brightness_entry_4</item>
-        <item>@string/kdp_doze_brightness_entry_5</item>
-        <item>@string/kdp_doze_brightness_entry_6</item>
-        <item>@string/kdp_doze_brightness_entry_7</item>
-        <item>@string/kdp_doze_brightness_entry_8</item>
-        <item>@string/kdp_doze_brightness_entry_9</item>
-        <item>@string/kdp_doze_brightness_entry_10</item>
-        <item>@string/kdp_doze_brightness_entry_11</item>
-    </string-array>
-
-    <string-array name="hexa_doze_brightness_value" translatable="false">
-		<item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-    </string-array>
-	
     <!-- Lock Clock Fonts -->
     <string-array name="lock_clock_fonts_entries">
         <item>@string/lock_clock_font_stock</item>
