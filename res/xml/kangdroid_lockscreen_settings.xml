@@ -52,5 +52,17 @@
          android:dependency="lock_screen_custom_notif" />
 		 
 	 </PreferenceCategory>
+	 
+	 <PreferenceCategory
+		 android:key="advanced_lockscreen_settings"
+		 android:title="@string/advanced_lockscreen_settings">
+		 
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="lockscreen_charging_current"
+            android:title="@string/lockscreen_charging_current_title"
+            android:summary="@string/lockscreen_charging_current_summary"
+            android:defaultValue="true" />
+			
+	</PreferencCategory>
 		
 </PreferenceScreen>
