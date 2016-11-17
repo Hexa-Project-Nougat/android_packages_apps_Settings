@@ -71,6 +71,8 @@ public class KangDroidDeviceInfoSettings extends SettingsPreferenceFragment impl
     private static final String KEY_DEVICE_MEMORY = "device_memory";
     private static final String KEY_MOD_VERSION = "mod_version";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
+	
+	long[] mHits = new long[3];
 
     @Override
     protected int getMetricsCategory() {
