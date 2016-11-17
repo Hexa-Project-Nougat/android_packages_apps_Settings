@@ -127,6 +127,7 @@ public class KangDroidDeviceInfoSettings extends SettingsPreferenceFragment impl
                 Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
             }
         }
+	}
         return super.onPreferenceTreeClick(preference);
     }
 	
