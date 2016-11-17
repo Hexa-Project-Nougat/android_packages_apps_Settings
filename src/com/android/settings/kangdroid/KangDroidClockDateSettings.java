@@ -52,7 +52,7 @@ import com.android.settings.search.Indexable;
 import android.text.format.DateFormat;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
-import com.android.settings.kangdroid.utils.CMSystemSettingListPreference;
+import cyanogenmod.preference.CMSystemSettingListPreference;
 
 import java.util.ArrayList;
 import java.util.Date;
