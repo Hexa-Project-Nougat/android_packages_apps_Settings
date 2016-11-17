@@ -38,6 +38,18 @@
         android:fragment="com.android.settings.kangdroid.KangDroidQuickSettings" />	
 		
 	</PreferenceCategory>
+
+	<PreferenceCategory
+		android:key="nav_bar_settings"
+		android:title="@string/nav_bar_settigs_hexa">
+	
+    <PreferenceScreen
+        android:key="nav_settings"
+        android:title="@string/nav_bar_settings_hexa_screen"
+        android:fragment="com.android.settings.kangdroid.KangDroidNavBarSettings" />	
+		
+	</PreferenceCategory>
+		
 	
 	<PreferenceCategory
 		android:key="kdp_recents_settings_category"

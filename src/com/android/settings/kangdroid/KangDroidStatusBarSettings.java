@@ -27,6 +27,7 @@ import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import cyanogenmod.preference.CMSystemSettingListPreference;
 import android.provider.Settings;
 
 import com.android.settings.R;
@@ -41,10 +42,32 @@ import java.util.List;
 
 public class KangDroidStatusBarSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
 	
+    private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
+    private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+    private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
+	
+    private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
+    private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
+	
+    private CMSystemSettingListPreference mStatusBarBattery;
+    private CMSystemSettingListPreference mStatusBarBatteryShowPercent;
+    private CMSystemSettingListPreference mQuickPulldown;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_status_bar_settings);
+		
+		ContentResolver resolver = getActivity().getContentResolver();
+		
+        mStatusBarBattery = (CMSystemSettingListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
+        mStatusBarBatteryShowPercent =
+                (CMSystemSettingListPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
+        mQuickPulldown = (CMSystemSettingListPreference) findPreference(STATUS_BAR_QUICK_QS_PULLDOWN);
+
+        mStatusBarBattery.setOnPreferenceChangeListener(this);
+        enableStatusBarBatteryDependents(mStatusBarBattery.getIntValue(2));
+        updatePulldownSummary(mQuickPulldown.getIntValue(0));
     }
 	
     @Override
@@ -52,8 +75,35 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
         super.onResume();
     }
 
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
-        return false;
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        int batteryStyle = Integer.valueOf((String) newValue);
+        enableStatusBarBatteryDependents(batteryStyle);
+
+        return true;
+    }
+	
+    private void enableStatusBarBatteryDependents(int batteryIconStyle) {
+        if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_HIDDEN ||
+                batteryIconStyle == STATUS_BAR_BATTERY_STYLE_TEXT) {
+            mStatusBarBatteryShowPercent.setEnabled(false);
+        } else {
+            mStatusBarBatteryShowPercent.setEnabled(true);
+        }
+    }
+
+    private void updatePulldownSummary(int value) {
+        Resources res = getResources();
+
+        if (value == 0) {
+            // quick pulldown deactivated
+            mQuickPulldown.setSummary(res.getString(R.string.status_bar_quick_qs_pulldown_off));
+        } else {
+            String direction = res.getString(value == 2
+                    ? R.string.status_bar_quick_qs_pulldown_summary_left
+                    : R.string.status_bar_quick_qs_pulldown_summary_right);
+            mQuickPulldown.setSummary(res.getString(R.string.status_bar_quick_qs_pulldown_summary, direction));
+        }
     }
 	
     @Override
