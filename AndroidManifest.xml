@@ -2498,6 +2498,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+		
+        <!-- KangDroidProject Updater Settings and Activity -->
+        <activity android:name="com.ota.updates.activities.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
         <!-- Triggered when user-selected home app isn't encryption aware -->
         <activity android:name=".FallbackHome"

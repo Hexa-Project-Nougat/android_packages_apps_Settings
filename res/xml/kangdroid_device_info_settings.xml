@@ -19,23 +19,56 @@
 	<PreferenceScreen 
 		android:key="rom_logo" 
 		android:layout="@layout/kdp_logo_row" />
+
+    <!-- KangDroid-Project Updates -->
+    <PreferenceScreen android:key="kdp_updates"
+            android:title="@string/kdp_update_title"
+            android:summary="@string/system_update_settings_list_item_summary">
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.ota.updates"
+                android:targetClass="com.ota.updates.activities.MainActivity" />
+    </PreferenceScreen>
+		
+	<PreferenceCategory
+		android:key="kdp_cyanogenmod_info"
+		android:title="@string/kdp_cyanogenmod_info_title">
+
+    <!-- Contributors cloud -->
+    <org.cyanogenmod.internal.cmparts.CMPartsPreference
+        android:key="contributors" />
+		
+    <!-- Mod version -->
+    <Preference android:key="mod_version"
+        style="?android:preferenceInformationStyle"
+        android:title="@string/mod_version"
+        android:summary="@string/mod_version_default" />
+				
+    <!-- CyanogenMod API Version -->
+    <Preference android:key="mod_api_level"
+        android:enabled="false"
+        android:shouldDisableView="false"
+        android:title="@string/mod_api_level"
+        android:summary="@string/mod_api_level_default" />
+		
+	</PreferenceCategory>
 	
 	<PreferenceCategory
 		android:key="kdp_kangdroid"
 		android:title="@string/kdp_kangdroid_title">
-     <!-- Mod version -->
-        <Preference android:key="mod_version"
-                style="?android:preferenceInformationStyle"
-                android:title="@string/mod_version"
-                android:summary="@string/mod_version_default" />
 
 	<!-- KDP ROM version -->
         <Preference android:key="kdp_version"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/kdp_version_title"
                 android:summary="@string/kdp_version_default"/>
+
+    <!-- Build date -->
+        <Preference android:key="build_date"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/build_date"
+                android:summary="@string/build_date_default" />
 				
-			</PreferenceCategory>
+	</PreferenceCategory>
 			
 	<PreferenceCategory
 		android:key="kdp_device_hardware_info"
@@ -52,13 +85,7 @@
                 style="?android:preferenceInformationStyle"
                 android:title="@string/mem_info"
                 android:summary="@string/device_info_default"/>
-
-        <!-- Build date -->
-        <Preference android:key="build_date"
-                style="?android:preferenceInformationStyle"
-                android:title="@string/build_date"
-                android:summary="@string/build_date_default" />
 				
-			</PreferenceCategory>
+	</PreferenceCategory>
 
 </PreferenceScreen>
