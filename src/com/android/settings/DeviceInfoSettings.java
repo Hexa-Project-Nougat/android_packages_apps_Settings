@@ -456,14 +456,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         }
     }
 
-    private void setExplicitValueSummary(String preference, String value) {
-        try {
-            findPreference(preference).setSummary(value);
-        } catch (RuntimeException e) {
-            // No recovery
-        }
-    }
-
     private void sendFeedback() {
         String reporterPackage = DeviceInfoUtils.getFeedbackReporterPackage(getActivity());
         if (TextUtils.isEmpty(reporterPackage)) {

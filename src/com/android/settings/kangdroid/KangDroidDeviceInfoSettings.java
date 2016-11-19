@@ -243,4 +243,12 @@ public class KangDroidDeviceInfoSettings extends SettingsPreferenceFragment impl
                 .append(" (" + sdkInt + ")");
         return builder.toString();
     }
+	
+    private void setExplicitValueSummary(String preference, String value) {
+        try {
+            findPreference(preference).setSummary(value);
+        } catch (RuntimeException e) {
+            // No recovery
+        }
+    }
 }
