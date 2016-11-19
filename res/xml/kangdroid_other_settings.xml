@@ -49,5 +49,10 @@
              android:key="trans_porn"
              android:title="@string/trans"
              android:fragment="com.crdroid.settings.fragments.TransparencyPornFragment" />
+
+        <Preference
+            android:key="blur"
+            android:title="@string/settings_blur_cat"
+            android:fragment="com.crdroid.settings.fragments.BlurPersonalizations" />
 		
 </PreferenceScreen>
