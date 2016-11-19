@@ -441,6 +441,8 @@
 	<string name="kdp_device_info_summary">See information of Hexa-Project</string>
 	<string name="kdp_kangdroid_title">Hexa-Project Information</string>
 	<string name="kdp_device_hardware_info_title">Device Hardware Information</string>
+	<string name="kdp_cyanogenmod_info_title">CyanogenMod Information</string>
+	<string name="kdp_update_title">Update Hexa-Project</string>
 	
 	<!-- From CMParts -->
     <string name="status_bar_toggle_brightness">Brightness control</string>
