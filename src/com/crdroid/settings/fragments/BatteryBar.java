@@ -198,6 +198,6 @@ public class BatteryBar extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.CRDROID_SETTINGS;
+        return MetricsEvent.KANGDROID;
     }
 }
