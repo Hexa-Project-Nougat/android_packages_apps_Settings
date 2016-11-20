@@ -842,7 +842,7 @@
     <string name="power_menu_transparency">Power/reboot menu opacity</string>
     <string name="power_menu_dialog_dim">Power/reboot dialog dim background amount</string>
     <string name="soft_restart_required">Soft Restart required to apply changes</string>
-	
+
     <!-- QS Header Icons -->
 	<string name="qs_settings_icon_header">QS Header Icons</string>
     <string name="qs_settings_icon_title">Settings Shortcut</string>
@@ -875,5 +875,9 @@
     <string name="navbar_dynamic_title">Dynamic navbar color</string>
     <string name="navbar_dynamic_summary">Adapt navbar color to match foreground running app primary color</string>
     <string name="restart_app_required">Restart respective app to see effect</string>
+
+	<!-- Transparency Settings -->
+    <string name="powermenu_title">Power Menu</string>
+    <string name="quicksettings_title">Quick Settings</string>
 
 </resources>

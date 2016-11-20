@@ -314,6 +314,7 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+		ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mNavigationRecentsLongPressAction) {
             // RecentsLongPressAction is handled differently because it intentionally uses
             // Settings.System
