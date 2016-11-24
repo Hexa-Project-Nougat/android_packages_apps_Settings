@@ -21,6 +21,14 @@
 		android:key="kdp_lockscreen_clock_fonts"
 		android:title="@string/kdp_lockscreen_clock_fonts_title">
 		
+        <!-- Lockscreen Weather -->
+        <PreferenceScreen android:key="lockscreen_colors"
+                android:title="@string/lockscreen_colors">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                    android:targetClass="com.android.settings.kangdroid.activity.LockscreenColorsActivity" />
+        </PreferenceScreen>
+		
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="keyguard_show_clock"
         android:title="@string/keyguard_statusbar_clock_title"
