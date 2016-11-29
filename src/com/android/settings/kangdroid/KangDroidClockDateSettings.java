@@ -72,6 +72,7 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
 	private static final String PREF_COLOR_PICKER = "clock_color";
 	private static final String PREF_FONT_STYLE = "font_style";
 	private static final String PREF_STATUS_BAR_CLOCK_FONT_SIZE  = "status_bar_clock_font_size";
+	private static final String STATUS_BAR_CLOCK_SECONDS = "status_bar_clock_seconds";
 
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
@@ -89,6 +90,7 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
 	private ColorPickerPreference mColorPicker;
 	private ListPreference mFontStyle;
 	private ListPreference mStatusBarClockFontSize;
+	private SwitchPreference mStatusBarClockSeconds;
 	
 	private boolean mCheckPreferences;
 
@@ -172,6 +174,12 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
                 .getContentResolver(), Settings.System.STATUSBAR_CLOCK_FONT_SIZE, 
                 14)));
         mStatusBarClockFontSize.setSummary(mStatusBarClockFontSize.getEntry());
+		
+        mStatusBarClockSeconds = (SwitchPreference) findPreference(STATUS_BAR_CLOCK_SECONDS);
+        mStatusBarClockSeconds.setChecked((Settings.System.getInt(
+                getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CLOCK_SECONDS, 0) == 1));
+        mStatusBarClockSeconds.setOnPreferenceChangeListener(this);
 		 
         setHasOptionsMenu(true);
         mCheckPreferences = true;
@@ -284,6 +292,11 @@ public class KangDroidClockDateSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_CLOCK_FONT_SIZE, val);
             mStatusBarClockFontSize.setSummary(mStatusBarClockFontSize.getEntries()[index]);
+            return true;
+        } else if (preference == mStatusBarClockSeconds) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_CLOCK_SECONDS,
+                    (Boolean) newValue ? 1 : 0);
             return true;
         }
         return false;
