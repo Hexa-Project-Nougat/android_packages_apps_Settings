@@ -74,6 +74,12 @@
  		android:key="kdp_special_ui"
  		android:title="@string/kdp_special_ui_category">
 
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="screenshot_crop_and_share"
+            android:title="@string/screenshot_crop_and_share_title"
+            android:summary="@string/screenshot_crop_and_share_summary"
+            android:defaultValue="false" />
+
         <!-- Transparency Settings -->
         <PreferenceScreen android:key="trans_porn"
                 android:title="@string/trans">
