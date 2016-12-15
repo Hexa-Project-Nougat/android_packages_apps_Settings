@@ -437,4 +437,10 @@
 	
 	<style name="Theme.SettingsDialog" parent="@android:style/Theme.Material.Light.Dialog.NoActionBar" />
 
+    <style name="FingerprintHeaderStyle" parent="android:style/TextAppearance.Material.Subhead">
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:textColor">@color/primary_dark_material_light</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
 </resources>
