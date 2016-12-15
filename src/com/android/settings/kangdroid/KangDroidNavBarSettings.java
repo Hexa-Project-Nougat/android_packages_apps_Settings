@@ -41,6 +41,7 @@ import android.view.IWindowManager;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.WindowManagerGlobal;
+import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -75,6 +76,7 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
     private static final String KEY_NAVIGATION_HEIGHT_PORT = "navbar_height_portrait";
     private static final String KEY_NAVIGATION_HEIGHT_LAND = "navbar_height_landscape";
     private static final String KEY_NAVIGATION_WIDTH = "navbar_width";
+	private static final String NAVBAR_DYNAMIC = "navbar_dynamic";
 
     private SwitchPreference mDisableNavigationKeys;
     private SwitchPreference mNavigationBarLeftPref;
@@ -90,6 +92,7 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
     private KangDroidSeekBarPreference mBarHeightPort;
     private KangDroidSeekBarPreference mBarHeightLand;
     private KangDroidSeekBarPreference mBarWidth;
+	private SwitchPreference mNavbarDynamic;
 	
 	public static final int KEY_MASK_HOME = 0x01;
 
@@ -126,7 +129,7 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
         addPreferencesFromResource(R.xml.kangdroid_nav_bar_settings);
 
         final Resources res = getResources();
-        final ContentResolver resolver = getActivity().getContentResolver();
+		final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
 		Activity activity = getActivity();
 
@@ -138,6 +141,8 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
 
         // Navigation bar left
         mNavigationBarLeftPref = (SwitchPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
+		
+		mNavbarDynamic = (SwitchPreference) findPreference(NAVBAR_DYNAMIC);
 
         Action defaultHomeLongPressAction = Action.fromIntSafe(res.getInteger(
                 com.android.internal.R.integer.config_longPressOnHomeBehavior));
@@ -203,6 +208,11 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
             mBarHeightLand = (KangDroidSeekBarPreference) findPreference(KEY_NAVIGATION_HEIGHT_LAND);
             mBarHeightLand.setValue(sizetwo);
             mBarHeightLand.setOnPreferenceChangeListener(this);
+
+        boolean isDynamic = Settings.System.getInt(resolver,
+                Settings.System.NAVBAR_DYNAMIC, 0) == 1;
+        mNavbarDynamic.setChecked(isDynamic);
+        mNavbarDynamic.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -353,6 +363,13 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
             Settings.Secure.putIntForUser(getContentResolver(),
                     Settings.Secure.NAVIGATION_BAR_WIDTH, val, UserHandle.USER_CURRENT);
             return true;
+        } else if (preference.equals(mNavbarDynamic)) {
+            boolean isDynamic = ((Boolean)newValue);
+            Settings.System.putInt(resolver, Settings.System.NAVBAR_DYNAMIC,
+                    isDynamic ? 1 : 0);
+            Toast.makeText(getActivity(), R.string.restart_app_required,
+                    Toast.LENGTH_LONG).show();
+            return true;
         }
         return false;
     }
@@ -378,5 +395,6 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
 
     private void updateBarVisibleAndUpdatePrefs(boolean showing) {
         mNavbarVisibility.setChecked(showing);
+		mNavbarDynamic.setEnabled(mNavbarVisibility.isChecked());
     }
 }

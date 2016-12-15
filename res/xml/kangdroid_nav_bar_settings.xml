@@ -31,6 +31,11 @@
             android:key="navbar_mode"
             android:title="@string/navbar_mode" />
 
+        <SwitchPreference
+            android:key="navbar_dynamic"
+            android:title="@string/navbar_dynamic_title"
+            android:summary="@string/navbar_dynamic_summary" />
+
         <PreferenceScreen
             android:key="smartbar_settings"
             android:title="@string/smartbar_settings_title"
