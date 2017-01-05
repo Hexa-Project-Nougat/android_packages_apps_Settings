@@ -1006,5 +1006,9 @@
     <string name="custom_density_settings">Custom LCD density pixel</string>
     <string name="custom_density_summary">
     <xliff:g name="count" example="520">%d</xliff:g> Density pixel</string>
+	
+    <!-- Navbar Animation -->
+    <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
+    <string name="pixel_navbar_anim_summary">Enables the pixel navbar animation</string>
 
 </resources>

@@ -43,6 +43,13 @@
         android:entries="@array/smartbar_button_animation_entries"
         android:entryValues="@array/smartbar_button_animation_values"
         android:summary="@string/smartbar_button_animation_summary" />
+	
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="pixel_nav_animation"
+            android:title="@string/pixel_navbar_anim_title"
+            android:summary="@string/pixel_navbar_anim_summary"
+            android:dependency="navigation_bar_show"
+            android:defaultValue="true" />
 		
    <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
         android:key="one_handed_mode_ui"
