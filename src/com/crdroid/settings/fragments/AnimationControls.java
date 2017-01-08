@@ -237,6 +237,6 @@ public class AnimationControls extends SettingsPreferenceFragment implements OnP
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.CRDROID_SETTINGS;
+        return MetricsEvent.KANGDROID;
     }
 }
