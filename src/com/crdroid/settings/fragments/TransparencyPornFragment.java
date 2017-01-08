@@ -18,8 +18,8 @@ import android.widget.Toast;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-import com.crdroid.settings.preferences.SeekBarPreference;
-import com.crdroid.settings.preferences.ColorPickerPreference;
+import com.crdroid.settings.preferences.KangDroidSeekBarPreference;
+import com.android.settings.kangdroid.KangDroidSeekBarPreference;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -45,24 +45,24 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
     private static final String PREF_QS_STROKE_DASH_GAP = "qs_dash_gap";
     //private static final String PREF_NOTIFICATION_ALPHA = "notification_alpha";
 
-    private SeekBarPreference mQSShadeAlpha;
-    //private SeekBarPreference mQSHeaderAlpha;
-    private SeekBarPreference mVolumeDialogAlpha;
-    private SeekBarPreference mPowerMenuAlpha;
-    private SeekBarPreference mPowerDialogDim;
+    private KangDroidSeekBarPreference mQSShadeAlpha;
+    //private KangDroidSeekBarPreference mQSHeaderAlpha;
+    private KangDroidSeekBarPreference mVolumeDialogAlpha;
+    private KangDroidSeekBarPreference mPowerMenuAlpha;
+    private KangDroidSeekBarPreference mPowerDialogDim;
     private ListPreference mVolumeDialogStroke;
     private ColorPickerPreference mVolumeDialogStrokeColor;
-    private SeekBarPreference mVolumeDialogStrokeThickness;
-    private SeekBarPreference mVolumeDialogCornerRadius;
-    private SeekBarPreference mVolumeDialogDashWidth;
-    private SeekBarPreference mVolumeDialogDashGap;
+    private KangDroidSeekBarPreference mVolumeDialogStrokeThickness;
+    private KangDroidSeekBarPreference mVolumeDialogCornerRadius;
+    private KangDroidSeekBarPreference mVolumeDialogDashWidth;
+    private KangDroidSeekBarPreference mVolumeDialogDashGap;
     private ListPreference mQSStroke;
     private ColorPickerPreference mQSStrokeColor;
-    private SeekBarPreference mQSStrokeThickness;
-    private SeekBarPreference mQSCornerRadius;
-    private SeekBarPreference mQSDashWidth;
-    private SeekBarPreference mQSDashGap;
-    //private SeekBarPreference mNotificationsAlpha;
+    private KangDroidSeekBarPreference mQSStrokeThickness;
+    private KangDroidSeekBarPreference mQSCornerRadius;
+    private KangDroidSeekBarPreference mQSDashWidth;
+    private KangDroidSeekBarPreference mQSDashGap;
+    //private KangDroidSeekBarPreference mNotificationsAlpha;
 
     static final int DEFAULT_VOLUME_DIALOG_STROKE_COLOR = 0xFF4285F4;
     static final int DEFAULT_QS_STROKE_COLOR = 0xFF4285F4;
@@ -84,7 +84,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // QS shade alpha
             mQSShadeAlpha =
-                    (SeekBarPreference) prefSet.findPreference(PREF_QS_TRANSPARENT_SHADE);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_QS_TRANSPARENT_SHADE);
             int qSShadeAlpha = Settings.System.getInt(resolver,
                     Settings.System.QS_TRANSPARENT_SHADE, 255);
             mQSShadeAlpha.setValue(qSShadeAlpha / 1);
@@ -92,7 +92,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // QS header alpha
             /*mQSHeaderAlpha =
-                    (SeekBarPreference) prefSet.findPreference(PREF_QS_TRANSPARENT_HEADER);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_QS_TRANSPARENT_HEADER);
             int qSHeaderAlpha = Settings.System.getInt(resolver,
                     Settings.System.QS_TRANSPARENT_HEADER, 255);
             mQSHeaderAlpha.setValue(qSHeaderAlpha / 1);
@@ -100,7 +100,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // Volume dialog alpha
             mVolumeDialogAlpha =
-                    (SeekBarPreference) prefSet.findPreference(PREF_TRANSPARENT_VOLUME_DIALOG);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_TRANSPARENT_VOLUME_DIALOG);
             int volumeDialogAlpha = Settings.System.getInt(resolver,
                     Settings.System.TRANSPARENT_VOLUME_DIALOG, 255);
             mVolumeDialogAlpha.setValue(volumeDialogAlpha / 1);
@@ -108,7 +108,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // Power menu alpha
             mPowerMenuAlpha =
-                    (SeekBarPreference) prefSet.findPreference(PREF_TRANSPARENT_POWER_MENU);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_TRANSPARENT_POWER_MENU);
             int powerMenuAlpha = Settings.System.getInt(resolver,
                     Settings.System.TRANSPARENT_POWER_MENU, 100);
             mPowerMenuAlpha.setValue(powerMenuAlpha / 1);
@@ -116,7 +116,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // Power/reboot dialog dim
             mPowerDialogDim =
-                    (SeekBarPreference) prefSet.findPreference(PREF_TRANSPARENT_POWER_DIALOG_DIM);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_TRANSPARENT_POWER_DIALOG_DIM);
             int powerDialogDim = Settings.System.getInt(resolver,
                     Settings.System.TRANSPARENT_POWER_DIALOG_DIM, 50);
             mPowerDialogDim.setValue(powerDialogDim / 1);
@@ -144,7 +144,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // Volume dialog stroke thickness
             mVolumeDialogStrokeThickness =
-                    (SeekBarPreference) prefSet.findPreference(PREF_VOLUME_DIALOG_STROKE_THICKNESS);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_VOLUME_DIALOG_STROKE_THICKNESS);
             int volumeDialogStrokeThickness = Settings.System.getInt(resolver,
                     Settings.System.VOLUME_DIALOG_STROKE_THICKNESS, 4);
             mVolumeDialogStrokeThickness.setValue(volumeDialogStrokeThickness / 1);
@@ -152,7 +152,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // Volume dialog corner radius
             mVolumeDialogCornerRadius =
-                    (SeekBarPreference) prefSet.findPreference(PREF_VOLUME_DIALOG_CORNER_RADIUS);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_VOLUME_DIALOG_CORNER_RADIUS);
             int volumeDialogCornerRadius = Settings.System.getInt(resolver,
                     Settings.System.VOLUME_DIALOG_CORNER_RADIUS, 10);
             mVolumeDialogCornerRadius.setValue(volumeDialogCornerRadius / 1);
@@ -160,7 +160,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // Volume dialog dash width
             mVolumeDialogDashWidth =
-                    (SeekBarPreference) prefSet.findPreference(PREF_VOLUME_DIALOG_STROKE_DASH_WIDTH);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_VOLUME_DIALOG_STROKE_DASH_WIDTH);
             int volumeDialogDashWidth = Settings.System.getInt(resolver,
                     Settings.System.VOLUME_DIALOG_STROKE_DASH_WIDTH, 0);
             if (volumeDialogDashWidth != 0) {
@@ -172,7 +172,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // Volume dialog dash gap
             mVolumeDialogDashGap =
-                    (SeekBarPreference) prefSet.findPreference(PREF_VOLUME_DIALOG_STROKE_DASH_GAP);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_VOLUME_DIALOG_STROKE_DASH_GAP);
             int volumeDialogDashGap = Settings.System.getInt(resolver,
                     Settings.System.VOLUME_DIALOG_STROKE_DASH_GAP, 10);
             mVolumeDialogDashGap.setValue(volumeDialogDashGap / 1);
@@ -200,7 +200,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // QS stroke thickness
             mQSStrokeThickness =
-                    (SeekBarPreference) prefSet.findPreference(PREF_QS_STROKE_THICKNESS);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_QS_STROKE_THICKNESS);
             int qSStrokeThickness = Settings.System.getInt(resolver,
                     Settings.System.QS_STROKE_THICKNESS, 4);
             mQSStrokeThickness.setValue(qSStrokeThickness / 1);
@@ -208,7 +208,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // QS corner radius
             mQSCornerRadius =
-                    (SeekBarPreference) prefSet.findPreference(PREF_QS_CORNER_RADIUS);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_QS_CORNER_RADIUS);
             int qSCornerRadius = Settings.System.getInt(resolver,
                     Settings.System.QS_CORNER_RADIUS, 5);
             mQSCornerRadius.setValue(qSCornerRadius / 1);
@@ -216,7 +216,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // QS dash width
             mQSDashWidth =
-                    (SeekBarPreference) prefSet.findPreference(PREF_QS_STROKE_DASH_WIDTH);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_QS_STROKE_DASH_WIDTH);
             int qSDialogDashWidth = Settings.System.getInt(resolver,
                     Settings.System.QS_STROKE_DASH_WIDTH, 0);
             if (qSDialogDashWidth != 0) {
@@ -228,7 +228,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // QS dash gap
             mQSDashGap =
-                    (SeekBarPreference) prefSet.findPreference(PREF_QS_STROKE_DASH_GAP);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_QS_STROKE_DASH_GAP);
             int qSDialogDashGap = Settings.System.getInt(resolver,
                     Settings.System.QS_STROKE_DASH_GAP, 10);
             mQSDashGap.setValue(qSDialogDashGap / 1);
@@ -236,7 +236,7 @@ public class TransparencyPornFragment extends SettingsPreferenceFragment
 
             // Notifications alpha
             /*mNotificationsAlpha =
-                    (SeekBarPreference) prefSet.findPreference(PREF_NOTIFICATION_ALPHA);
+                    (KangDroidSeekBarPreference) prefSet.findPreference(PREF_NOTIFICATION_ALPHA);
             int notificationsAlpha = Settings.System.getInt(resolver,
                     Settings.System.NOTIFICATION_ALPHA, 255);
             mNotificationsAlpha.setValue(notificationsAlpha / 1);
