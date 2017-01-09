@@ -1001,5 +1001,10 @@
     <string name="task_manager_kill_button_1">Circular</string>
     <string name="task_manager_kill_button_2">Text</string>
     <string name="task_manager_kill_button_3">Classic</string>
+	
+    <!-- Custom LCD density -->
+    <string name="custom_density_settings">Custom LCD density pixel</string>
+    <string name="custom_density_summary">
+    <xliff:g name="count" example="520">%d</xliff:g> Density pixel</string>
 
 </resources>
