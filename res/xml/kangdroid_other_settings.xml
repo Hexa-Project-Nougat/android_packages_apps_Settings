@@ -46,6 +46,10 @@
             android:title="@string/allow_signature_fake"
             android:summary="@string/allow_signature_fake_summary"
             android:defaultValue="false" />
+			
+        <com.android.settings.rr.LCDDensityPreference
+            android:key="custom_density"
+            android:title="@string/custom_density_settings" />
 
         <!-- Transparency Settings -->
         <PreferenceScreen android:key="trans_porn"
