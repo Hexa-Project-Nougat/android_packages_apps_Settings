@@ -3068,6 +3068,13 @@
 
         <activity android:name=".kangdroid.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".kangdroid.gestureanywhere.GestureAnywhereCreateGestureActivity" />
+		
+        <activity
+            android:name="com.android.settings.kangdroid.KangDroidTabViewTesting">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name=".search.SettingsSearchIndexablesProvider"
