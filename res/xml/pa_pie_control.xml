@@ -13,11 +13,19 @@
         android:fragment="com.crdroid.settings.fragments.PieTargets"
         android:dependency="pa_pie_state" />
 
-    <PreferenceScreen
+	<Preference
+		android:key="pa_pie_color"
+		android:title="@string/pa_pie_color_title"
+		android:dependency="pa_pie_state" >
+		<intent android:targetPackage="com.android.settings"
+		        android:targetClass="com.crdroid.settings.fragments.PieColor"/>
+	</Preference>
+	
+ <!--   <PreferenceScreen
         android:key="pa_pie_color"
         android:title="@string/pa_pie_color_title"
         android:fragment="com.crdroid.settings.fragments.PieColor"
-        android:dependency="pa_pie_state" />
+        android:dependency="pa_pie_state" /> -->
 
 
    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference

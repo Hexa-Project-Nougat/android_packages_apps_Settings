@@ -14,6 +14,7 @@ import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceActivity;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
@@ -27,11 +28,10 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
-public class PieColor extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
+public class PieColor extends PreferenceActivity implements OnPreferenceChangeListener {
 
     private static final String PA_PIE_ENABLE_COLOR = "pa_pie_enable_color";
     private static final String PA_PIE_BACKGROUND = "pa_pie_background";
