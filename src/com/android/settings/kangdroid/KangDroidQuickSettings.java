@@ -69,6 +69,9 @@ public class KangDroidQuickSettings extends SettingsPreferenceFragment implement
     private ListPreference mQsColumns;
 	private ListPreference mSysuiQqsCount;
 	
+	public KangDroidQuickSettings () {
+	}
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
