@@ -3068,6 +3068,13 @@
 
         <activity android:name=".kangdroid.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".kangdroid.gestureanywhere.GestureAnywhereCreateGestureActivity" />
+		
+        <activity
+            android:name="com.android.settings.kangdroid.KangDroidTabViewTesting">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name=".search.SettingsSearchIndexablesProvider"
@@ -3311,6 +3318,34 @@
             <intent-filter>
                 <action android:name=".applications.LockPatternActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+		
+        <!-- BatteryBar Activity -->
+        <activity android:name="com.android.settings.kangdroid.activity.BatteryBarActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+		
+        <!-- Ticker Activity -->
+        <activity android:name="com.android.settings.kangdroid.activity.TickerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+		
+        <!-- Clock and Date Activity -->
+        <activity android:name="com.android.settings.kangdroid.activity.KangDroidClockDateActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+		
+        <!-- Carrier Label Activity -->
+        <activity android:name="com.android.settings.kangdroid.activity.KangDroidCarrierLabelActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
