@@ -94,5 +94,11 @@
         android:fragment="com.android.settings.kangdroid.KangDroidOtherSettings" />
 		
 	</PreferenceCategory>
+	
+    <PreferenceScreen
+        android:key="kdp_testing_tabview"
+        android:title="@string/kdp_quick_settings_title"
+		<intent android:action="com.android.settings.kangdroid.KangDroidTabViewTesting"/>
+	</PreferenceScreen>
 
 </PreferenceScreen>
