@@ -57,6 +57,9 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
 	private ListPreference mHeadsUpTimeOut;
 	private ListPreference mHeadsUpSnoozeTime;
 	
+	public KangDroidStatusBarSettings () {
+	}
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
