@@ -320,19 +320,6 @@
 	<string name="kdp_other_settings_category_title">Other Customization</string>
 	<string name="kdp_other_settings_pref_title">Other Hexa Settings </string>
 	
-    <!-- Status bar - Clock -->
-    <string name="status_bar_clock_style_title">Clock style</string>
-    <string name="status_bar_clock_style_right">Right</string>
-    <string name="status_bar_clock_style_left">Left</string>
-    <string name="status_bar_clock_style_center">Center</string>
-    <string name="status_bar_clock_style_hidden">Hidden</string>
-
-    <string name="status_bar_am_pm_title">AM/PM style</string>
-    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
-    <string name="status_bar_am_pm_normal">Normal</string>
-    <string name="status_bar_am_pm_small">Small</string>
-    <string name="status_bar_am_pm_hidden">Hidden (default)</string>
-	
 	<!-- Main Clock Category -->
 	<string name="kdp_main_clock_cat_title">Main Clock Customization</string>
 	<string name="kdp_clock_font_category_title">Clock Font Customization</string>
@@ -622,11 +609,10 @@
         <string name="navbar_buttons_alpha_title">Buttons transparency</string>
 
     <!-- Status bar - Clock -->
-    <string name="status_bar_clock_style_title">Clock style</string>
-    <string name="status_bar_clock_style_right">Right</string>
-    <string name="status_bar_clock_style_left">Left</string>
-    <string name="status_bar_clock_style_center">Center</string>
-    <string name="status_bar_clock_style_hidden">Hidden</string>
+    <string name="status_bar_clock_position_title">Clock position</string>
+    <string name="status_bar_clock_position_right">Right</string>
+    <string name="status_bar_clock_position_left">Left</string>
+    <string name="status_bar_clock_position_center">Center</string>
 
     <string name="status_bar_am_pm_title">AM/PM style</string>
     <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
