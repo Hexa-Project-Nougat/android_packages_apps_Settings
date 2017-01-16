@@ -3363,6 +3363,9 @@
 		
 		<!-- Network Traffic -->
 		<activity android:name="com.android.settings.kangdroid.activity.NetworkTrafficActivity" />
+		
+		<!-- Task Manager -->
+		<activity android:name="com.android.settings.kangdroid.activity.TaskManagerSettingsActivity" />
 
     </application>
 </manifest>
