@@ -105,7 +105,7 @@ public class KangDroidAnimSettings extends SettingsPreferenceFragment
             int index = mToastAnimation.findIndexOfValue((String) objValue);
             Settings.System.putString(resolver, Settings.System.TOAST_ANIMATION, (String) objValue);
             mToastAnimation.setSummary(mToastAnimation.getEntries()[index]);
-            Toast.makeText(mContext, "Toast Test", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Toast Test", Toast.LENGTH_SHORT).show();
             return true;
         }
         if (KEY_LISTVIEW_ANIMATION.equals(key)) {
