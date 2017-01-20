@@ -27,7 +27,6 @@ import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
-import cyanogenmod.preference.CMSystemSettingListPreference;
 import android.provider.Settings;
 
 import com.android.settings.R;
@@ -36,6 +35,8 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+
+import cyanogenmod.providers.CMSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,9 +52,9 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
 	
-    private CMSystemSettingListPreference mStatusBarBattery;
-    private CMSystemSettingListPreference mStatusBarBatteryShowPercent;
-    private CMSystemSettingListPreference mQuickPulldown;
+    private ListPreference mStatusBarBattery;
+    private ListPreference mStatusBarBatteryShowPercent;
+    private ListPreference mQuickPulldown;
 	private ListPreference mHeadsUpTimeOut;
 	private ListPreference mHeadsUpSnoozeTime;
 	
@@ -67,14 +68,29 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
 		
 		ContentResolver resolver = getActivity().getContentResolver();
 		
-        mStatusBarBattery = (CMSystemSettingListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
-        mStatusBarBatteryShowPercent =
-                (CMSystemSettingListPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
-        mQuickPulldown = (CMSystemSettingListPreference) findPreference(STATUS_BAR_QUICK_QS_PULLDOWN);
-
+        mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
+        int batteryStyle = CMSettings.System.getInt(resolver,
+                CMSettings.System.STATUS_BAR_BATTERY_STYLE, 0);
+        mStatusBarBattery.setValue(String.valueOf(batteryStyle));
+        mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
         mStatusBarBattery.setOnPreferenceChangeListener(this);
-        enableStatusBarBatteryDependents(mStatusBarBattery.getIntValue(2));
-        updatePulldownSummary(mQuickPulldown.getIntValue(0));
+		
+        mStatusBarBatteryShowPercent =
+                (ListPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
+		
+        int batteryShowPercent = CMSettings.System.getInt(resolver,
+                CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0);
+        mStatusBarBatteryShowPercent.setValue(String.valueOf(batteryShowPercent));
+        mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
+        mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
+
+		// Quick Pulldown Preferences
+		mQuickPulldown = (ListPreference) findPreference(STATUS_BAR_QUICK_QS_PULLDOWN);
+        int quickPulldown = CMSettings.System.getInt(resolver,
+                CMSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN, 1);
+        mQuickPulldown.setValue(String.valueOf(quickPulldown));
+        updatePulldownSummary(quickPulldown);
+        mQuickPulldown.setOnPreferenceChangeListener(this);
 		
         Resources systemUiResources;
         try {
@@ -100,6 +116,7 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
                 Settings.System.HEADS_UP_NOTIFICATION_SNOOZE, defaultSnooze);
         mHeadsUpSnoozeTime.setValue(String.valueOf(headsUpSnooze));
         updateHeadsUpSnoozeTimeSummary(headsUpSnooze);
+        enableStatusBarBatteryDependents(batteryStyle);
 		
     }
 	
@@ -110,10 +127,30 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        int batteryStyle = Integer.valueOf((String) newValue);
-        enableStatusBarBatteryDependents(batteryStyle);
-
-		if (preference == mHeadsUpTimeOut) {
+		ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mStatusBarBattery) {
+            int batteryStyle = Integer.valueOf((String) newValue);
+            int index = mStatusBarBattery.findIndexOfValue((String) newValue);
+            CMSettings.System.putInt(
+                    resolver, CMSettings.System.STATUS_BAR_BATTERY_STYLE, batteryStyle);
+            mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
+            enableStatusBarBatteryDependents(batteryStyle);
+            return true;
+        } else if (preference == mStatusBarBatteryShowPercent) {
+            int batteryShowPercent = Integer.valueOf((String) newValue);
+            int index = mStatusBarBatteryShowPercent.findIndexOfValue((String) newValue);
+            CMSettings.System.putInt(
+                    resolver, CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, batteryShowPercent);
+            mStatusBarBatteryShowPercent.setSummary(
+                    mStatusBarBatteryShowPercent.getEntries()[index]);
+            return true;
+	    } else if (preference == mQuickPulldown) {
+	        int quickPulldown = Integer.valueOf((String) newValue);
+	        CMSettings.System.putInt(
+	                resolver, CMSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN, quickPulldown);
+	        updatePulldownSummary(quickPulldown);
+	        return true;
+		} else if (preference == mHeadsUpTimeOut) {
             int headsUpTimeOut = Integer.valueOf((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.HEADS_UP_TIMEOUT,
@@ -139,7 +176,7 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
             mStatusBarBatteryShowPercent.setEnabled(true);
         }
     }
-
+	
     private void updatePulldownSummary(int value) {
         Resources res = getResources();
 
