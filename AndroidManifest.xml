@@ -3360,6 +3360,9 @@
 		
 		<!-- Blur Settings -->
 		<activity android:name="com.android.settings.kangdroid.activity.BlurPersonalizationsActivity" />
+		
+		<!-- Network Traffic -->
+		<activity android:name="com.android.settings.kangdroid.activity.NetworkTrafficActivity" />
 
     </application>
 </manifest>
