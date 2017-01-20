@@ -128,7 +128,7 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
             updateHeadsUpSnoozeTimeSummary(headsUpSnooze);
             return true;
 		}
-        return false;
+        return true;
     }
 	
     private void enableStatusBarBatteryDependents(int batteryIconStyle) {
