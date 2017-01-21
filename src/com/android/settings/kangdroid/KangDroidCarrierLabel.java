@@ -62,7 +62,7 @@ public class KangDroidCarrierLabel extends SettingsPreferenceFragment implements
     private ListPreference mShowCarrierLabel;
     private String mCustomCarrierLabelText;
     private ColorPickerPreference mCarrierColorPicker;
-    private SeekBarPreference mStatusBarCarrierSize;
+    //private SeekBarPreference mStatusBarCarrierSize;
 
     @Override
     protected int getMetricsCategory() {
@@ -99,10 +99,10 @@ public class KangDroidCarrierLabel extends SettingsPreferenceFragment implements
         mCarrierColorPicker.setSummary(hexColor);
         mCarrierColorPicker.setNewPreviewColor(intColor);
 
-        mStatusBarCarrierSize = (SeekBarPreference) findPreference(STATUS_BAR_CARRIER_FONT_SIZE);
+        /*mStatusBarCarrierSize = (SeekBarPreference) findPreference(STATUS_BAR_CARRIER_FONT_SIZE);
 		mStatusBarCarrierSize.setMax(17);
 		mStatusBarCarrierSize.setProgress(1);
-        mStatusBarCarrierSize.setOnPreferenceChangeListener(this);
+        mStatusBarCarrierSize.setOnPreferenceChangeListener(this); */
 
     }
 
@@ -134,11 +134,11 @@ public class KangDroidCarrierLabel extends SettingsPreferenceFragment implements
                 STATUS_BAR_SHOW_CARRIER, showCarrierLabel, UserHandle.USER_CURRENT);
             mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntries()[index]);
             return true;
-         } else if (preference == mStatusBarCarrierSize) {
+/*         } else if (preference == mStatusBarCarrierSize) {
             int width = ((Integer)newValue).intValue();
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, width);
-            return true;
+            return true; */
          }
          return false;
     }
