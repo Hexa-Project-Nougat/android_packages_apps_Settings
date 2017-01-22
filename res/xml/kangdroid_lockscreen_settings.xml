@@ -63,6 +63,6 @@
                  android:summary="@string/lockscreen_battery_info_summary" 
                  android:defaultValue="false" />
 			
-	</PreferencCategory>
+	</PreferenceCategory>
 		
 </PreferenceScreen>
