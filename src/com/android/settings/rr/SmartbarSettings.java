@@ -77,7 +77,7 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
     private ListPreference mImeActions;
     private ListPreference mButtonAnim;
 	private Context mContext;
-    private KangDroidSeekBarPreference mButtonsAlpha;
+//    private KangDroidSeekBarPreference mButtonsAlpha;
 	
     private ColorPickerPreference mNavbuttoncolor;
   
@@ -134,12 +134,12 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
         mNavbuttoncolor.setSummary(hexColor);
         mNavbuttoncolor.setNewPreviewColor(intColor);
 
-        mButtonsAlpha =
+/*        mButtonsAlpha =
                 (KangDroidSeekBarPreference) findPreference(PREF_NAVBAR_BUTTONS_ALPHA);
         int bAlpha = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.NAVBAR_BUTTONS_ALPHA, 255, UserHandle.USER_CURRENT);
-        mButtonsAlpha.setValue(255);
-        mButtonsAlpha.setOnPreferenceChangeListener(this);
+        mButtonsAlpha.setValue(bAlpha / 1);
+        mButtonsAlpha.setOnPreferenceChangeListener(this); */
 		
 
         setHasOptionsMenu(true);
@@ -282,10 +282,10 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
         mButtonAnim.setValue(String.valueOf(0));
         mButtonAnim.setOnPreferenceChangeListener(this);
 
-	Settings.Secure.putInt(getActivity().getContentResolver(),
+/*	Settings.Secure.putInt(getActivity().getContentResolver(),
                 "navbar_buttons_alpha", 255);
         mButtonsAlpha.setValue(255);
-        mButtonsAlpha.setOnPreferenceChangeListener(this); 
+        mButtonsAlpha.setOnPreferenceChangeListener(this);  */
     }
 
     @Override
@@ -313,11 +313,11 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.NAVBAR_BUTTON_COLOR, intHex);
             return true;
-       } else if (preference == mButtonsAlpha) {
+/*       } else if (preference == mButtonsAlpha) {
             int val = (Integer) newValue;
             Settings.Secure.putIntForUser(getContentResolver(),
                     Settings.Secure.NAVBAR_BUTTONS_ALPHA, val * 1, UserHandle.USER_CURRENT);
-            return true;  
+            return true;  */
 	}
         return false;
 	}
