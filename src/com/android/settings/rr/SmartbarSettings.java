@@ -126,13 +126,13 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
 
         
         
-/*        mNavbuttoncolor = (ColorPickerPreference) findPreference(NAVBAR_COLOR);
+        mNavbuttoncolor = (ColorPickerPreference) findPreference(NAVBAR_COLOR);
         mNavbuttoncolor.setOnPreferenceChangeListener(this);
         intColor = Settings.System.getInt(getContentResolver(),
                     Settings.System.NAVBAR_BUTTON_COLOR, DEFAULT);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mNavbuttoncolor.setSummary(hexColor);
-        mNavbuttoncolor.setNewPreviewColor(intColor); */
+        mNavbuttoncolor.setNewPreviewColor(intColor);
 
 /*        mButtonsAlpha =
                 (KangDroidSeekBarPreference) findPreference(PREF_NAVBAR_BUTTONS_ALPHA);
@@ -305,14 +305,14 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
             Settings.Secure.putInt(getContentResolver(), "smartbar_ime_hint_mode",
                     val);
             return true;
-/*        } else if (preference == mNavbuttoncolor) {
+        } else if (preference == mNavbuttoncolor) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.NAVBAR_BUTTON_COLOR, intHex);
-            return true; */
+            return true;
 /*       } else if (preference == mButtonsAlpha) {
             int val = (Integer) newValue;
             Settings.Secure.putIntForUser(getContentResolver(),
