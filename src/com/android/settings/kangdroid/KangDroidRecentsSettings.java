@@ -110,12 +110,12 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     }
 	
     @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+    public boolean onPreferenceTreeClick(Preference preference) {
         if (preference == mOmniSwitchSettings){
             startActivity(INTENT_OMNISWITCH_SETTINGS);
             return true;
         }
-        return super.onPreferenceTreeClick(preferenceScreen, preference);
+        return super.onPreferenceTreeClick(preference);
     }
 	
     @Override
