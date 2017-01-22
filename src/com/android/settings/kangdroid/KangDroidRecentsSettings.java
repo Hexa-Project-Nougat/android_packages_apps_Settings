@@ -16,13 +16,16 @@
 
 package com.android.settings.kangdroid;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.res.Resources;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.UserHandle;
-import android.preference.PreferenceCategory;
-import android.preference.PreferenceScreen;
+import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceScreen;
+import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
