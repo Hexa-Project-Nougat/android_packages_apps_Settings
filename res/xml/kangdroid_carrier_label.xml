@@ -21,7 +21,7 @@
 	
 	<PreferenceCategory
 		android:key="kdp_main_carrier"
-		android:title="kdp_main_carrier_title">
+		android:title="@string/kdp_main_carrier_title">
 
     <ListPreference
         android:key="status_bar_show_carrier"
