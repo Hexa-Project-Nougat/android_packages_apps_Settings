@@ -145,7 +145,6 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
 
             Settings.System.putInt(
                     resolver, Settings.System.RECENTS_USE_OMNISWITCH, value ? 1 : 0);
-            mOmniSwitchSettings.setEnabled(value);
         }
         return false;
     }
