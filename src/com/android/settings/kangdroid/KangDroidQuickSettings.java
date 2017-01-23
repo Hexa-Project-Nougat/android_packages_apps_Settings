@@ -84,7 +84,7 @@ public class KangDroidQuickSettings extends SettingsPreferenceFragment implement
         private static final String CUSTOM_HEADER_BROWSE = "custom_header_browse";
 
     private ListPreference mDaylightHeaderPack;
-    private SeekBarPreference mHeaderShadow;
+    private KangDroidSeekBarPreference mHeaderShadow;
 
     private ListPreference mTileAnimationStyle;
     private ListPreference mTileAnimationDuration;
@@ -267,20 +267,20 @@ public class KangDroidQuickSettings extends SettingsPreferenceFragment implement
             mSysuiQqsCount.setSummary(mSysuiQqsCount.getEntries()[SysuiQqsCountIndex]);
             return true;
              } else if (preference == mDaylightHeaderPack) {
-                  String value = (String) newValue;
+                  String value = (String) objValue;
                   Settings.System.putString(resolver,
                           Settings.System.STATUS_BAR_DAYLIGHT_HEADER_PACK, value);
                   int valueIndex = mDaylightHeaderPack.findIndexOfValue(value);
                   mDaylightHeaderPack.setSummary(mDaylightHeaderPack.getEntries()[valueIndex]);
                   return true;
               } else if (preference == mHeaderShadow) {
-                  Integer headerShadow = (Integer) newValue;
+                  Integer headerShadow = (Integer) objValue;
                   int realHeaderValue = (int) (((double) headerShadow / 100) * 255);
                   Settings.System.putInt(resolver,
                           Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, realHeaderValue);
                   return true;
               }  else if (preference == mHeaderProvider) {
-                String value = (String) newValue;
+                String value = (String) objValue;
                 Settings.System.putString(resolver,
                         Settings.System.STATUS_BAR_CUSTOM_HEADER_PROVIDER, value);
                 int valueIndex = mHeaderProvider.findIndexOfValue(value);
