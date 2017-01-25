@@ -60,11 +60,11 @@
                     android:targetClass="com.android.settings.kangdroid.activity.PulseSettingsActivity" />
         </PreferenceScreen>
 			
-        <PreferenceScreen
+<!--        <PreferenceScreen
             android:key="navigation_bar"
             android:title="@string/navigation_bar_title">
             <intent android:action="com.android.settings.action.NAV_BAR_TUNER" />
-        </PreferenceScreen> 
+        </PreferenceScreen>  -->
 			
 		</PreferenceCategory>
 	    
