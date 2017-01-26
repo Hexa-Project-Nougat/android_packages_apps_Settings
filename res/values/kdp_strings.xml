@@ -1026,4 +1026,8 @@
 	<string name="kdp_density_category">Density Changer</string>
 	<string name="kdp_special_ui_category">Special UI Customizations</string>
 	
+    <!-- Disable Quicks settings -->
+    <string name="lockscreen_qs_disabled_title">Disable quick settings</string>
+    <string name="lockscreen_qs_disabled_summary">Disables quick settings on secure lockscreen</string>
+
 </resources>
