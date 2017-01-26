@@ -3366,6 +3366,12 @@
 		
 		<!-- Task Manager -->
 		<activity android:name="com.android.settings.kangdroid.activity.TaskManagerSettingsActivity" />
+		
+		<!-- QSUI Settings -->
+		<activity android:name="com.android.settings.kangdroid.activity.KangDroidQSUISettingsActivity" />
+		
+		<!-- QS Header -->
+		<activity android:name="com.android.settings.kangdroid.activity.KangDroidQSHeaderSettingsActivity" />
 
     </application>
 </manifest>
