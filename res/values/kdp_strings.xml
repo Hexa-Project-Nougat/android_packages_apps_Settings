@@ -435,7 +435,7 @@
 	<string name="kdp_device_info_summary">See information of Hexa-Project</string>
 	<string name="kdp_kangdroid_title">Hexa-Project Information</string>
 	<string name="kdp_device_hardware_info_title">Device Hardware Information</string>
-	<string name="kdp_cyanogenmod_info_title">CyanogenMod Information</string>
+	<string name="kdp_cyanogenmod_info_title">LineageOS Information</string>
 	<string name="kdp_update_title">Update Hexa-Project</string>
 	
 	<!-- From CMParts -->
@@ -1010,5 +1010,24 @@
     <!-- Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
     <string name="pixel_navbar_anim_summary">Enables the pixel navbar animation</string>
+	
+	<!-- Categories -->
+	<string name="qs_main_category_title">Main QS Settings</string>
+	<string name="qs_ui_hexa">QS UI Customizations</string>
+	<string name="qs_ui_pref_title">QS UI Settings</string>
+	<string name="qs_ui_pref_title_summary">Layout &amp; Animation</string>
+	<string name="qs_header_category">QS Header Customizations</string>
+	<string name="task_manager_category_title">Task Manager Customizations</string>
+	<string name="custom_header_category_title">Custom Header Settings</string>
+	<string name="qs_button_header_category">QS Header Button Settings</string>
+	<string name="qs_header_customization_category">QS Header Customizations</string>
+	<string name="qs_header_pref">QS Header Settings</string>
+	<string name="qs_header_pref_summary">Customize QS Header</string>
+	<string name="omni_switch_category">OmniSwitch Customization</string>
+	<string name="aosp_clear_location_title">AOSP\'s Recents: Clear Button</string>
+	<string name="aosp_other_ui">AOSP\'s Recents: Other UI</string>
+	<string name="kdp_others_category">Other Customizations</string>
+	<string name="kdp_density_category">Density Changer</string>
+	<string name="kdp_special_ui_category">Special UI Customizations</string>
 
 </resources>
