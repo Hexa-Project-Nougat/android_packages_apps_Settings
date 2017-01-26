@@ -57,8 +57,10 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.kangdroid.KangDroidSeekBarPreference;
+import com.android.settings.cyanogenmod.SecureSettingSwitchPreference;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.internal.widget.LockPatternUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,10 +70,23 @@ import java.util.Set;
 
 
 public class KangDroidQuickSettings extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
+	private static final String PREF_QSLOCK = "lockscreen_qs_disabled";
+	
+	private SecureSettingSwitchPreference mQsLock;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_qs_settings);
+        PreferenceScreen prefScreen = getPreferenceScreen();
+        ContentResolver resolver = getActivity().getContentResolver();
+		
+		final LockPatternUtils lockPatternUtils = new LockPatternUtils(getActivity());
+		
+        mQsLock = (SecureSettingSwitchPreference) prefScreen.findPreference(PREF_QSLOCK);
+        if (!lockPatternUtils.isSecure(MY_USER_ID)) {
+            qscat.removePreference(mQsLock);
+        }
     }
 	
     @Override

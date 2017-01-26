@@ -18,6 +18,12 @@
 	<PreferenceCategory
 		android:key="qs_main_category"
 		android:title="@string/qs_main_category_title">
+		
+     <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+        android:key="lockscreen_qs_disabled"
+        android:title="@string/lockscreen_qs_disabled_title"
+        android:summary="@string/lockscreen_qs_disabled_summary"
+        android:defaultValue="false"/>
 	
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="quick_settings_vibrate"
