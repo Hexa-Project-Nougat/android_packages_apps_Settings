@@ -30,26 +30,36 @@
 	 </PreferenceCategory>
 		 
 	<PreferenceCategory
-		android:key="kdp_flash_light_notification"
-		android:title="@string/kdp_flash_light_notification_title">
+		android:key="kdp_others"
+		android:title="@string/kdp_others_category">
 
-    <SwitchPreference
-         android:key="flashlight_notification"
-         android:title="@string/flashlight_notification_title"
-         android:summary="@string/flashlight_notification_summary"
-         android:defaultValue="false" />
+		<SwitchPreference
+        	android:key="flashlight_notification"
+         	android:title="@string/flashlight_notification_title"
+         	android:summary="@string/flashlight_notification_summary"
+         	android:defaultValue="false" />
 		 
-	 </PreferenceCategory>
-	 
-        <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+         <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
             android:key="allow_signature_fake"
             android:title="@string/allow_signature_fake"
             android:summary="@string/allow_signature_fake_summary"
             android:defaultValue="false" />
+		 
+	 </PreferenceCategory>
+	 
+ 	<PreferenceCategory
+ 		android:key="kdp_density"
+ 		android:title="@string/kdp_density_category">
 			
         <com.android.settings.rr.LCDDensityPreference
             android:key="custom_density"
             android:title="@string/custom_density_settings" />
+			
+	</PreferenceCategory>
+	
+ 	<PreferenceCategory
+ 		android:key="kdp_special_ui"
+ 		android:title="@string/kdp_special_ui_category">
 
         <!-- Transparency Settings -->
         <PreferenceScreen android:key="trans_porn"
@@ -66,5 +76,7 @@
                     android:targetPackage="com.android.settings"
                     android:targetClass="com.android.settings.kangdroid.activity.BlurPersonalizationsActivity" />
         </PreferenceScreen>
+		
+	</PreferenceCategory>
 		
 </PreferenceScreen>
