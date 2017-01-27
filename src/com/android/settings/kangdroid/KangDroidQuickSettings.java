@@ -71,6 +71,7 @@ import java.util.Set;
 
 public class KangDroidQuickSettings extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 	private static final String PREF_QSLOCK = "lockscreen_qs_disabled";
+	private static final int MY_USER_ID = UserHandle.myUserId();
 	
 	private SecureSettingSwitchPreference mQsLock;
 	
