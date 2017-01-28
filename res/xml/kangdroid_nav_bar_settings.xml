@@ -39,7 +39,8 @@
 			
         <!-- Smart Bar Settings -->
         <PreferenceScreen android:key="smartbar_settings"
-                android:title="@string/smartbar_settings_title">
+                android:title="@string/smartbar_settings_title"
+				android:dependency="navbar_visibility">
             <intent android:action="android.intent.action.MAIN"
                     android:targetPackage="com.android.settings"
                     android:targetClass="com.android.settings.kangdroid.activity.SmartbarSettingsActivity" />
@@ -55,7 +56,8 @@
 			
         <!-- Pulse Settings -->
         <PreferenceScreen android:key="pulse_settings"
-                android:title="@string/pulse_settings">
+                android:title="@string/pulse_settings"
+				android:dependency="navbar_visibility">
             <intent android:action="android.intent.action.MAIN"
                     android:targetPackage="com.android.settings"
                     android:targetClass="com.android.settings.kangdroid.activity.PulseSettingsActivity" />
@@ -76,7 +78,7 @@
            <com.android.settings.kangdroid.KangDroidSeekBarPreference
                 android:key="navbar_height_portrait"
                 android:title="@string/portrait_title"
-                settings:max="135"
+                android:max="135"
                 settings:min="65"
                 settings:units="%"
 				android:dependency="navbar_visibility" />
@@ -84,7 +86,7 @@
            <com.android.settings.kangdroid.KangDroidSeekBarPreference
                 android:key="navbar_height_landscape"
                 android:title="@string/land_hor_title"
-                settings:max="135"
+                android:max="135"
                 settings:min="65"
                 settings:units="%"
 				android:dependency="navbar_visibility" />
@@ -92,7 +94,7 @@
            <com.android.settings.kangdroid.KangDroidSeekBarPreference
                 android:key="navbar_width"
                 android:title="@string/land_vert_title"
-                settings:max="135"
+                android:max="135"
                 settings:min="65"
                 settings:units="%"
 				android:dependency="navbar_visibility" />

@@ -184,7 +184,7 @@
         <com.android.settings.kangdroid.KangDroidSeekBarPreference
             android:key="du_fling_longpress_pref"
             android:title="@string/fling_longpress_title"
-            settings:max="350"
+            android:max="350"
             settings:min="125"
             settings:interval="5"
             settings:units="ms"/>
