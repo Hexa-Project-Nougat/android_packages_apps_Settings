@@ -232,13 +232,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 }
             }
 
-        mDashboardPortraitColumns = (CustomSeekBarPreference) findPreference(DASHBOARD_PORTRAIT_COLUMNS);
+        mDashboardPortraitColumns = (KangDroidSeekBarPreference) findPreference(DASHBOARD_PORTRAIT_COLUMNS);
         int columnsPortrait = Settings.System.getInt(resolver,
                 Settings.System.DASHBOARD_PORTRAIT_COLUMNS, DashboardSummary.mNumColumns);
         mDashboardPortraitColumns.setValue(columnsPortrait / 1);
         mDashboardPortraitColumns.setOnPreferenceChangeListener(this);
 
-        mDashboardLandscapeColumns = (CustomSeekBarPreference) findPreference(DASHBOARD_LANDSCAPE_COLUMNS);
+        mDashboardLandscapeColumns = (KangDroidSeekBarPreference) findPreference(DASHBOARD_LANDSCAPE_COLUMNS);
         int columnsLandscape = Settings.System.getInt(resolver,
                 Settings.System.DASHBOARD_LANDSCAPE_COLUMNS, 2);
         mDashboardLandscapeColumns.setValue(columnsLandscape / 1);
