@@ -1137,5 +1137,12 @@
 	<string name="weather_hide_panel_never_summary">The weather panel won\`t be hidden</string>
 	<string name="weather_number_of_notifications_title">Number of notifications</string>
 	<string name="status_bar_weather_color_title">Temperature color</string>
+	<string name="lock_screen_weather_temp_color">Weather Temperature</string>
+	<string name="lock_screen_weather_con_color">Weather Condition</string>
+	<string name="lock_screen_weather_stamp_color">Location TimeStamp </string>
+	<string name="lock_screen_weather_hum_color">Weather Humidity</string>
+	<string name="lock_screen_weather_city_color">Weather City </string>
+	<string name="lock_screen_weather_wind_color">Weather Wind</string>	
+	<string name="yes">YES</string>
 
 </resources>
