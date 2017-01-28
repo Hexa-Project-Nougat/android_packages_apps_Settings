@@ -33,6 +33,28 @@
 		
 	</PreferenceCategory>
 	
+    <PreferenceCategory
+        android:key="slim_recents"
+        android:title="@string/slim_recents_title">
+
+        <SwitchPreference
+            android:key="use_slim_recents"
+            android:title="@string/use_slim_recents_title"
+            android:summary="@string/use_slim_recents_summary"
+            android:defaultValue="false" />
+
+	        <!-- App Circle Bar -->
+	        <PreferenceScreen android:key="slim_recent_panel"
+	                android:title="@string/slim_recents_settings_title"
+					android:summary="@string/slim_recents_settings_summary"
+					android:dependency="use_slim_recents">
+	            <intent android:action="android.intent.action.MAIN"
+	                    android:targetPackage="com.android.settings"
+	                    android:targetClass="com.android.settings.kangdroid.activity.SlimRecentPanelActivity" />
+	        </PreferenceScreen>
+
+    </PreferenceCategory>
+	
 	<PreferenceCategory
 		android:key="aosp_clear_location"
 		android:title="@string/aosp_clear_location_title">
