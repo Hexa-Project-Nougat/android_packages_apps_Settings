@@ -67,12 +67,12 @@
         android:defaultValue="0xffffffff"
 	android:dependency="navbar_tint_switch"/>
 		
-<!--     <com.android.settings.kangdroid.KangDroidSeekBarPreference
+     <com.android.settings.kangdroid.KangDroidSeekBarPreference
         android:key="navbar_buttons_alpha"
         android:title="@string/navbar_buttons_alpha_title"
-        settings:max="255"
+        android:max="255"
         settings:min="0"
         settings:units=""
-        android:persistent="false" /> -->
+        android:persistent="false" />
 
 </PreferenceScreen>
