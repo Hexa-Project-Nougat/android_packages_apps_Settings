@@ -40,7 +40,7 @@
         <com.android.settings.kangdroid.KangDroidSeekBarPreference
                 android:key="network_traffic_autohide_threshold"
                 android:title="@string/network_traffic_autohide_threshold"
-                settings:max="100"
+                android:max="100"
                 settings:min="0"
                 settings:units="kB/s"
 				android:dependency="network_traffic_autohide" />
