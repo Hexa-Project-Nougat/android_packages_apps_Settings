@@ -138,7 +138,7 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
                 (KangDroidSeekBarPreference) findPreference(PREF_NAVBAR_BUTTONS_ALPHA);
         int bAlpha = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.NAVBAR_BUTTONS_ALPHA, 255, UserHandle.USER_CURRENT);
-        mButtonsAlpha.setValue(255);
+        mButtonsAlpha.setValue(bAlpha / 1);
         mButtonsAlpha.setOnPreferenceChangeListener(this);
 		
 
