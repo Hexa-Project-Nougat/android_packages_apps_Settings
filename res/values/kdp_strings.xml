@@ -1152,5 +1152,6 @@
 	<string name="lock_screen_weather_city_color">Weather City </string>
 	<string name="lock_screen_weather_wind_color">Weather Wind</string>	
 	<string name="yes">YES</string>
+	<string name="weather_settings_title_cclock">Weather Provider Setting</string>
 
 </resources>

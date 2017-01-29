@@ -20,8 +20,7 @@
     <!-- Weather Settings -->
     <Preference
            android:id="@+id/weather_settings"
-           android:title="@string/weather_settings_title_cclock"
-           android:icon="@drawable/rr_cclock_icon">
+           android:title="@string/weather_settings_title_cclock">
            <intent
                android:action="android.intent.action.MAIN"
                android:targetClass="com.cyanogenmod.lockclock.preference.Preferences"
