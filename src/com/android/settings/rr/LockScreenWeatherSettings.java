@@ -45,6 +45,7 @@ import java.util.List;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.settings.SeekBarPreference;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
@@ -63,6 +64,7 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
     private static final String LOCKSCREEN_CONDITION_COLOR = "lock_screen_weather_con_color";
     private static final String PREF_ICON_COLOR = "weather_icon_color";
     private static final String LOCKSCREEN_CITY_COLOR = "lock_screen_weather_city_color";
+	static final int DEFAULT = 0xffffffff;
 
     private ListPreference mConditionIcon;
     private ListPreference mHideWeather;
