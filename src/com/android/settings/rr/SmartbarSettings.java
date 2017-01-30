@@ -140,7 +140,7 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
                 Settings.Secure.NAVBAR_BUTTONS_ALPHA, 255, UserHandle.USER_CURRENT);
         mButtonsAlpha.setValue(bAlpha / 1);
         mButtonsAlpha.setOnPreferenceChangeListener(this);
-		
+		Log.d("SmartBarSettings", "onCreate Called");
 
         setHasOptionsMenu(true);
     }
