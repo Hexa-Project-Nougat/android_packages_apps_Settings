@@ -31,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.util.Log;
 
 import com.android.internal.utils.du.ActionHandler;
 import com.android.internal.utils.du.Config.ActionConfig;
@@ -45,11 +46,14 @@ public class CustomActionListAdapter extends BaseAdapter {
         mContext = context;
         mInflater = LayoutInflater.from(context);
         reloadActions();
+		Log.d("CustomActionListAdapter", "reloadActions called");
     }
 
     private void reloadActions() {
         mCustomActions.clear();
+		Log.d("CustomActionListAdapter", "mCustomActions cleared");
         mCustomActions.addAll(ActionHandler.getSystemActions(mContext));
+		Log.d("CustomActionListAdapter", "mCustomActions AddAll called");
         notifyDataSetChanged();
     }
 
@@ -74,6 +78,7 @@ public class CustomActionListAdapter extends BaseAdapter {
 
     @Override
     public ActionConfig getItem(int position) {
+		Log.d("CustomActionListAdapter", "getItem in CustomAction called");
         return mCustomActions.get(position);
     }
 
@@ -109,6 +114,8 @@ public class CustomActionListAdapter extends BaseAdapter {
         holder.icon.setBackgroundResource(R.drawable.fab_accent);
         holder.icon.setImageDrawable(config.getDefaultIcon(ctx));
         holder.summary.setVisibility(View.GONE);
+		
+		Log.d("CustomActionListAdapter", "getView just finished");
 
         return convertView;
 
