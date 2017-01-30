@@ -29,6 +29,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.os.Bundle;
 import android.os.UserHandle;
 
@@ -71,7 +72,9 @@ public class ActionPickerDialogActivity extends Activity implements
                                         : R.array.action_dialog_no_default_values)[item]);
                         break;
                     case DIALOG_SYSTEM:
+					Log.e("ActionPickerDialogActivity", "case DIALOG_SYSTEM occured nd getting action.")
                         sendResultAndFinish(mCustomActionListAdapter.getItem(item).getAction());
+					Log.e("ActionPickerDialogActivity", "getItem.getAction Called")
                         finish();
                         break;
                     default:

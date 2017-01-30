@@ -2285,9 +2285,9 @@
 
 	       <!-- System action picker -->
 	        <activity android:name="com.android.settings.rr.ActionPickerDialogActivity"
-	                android:theme="@style/Theme.SettingsDialog"
-	                android:label="@string/choose_action_title"
-	                android:excludeFromRecents="true">
+                android:theme="@*android:style/Theme.Material.Light.Dialog.Alert"
+                android:label="@string/choose_action_title"
+                android:excludeFromRecents="true">
 	            <intent-filter>
 	                <action android:name="android.intent.action.MAIN" />
 	            </intent-filter>
