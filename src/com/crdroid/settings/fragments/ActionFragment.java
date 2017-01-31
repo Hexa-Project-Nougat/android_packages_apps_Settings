@@ -29,9 +29,9 @@ import com.android.internal.utils.du.Config;
 import com.android.internal.utils.du.Config.ActionConfig;
 import com.android.internal.utils.du.Config.ButtonConfig;
 
-import com.crdroid.settings.utils.ShortcutPickHelper;
+import com.android.settings.kangdroid.utils.ShortcutPickHelper;
 import com.crdroid.settings.preferences.ActionPreference;
-import com.crdroid.settings.utils.CustomActionListAdapter;
+import com.android.settings.kangdroid.utils.CustomActionListAdapter;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -242,6 +242,6 @@ public class ActionFragment extends SettingsPreferenceFragment implements
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.CRDROID_SETTINGS;
+        return MetricsEvent.KANGDROID;
     }
 }

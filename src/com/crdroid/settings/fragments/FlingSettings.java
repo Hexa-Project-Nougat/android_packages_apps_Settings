@@ -18,8 +18,8 @@ package com.crdroid.settings.fragments;
 
 import java.util.ArrayList;
 
-import com.crdroid.settings.preferences.ColorPickerPreference;
-import com.crdroid.settings.preferences.SeekBarPreference;
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
+import com.android.settings.kangdroid.KangDroidSeekBarPreference;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -28,7 +28,7 @@ import com.android.internal.utils.du.ActionHandler;
 import com.android.internal.utils.du.DUActionUtils;
 import com.android.internal.utils.du.Config.ButtonConfig;
 import com.android.settings.R;
-import com.crdroid.settings.utils.IconPickHelper;
+import com.android.settings.kangdroid.utils.IconPickHelper;
 import com.crdroid.settings.preferences.ActionPreference;
 
 import android.app.ActionBar;
@@ -58,15 +58,15 @@ public class FlingSettings extends ActionFragment implements
     SwitchPreference mShowRipple;
     SwitchPreference mTrailsEnabled;
 
-    SeekBarPreference mTrailsWidth;
-    SeekBarPreference mLongPressTimeout;
+    KangDroidSeekBarPreference mTrailsWidth;
+    KangDroidSeekBarPreference mLongPressTimeout;
 
-    SeekBarPreference mSwipePortRight;
-    SeekBarPreference mSwipePortLeft;
-    SeekBarPreference mSwipeLandRight;
-    SeekBarPreference mSwipeLandLeft;
-    SeekBarPreference mSwipeVertUp;
-    SeekBarPreference mSwipeVertDown;
+    KangDroidSeekBarPreference mSwipePortRight;
+    KangDroidSeekBarPreference mSwipePortLeft;
+    KangDroidSeekBarPreference mSwipeLandRight;
+    KangDroidSeekBarPreference mSwipeLandLeft;
+    KangDroidSeekBarPreference mSwipeVertUp;
+    KangDroidSeekBarPreference mSwipeVertDown;
 
     ColorPickerPreference mRippleColor;
     ColorPickerPreference mTrailsColor;
@@ -111,7 +111,7 @@ public class FlingSettings extends ActionFragment implements
         mTrailsColor.setNewPreviewColor(trailsColor);
         mTrailsColor.setOnPreferenceChangeListener(this);
 
-        mTrailsWidth = (SeekBarPreference) findPreference("du_fling_trails_width");
+        mTrailsWidth = (KangDroidSeekBarPreference) findPreference("du_fling_trails_width");
         int width = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.FLING_TRAILS_WIDTH, 15, UserHandle.USER_CURRENT);
         mTrailsWidth.setValue(width);
@@ -120,7 +120,7 @@ public class FlingSettings extends ActionFragment implements
         // NOTE: we display to the user actual timeouts starting from touch event
         // but framework wants the value less tap timeout, which is 100ms
         // so we always write 100ms less but display 100ms more
-        mLongPressTimeout = (SeekBarPreference) findPreference("du_fling_longpress_pref");
+        mLongPressTimeout = (KangDroidSeekBarPreference) findPreference("du_fling_longpress_pref");
         int val = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.FLING_LONGPRESS_TIMEOUT, 250, UserHandle.USER_CURRENT);
         val += 100;
@@ -129,24 +129,24 @@ public class FlingSettings extends ActionFragment implements
 
         final boolean isTablet = !DUActionUtils.navigationBarCanMove();
 
-        mSwipePortRight = (SeekBarPreference) findPreference("du_fling_longswipe_port_right");
+        mSwipePortRight = (KangDroidSeekBarPreference) findPreference("du_fling_longswipe_port_right");
         val = Settings.Secure.getIntForUser(
                 getContentResolver(), Settings.Secure.FLING_LONGSWIPE_THRESHOLD_RIGHT_PORT,
                 isTablet ? 30 : 40, UserHandle.USER_CURRENT);
         mSwipePortRight.setValue(val);
         mSwipePortRight.setOnPreferenceChangeListener(this);
 
-        mSwipePortLeft = (SeekBarPreference) findPreference("du_fling_longswipe_port_left");
+        mSwipePortLeft = (KangDroidSeekBarPreference) findPreference("du_fling_longswipe_port_left");
         val = Settings.Secure.getIntForUser(
                 getContentResolver(), Settings.Secure.FLING_LONGSWIPE_THRESHOLD_LEFT_PORT,
                 isTablet ? 30 : 40, UserHandle.USER_CURRENT);
         mSwipePortLeft.setValue(val);
         mSwipePortLeft.setOnPreferenceChangeListener(this);
 
-        mSwipeLandRight = (SeekBarPreference) findPreference("du_fling_longswipe_land_right");
-        mSwipeLandLeft = (SeekBarPreference) findPreference("du_fling_longswipe_land_left");
-        mSwipeVertUp = (SeekBarPreference) findPreference("du_fling_longswipe_vert_up");
-        mSwipeVertDown = (SeekBarPreference) findPreference("du_fling_longswipe_vert_down");
+        mSwipeLandRight = (KangDroidSeekBarPreference) findPreference("du_fling_longswipe_land_right");
+        mSwipeLandLeft = (KangDroidSeekBarPreference) findPreference("du_fling_longswipe_land_left");
+        mSwipeVertUp = (KangDroidSeekBarPreference) findPreference("du_fling_longswipe_vert_up");
+        mSwipeVertDown = (KangDroidSeekBarPreference) findPreference("du_fling_longswipe_vert_down");
 
         PreferenceCategory longSwipeCategory = (PreferenceCategory) getPreferenceScreen()
                 .findPreference("eos_long_swipe_category");
@@ -340,6 +340,6 @@ public class FlingSettings extends ActionFragment implements
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.CRDROID_SETTINGS;
+        return MetricsEvent.KANGDROID;
     }
 }

@@ -17,11 +17,11 @@
  * ActionHandler framework
  */
 
-package com.crdroid.settings.utils;
+package com.android.settings.kangdroid.utils;
 
 import com.android.internal.utils.du.Config.ActionConfig;
 import com.android.settings.R;
-import com.crdroid.settings.utils.CustomActionListAdapter;
+import com.android.settings.kangdroid.utils.CustomActionListAdapter;
 
 import android.app.Activity;
 import android.app.AlertDialog;

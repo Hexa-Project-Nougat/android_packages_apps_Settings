@@ -2,7 +2,7 @@ package com.android.settings.kangdroid.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.android.settings.rr.PulseSettings;
+import com.crdroid.settings.fragments.PulseSettings;
 
 public class PulseSettingsActivity extends Activity {
 

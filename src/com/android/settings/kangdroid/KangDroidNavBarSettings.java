@@ -63,24 +63,21 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
     private static final String TAG = "SystemSettings";
 
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
-	private static final String NAVBAR_DYNAMIC = "navbar_dynamic";
 	
 	// DUI TESTING
     private static final String NAVBAR_VISIBILITY = "navbar_visibility";
     private static final String KEY_NAVBAR_MODE = "navbar_mode";
     private static final String KEY_FLING_NAVBAR_SETTINGS = "fling_settings";
     private static final String KEY_CATEGORY_NAVIGATION_INTERFACE = "category_navbar_interface";
-    private static final String KEY_CATEGORY_NAVIGATION_GENERAL = "category_navbar_general";
-    private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
+    private static final String KEY_CATEGORY_NAVIGATION_GENERAL = "kdp_main_nav_bar";
     private static final String KEY_SMARTBAR_SETTINGS = "smartbar_settings";
     private static final String KEY_NAVIGATION_HEIGHT_PORT = "navbar_height_portrait";
     private static final String KEY_NAVIGATION_HEIGHT_LAND = "navbar_height_landscape";
     private static final String KEY_NAVIGATION_WIDTH = "navbar_width";
+	private static final String NAVBAR_DYNAMIC = "navbar_dynamic";
 	// DUI TESTING ENDS
 
     private SwitchPreference mNavigationBarLeftPref;
-	
-	private SwitchPreference mNavbarDynamic;
 	
 	public static final int KEY_MASK_HOME = 0x01;
 
@@ -90,12 +87,11 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
     private SwitchPreference mNavbarVisibility;
     private ListPreference mNavbarMode;
     private PreferenceScreen mFlingSettings;
-    private PreferenceCategory mNavInterface;
-    private PreferenceCategory mNavGeneral;
     private PreferenceScreen mSmartbarSettings;
-    private SeekBarPreference mBarHeightPort;
-    private SeekBarPreference mBarHeightLand;
-    private SeekBarPreference mBarWidth;
+    private KangDroidSeekBarPreference mBarHeightPort;
+    private KangDroidSeekBarPreference mBarHeightLand;
+    private KangDroidSeekBarPreference mBarWidth;
+	private SwitchPreference mNavbarDynamic;
 	// DUI TESTING ENDS
 
     @Override
@@ -113,18 +109,9 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
         // Navigation bar left
         mNavigationBarLeftPref = (SwitchPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
 		
-		mNavbarDynamic = (SwitchPreference) findPreference(NAVBAR_DYNAMIC);
-
-        boolean isDynamic = Settings.System.getInt(resolver,
-                Settings.System.NAVBAR_DYNAMIC, 0) == 1;
-        mNavbarDynamic.setChecked(isDynamic);
-        mNavbarDynamic.setOnPreferenceChangeListener(this);
-		
 		
 		// DUI TESTING
 
-        mNavInterface = (PreferenceCategory) findPreference(KEY_CATEGORY_NAVIGATION_INTERFACE);
-        mNavGeneral = (PreferenceCategory) findPreference(KEY_CATEGORY_NAVIGATION_GENERAL);
         mNavbarVisibility = (SwitchPreference) findPreference(NAVBAR_VISIBILITY);
         mNavbarMode = (ListPreference) findPreference(KEY_NAVBAR_MODE);
         mFlingSettings = (PreferenceScreen) findPreference(KEY_FLING_NAVBAR_SETTINGS);
@@ -144,26 +131,30 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
 
         int size = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.NAVIGATION_BAR_HEIGHT, 100, UserHandle.USER_CURRENT);
-        mBarHeightPort = (SeekBarPreference) findPreference(KEY_NAVIGATION_HEIGHT_PORT);
+        mBarHeightPort = (KangDroidSeekBarPreference) findPreference(KEY_NAVIGATION_HEIGHT_PORT);
         mBarHeightPort.setValue(size);
         mBarHeightPort.setOnPreferenceChangeListener(this);
 
         final boolean canMove = DUActionUtils.navigationBarCanMove();
         if (canMove) {
-            mNavGeneral.removePreference(findPreference(KEY_NAVIGATION_HEIGHT_LAND));
             size = Settings.Secure.getIntForUser(getContentResolver(),
                     Settings.Secure.NAVIGATION_BAR_WIDTH, 100, UserHandle.USER_CURRENT);
-            mBarWidth = (SeekBarPreference) findPreference(KEY_NAVIGATION_WIDTH);
+            mBarWidth = (KangDroidSeekBarPreference) findPreference(KEY_NAVIGATION_WIDTH);
             mBarWidth.setValue(size);
             mBarWidth.setOnPreferenceChangeListener(this);
         } else {
-            mNavGeneral.removePreference(findPreference(KEY_NAVIGATION_WIDTH));
             size = Settings.Secure.getIntForUser(getContentResolver(),
                     Settings.Secure.NAVIGATION_BAR_HEIGHT_LANDSCAPE, 100, UserHandle.USER_CURRENT);
-            mBarHeightLand = (SeekBarPreference) findPreference(KEY_NAVIGATION_HEIGHT_LAND);
+            mBarHeightLand = (KangDroidSeekBarPreference) findPreference(KEY_NAVIGATION_HEIGHT_LAND);
             mBarHeightLand.setValue(size);
             mBarHeightLand.setOnPreferenceChangeListener(this);
         }
+		mNavbarDynamic = (SwitchPreference) findPreference(NAVBAR_DYNAMIC);
+
+        boolean isDynamic = Settings.System.getInt(resolver,
+                Settings.System.NAVBAR_DYNAMIC, 0) == 1;
+        mNavbarDynamic.setChecked(isDynamic);
+        mNavbarDynamic.setOnPreferenceChangeListener(this);
 		// DUI TESTING ENDS
 		
 		
@@ -177,15 +168,7 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 		final ContentResolver resolver = getActivity().getContentResolver();
-        if (preference.equals(mNavbarDynamic)) {
-            boolean isDynamic = ((Boolean)newValue);
-            Settings.System.putInt(resolver, Settings.System.NAVBAR_DYNAMIC,
-                    isDynamic ? 1 : 0);
-            Toast.makeText(getActivity(), R.string.restart_app_required,
-                    Toast.LENGTH_LONG).show();
-            return true;
-			// DUI TESTING
-		} else if (preference.equals(mNavbarMode)) {
+        if (preference.equals(mNavbarMode)) {
             int mode = Integer.parseInt(((String) newValue).toString());
             Settings.Secure.putInt(getContentResolver(),
                     Settings.Secure.NAVIGATION_BAR_MODE, mode);
@@ -212,7 +195,13 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
             Settings.Secure.putIntForUser(getContentResolver(),
                     Settings.Secure.NAVIGATION_BAR_WIDTH, val, UserHandle.USER_CURRENT);
             return true;
-			
+		} else if (preference.equals(mNavbarDynamic)) {
+            boolean isDynamic = ((Boolean)newValue);
+            Settings.System.putInt(resolver, Settings.System.NAVBAR_DYNAMIC,
+                    isDynamic ? 1 : 0);
+            Toast.makeText(getActivity(), R.string.restart_app_required,
+                    Toast.LENGTH_LONG).show();
+            return true;
 			// DUI ENDS
         }
         return false;
@@ -240,8 +229,6 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment implemen
 
     private void updateBarVisibleAndUpdatePrefs(boolean showing) {
         mNavbarVisibility.setChecked(showing);
-        mNavInterface.setEnabled(mNavbarVisibility.isChecked());
-        mNavGeneral.setEnabled(mNavbarVisibility.isChecked());
     }
 	
 	// DUI METHODS ENDS

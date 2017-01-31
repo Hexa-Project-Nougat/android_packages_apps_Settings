@@ -15,7 +15,7 @@
  *
  */
 
-package com.crdroid.settings.utils;
+package com.android.settings.kangdroid.utils;
 
 import java.io.File;
 

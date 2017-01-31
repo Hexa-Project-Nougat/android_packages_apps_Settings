@@ -16,7 +16,7 @@
  * GridView displaying all the available icons in a Icon pack.
  */
 
-package com.crdroid.settings.utils;
+package com.android.settings.kangdroid.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
