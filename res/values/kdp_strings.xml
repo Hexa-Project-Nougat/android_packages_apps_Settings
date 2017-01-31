@@ -1138,5 +1138,7 @@
     <string name="smartbar_config_backup_error_toast">Error saving Smartbar profile</string>
     <string name="smartbar_config_restore_error_toast">Error restoring Smartbar profile</string>
     <string name="navbar_buttons_alpha_title">Button transparency</string>
+	<string name="navbar_tint_switch">Navigation Button Tint</string>
+	<string name="navbar_button_color">Navigation Bar Buttons</string>
 
 </resources>

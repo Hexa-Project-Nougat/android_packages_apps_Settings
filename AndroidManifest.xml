@@ -2990,6 +2990,45 @@
             <meta-data android:name="com.android.settings.summary"
                 android:resource="@string/wifi_calling_suggestion_summary" />
         </activity>
+		
+       <!-- System action picker -->
+        <activity android:name="com.android.settings.kangdroid.utils.ActionPickerDialogActivity"
+                android:theme="@*android:style/Theme.Material.Light.Dialog.Alert"
+                android:label="@string/choose_action_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+       <!-- Icon pack picker -->
+        <activity android:name="com.android.settings.kangdroid.utils.IconPickerActivity"
+                android:theme="@*android:style/Theme.Material.Light.Dialog.Alert"
+                android:label="@string/icon_pack_picker_dialog_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- Icon picker proxy for gallery -->
+        <activity android:name="com.android.settings.kangdroid.utils.IconPickerGallery"
+            android:theme="@*android:style/Theme.Material.Light.Dialog.Alert"
+            android:label="@string/icon_pack_picker_dialog_title"
+            android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+       <!-- Icon pack grid -->
+        <activity android:name="com.android.settings.kangdroid.utils.IconPackGridActivity"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".kangdroid.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".kangdroid.gestureanywhere.GestureAnywhereCreateGestureActivity" />
@@ -3304,6 +3343,8 @@
 		
 		<!-- Lockscreen Weather -->
 		<activity android:name="com.android.settings.kangdroid.activity.LockScreenWeatherSettingsActivity" />
+		
+		<activity android:name="com.android.settings.kangdroid.activity.SmartBarSettingsActivity" />
 
         <activity android:name="Settings$SmartBarSettingsActivity"
                   android:taskAffinity="com.android.settings"

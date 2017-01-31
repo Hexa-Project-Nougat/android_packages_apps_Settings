@@ -38,7 +38,7 @@
             android:entryValues="@array/pulse_render_mode_values"
             android:dependency="eos_fling_show_pulse" />
 
-        <com.crdroid.settings.preferences.ColorPickerPreference
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="eos_fling_pulse_color"
             android:title="@string/fling_pulse_color"
             android:defaultValue="0xffffff"
@@ -54,50 +54,50 @@
             android:key="pulse_fading_bars_category"
             android:title="@string/pulse_legacy_mode_advanced_category">
 
-           <com.crdroid.settings.preferences.SeekBarPreference
+           <com.android.settings.kangdroid.KangDroidSeekBarPreference
                 android:key="pulse_custom_dimen"
                 android:title="@string/pulse_custom_dimen"
-                settings:max="30"
+                android:max="30"
                 settings:min="1"
                 settings:units="dp"
                 android:dependency="pulse_fading_bars_category"/>
 
-           <com.crdroid.settings.preferences.SeekBarPreference
+           <com.android.settings.kangdroid.KangDroidSeekBarPreference
                 android:key="pulse_custom_div"
                 android:title="@string/pulse_custom_div"
-                settings:max="44"
+                android:max="44"
                 settings:min="2"
                 settings:interval="2"
                 settings:units="dp"
                 android:dependency="pulse_fading_bars_category"/>
 
-           <com.crdroid.settings.preferences.SeekBarPreference
+           <com.android.settings.kangdroid.KangDroidSeekBarPreference
                 android:key="pulse_filled_block_size"
                 android:title="@string/pulse_filled_block_size"
-                settings:max="8"
+                android:max="8"
                 settings:min="4"
                 settings:units="dp"
                 android:dependency="pulse_fading_bars_category"/>
 
-           <com.crdroid.settings.preferences.SeekBarPreference
+           <com.android.settings.kangdroid.KangDroidSeekBarPreference
                 android:key="pulse_empty_block_size"
                 android:title="@string/pulse_empty_block_size"
-                settings:max="4"
+                android:max="4"
                 settings:min="0"
                 settings:units="dp"
                 android:dependency="pulse_fading_bars_category"/>
 
-           <com.crdroid.settings.preferences.SeekBarPreference
+           <com.android.settings.kangdroid.KangDroidSeekBarPreference
                 android:key="pulse_custom_fudge_factor"
                 android:title="@string/pulse_custom_fudge_factor"
-                settings:max="6"
+                android:max="6"
                 settings:min="2"
                 android:dependency="pulse_fading_bars_category"/>
 
-           <com.crdroid.settings.preferences.SeekBarPreference
+           <com.android.settings.kangdroid.KangDroidSeekBarPreference
                 android:key="fling_pulse_lavalamp_speed"
                 android:title="@string/lavamp_solid_speed_title"
-                settings:max="30000"
+                android:max="30000"
                 settings:min="200"
                 settings:interval="200"
                 settings:units="ms"
@@ -108,17 +108,17 @@
         android:key="pulse_2"
         android:title="@string/pulse_solid_dimen_category" >
 
-        <com.crdroid.settings.preferences.SeekBarPreference
+        <com.android.settings.kangdroid.KangDroidSeekBarPreference
             android:key="pulse_solid_fudge_factor"
             android:title="@string/pulse_custom_fudge_factor"
-            settings:max="7"
+            android:max="7"
             settings:min="2"
             android:dependency="pulse_2"/>
 
-        <com.crdroid.settings.preferences.SeekBarPreference
+        <com.android.settings.kangdroid.KangDroidSeekBarPreference
             android:key="lavamp_solid_speed"
             android:title="@string/lavamp_solid_speed_title"
-            settings:max="30000"
+            android:max="30000"
             settings:min="200"
             settings:interval="200"
             settings:units="ms"

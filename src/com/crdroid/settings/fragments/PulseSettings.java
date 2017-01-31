@@ -31,8 +31,8 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.ListPreference;
 import android.provider.Settings;
 
-import com.crdroid.settings.preferences.ColorPickerPreference;
-import com.crdroid.settings.preferences.SeekBarPreference;
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
+import com.android.settings.kangdroid.KangDroidSeekBarPreference;
 
 public class PulseSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -53,14 +53,14 @@ public class PulseSettings extends SettingsPreferenceFragment implements
     ListPreference mRenderMode;
     ColorPickerPreference mPulseColor;
     SwitchPreference mLavaLampEnabled;
-    SeekBarPreference mCustomDimen;
-    SeekBarPreference mCustomDiv;
-    SeekBarPreference mFilled;
-    SeekBarPreference mEmpty;
-    SeekBarPreference mFudge;
-    SeekBarPreference mSolidFudge;
-    SeekBarPreference mSolidSpeed;
-    SeekBarPreference mFadingSpeed;
+    KangDroidSeekBarPreference mCustomDimen;
+    KangDroidSeekBarPreference mCustomDiv;
+    KangDroidSeekBarPreference mFilled;
+    KangDroidSeekBarPreference mEmpty;
+    KangDroidSeekBarPreference mFudge;
+    KangDroidSeekBarPreference mSolidFudge;
+    KangDroidSeekBarPreference mSolidSpeed;
+    KangDroidSeekBarPreference mFadingSpeed;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -97,52 +97,52 @@ public class PulseSettings extends SettingsPreferenceFragment implements
 
         int customdimen = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.PULSE_CUSTOM_DIMEN, 14, UserHandle.USER_CURRENT);
-        mCustomDimen = (SeekBarPreference) findPreference(CUSTOM_DIMEN);
+        mCustomDimen = (KangDroidSeekBarPreference) findPreference(CUSTOM_DIMEN);
         mCustomDimen.setValue(customdimen);
         mCustomDimen.setOnPreferenceChangeListener(this);
 
         int customdiv = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.PULSE_CUSTOM_DIV, 16, UserHandle.USER_CURRENT);
-        mCustomDiv = (SeekBarPreference) findPreference(CUSTOM_DIV);
+        mCustomDiv = (KangDroidSeekBarPreference) findPreference(CUSTOM_DIV);
         mCustomDiv.setValue(customdiv);
         mCustomDiv.setOnPreferenceChangeListener(this);
 
         int filled = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.PULSE_FILLED_BLOCK_SIZE, 4, UserHandle.USER_CURRENT);
-        mFilled = (SeekBarPreference) findPreference(PULSE_BLOCK);
+        mFilled = (KangDroidSeekBarPreference) findPreference(PULSE_BLOCK);
         mFilled.setValue(filled);
         mFilled.setOnPreferenceChangeListener(this);
 
         int empty = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.PULSE_EMPTY_BLOCK_SIZE, 1, UserHandle.USER_CURRENT);
-        mEmpty = (SeekBarPreference) findPreference(EMPTY_BLOCK);
+        mEmpty = (KangDroidSeekBarPreference) findPreference(EMPTY_BLOCK);
         mEmpty.setValue(empty);
         mEmpty.setOnPreferenceChangeListener(this);
 
         int fudge = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.PULSE_CUSTOM_FUDGE_FACTOR, 4, UserHandle.USER_CURRENT);
-        mFudge = (SeekBarPreference) findPreference(FUDGE_FACOR);
+        mFudge = (KangDroidSeekBarPreference) findPreference(FUDGE_FACOR);
         mFudge.setValue(fudge);
         mFudge.setOnPreferenceChangeListener(this);
 
         int solidfudge = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.PULSE_SOLID_FUDGE_FACTOR, 5,
                 UserHandle.USER_CURRENT);
-        mSolidFudge = (SeekBarPreference) findPreference(SOLID_FUDGE);
+        mSolidFudge = (KangDroidSeekBarPreference) findPreference(SOLID_FUDGE);
         mSolidFudge.setValue(solidfudge);
         mSolidFudge.setOnPreferenceChangeListener(this);
 
         int speed = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.PULSE_LAVALAMP_SOLID_SPEED, 10000, UserHandle.USER_CURRENT);
         mSolidSpeed =
-                (SeekBarPreference) findPreference(SOLID_LAVAMP_SPEED);
+                (KangDroidSeekBarPreference) findPreference(SOLID_LAVAMP_SPEED);
         mSolidSpeed.setValue(speed);
         mSolidSpeed.setOnPreferenceChangeListener(this);
 
         int fspeed = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.FLING_PULSE_LAVALAMP_SPEED, 10000, UserHandle.USER_CURRENT);
         mFadingSpeed =
-                (SeekBarPreference) findPreference(FADING_LAVAMP_SPEED);
+                (KangDroidSeekBarPreference) findPreference(FADING_LAVAMP_SPEED);
         mFadingSpeed.setValue(fspeed);
         mFadingSpeed.setOnPreferenceChangeListener(this);
     }
@@ -222,6 +222,6 @@ public class PulseSettings extends SettingsPreferenceFragment implements
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.CRDROID_SETTINGS;
+        return MetricsEvent.KANGDROID;
     }
 }
