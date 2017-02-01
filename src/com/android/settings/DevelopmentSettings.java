@@ -217,6 +217,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final String ROOT_APPOPS_KEY = "root_appops";
 
+    private static final String UPDATE_RECOVERY_PROPERTY = "persist.sys.recovery_update";
+
     private static final String IMMEDIATELY_DESTROY_ACTIVITIES_KEY
             = "immediately_destroy_activities";
     private static final String APP_PROCESS_LIMIT_KEY = "app_process_limit";
@@ -333,6 +335,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private SwitchPreference mColorTemperaturePreference;
 
+    private SwitchPreference mUpdateRecoveryPreference;
+
     private ListPreference mRootAccess;
     private Object mSelectedRootValue;
     private PreferenceScreen mDevelopmentTools;
@@ -352,6 +356,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private Dialog mAdbKeysDialog;
     private boolean mUnavailable;
     private Dialog mRootDialog;
+    private Dialog mUpdateRecoveryDialog;
 
     private boolean mLogpersistCleared;
     private Dialog mLogpersistClearDialog;
@@ -433,6 +438,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             disableForUser(mClearAdbKeys);
             disableForUser(mEnableTerminal);
             disableForUser(mPassword);
+            disableForUser(mUpdateRecoveryPreference);
         }
 
         mDebugAppPref = findPreference(DEBUG_APP_KEY);
@@ -569,6 +575,16 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             }
             mAllPrefs.add(mRootAccess);
             mAllPrefs.add(mRootAppops);
+        }
+
+        mUpdateRecoveryPreference = findAndInitSwitchPref("update_recovery");
+        if (!getResources().getBoolean(R.bool.config_enableRecoveryUpdater)) {
+            removePreference(mUpdateRecoveryPreference);
+            mUpdateRecoveryPreference = null;
+            if (SystemProperties.getBoolean(UPDATE_RECOVERY_PROPERTY, false)) {
+                SystemProperties.set(UPDATE_RECOVERY_PROPERTY, "false");
+                pokeSystemProperties();
+            }
         }
 
         mDevelopmentTools = (PreferenceScreen) findPreference(DEVELOPMENT_TOOLS);
@@ -802,6 +818,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateBluetoothDisableAbsVolumeOptions();
         updateRootAccessOptions();
         updateAdbOverNetwork();
+        updateUpdateRecoveryOptions();
     }
 
     private void updateAdbOverNetwork() {
@@ -2019,6 +2036,21 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 .show();
     }
 
+    private void updateUpdateRecoveryOptions() {
+        if (mUpdateRecoveryPreference == null) {
+            return;
+        }
+
+        updateSwitchPreference(mUpdateRecoveryPreference,
+                SystemProperties.getBoolean(UPDATE_RECOVERY_PROPERTY, false));
+    }
+
+    private void writeUpdateRecoveryOptions() {
+        SystemProperties.set(UPDATE_RECOVERY_PROPERTY,
+                mUpdateRecoveryPreference.isChecked() ? "true" : "false");
+        pokeSystemProperties();
+    }
+
     @Override
     public void onSwitchChanged(Switch switchView, boolean isChecked) {
         if (switchView != mSwitchBar.getSwitch()) {
@@ -2241,6 +2273,28 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeWebViewMultiprocessOptions();
         } else if (SHORTCUT_MANAGER_RESET_KEY.equals(preference.getKey())) {
             resetShortcutManagerThrottling();
+        } else if (preference == mUpdateRecoveryPreference) {
+            if (mSwitchBar.isChecked()) {
+                if (mUpdateRecoveryDialog != null) {
+                    dismissDialogs();
+                }
+                if (mUpdateRecoveryPreference.isChecked()) {
+                    mUpdateRecoveryDialog = new AlertDialog.Builder(getActivity()).setMessage(
+                            getResources().getString(R.string.update_recovery_on_warning))
+                            .setTitle(R.string.update_recovery_title)
+                            .setPositiveButton(android.R.string.yes, this)
+                            .setNegativeButton(android.R.string.no, this)
+                            .show();
+                } else {
+                    mUpdateRecoveryDialog = new AlertDialog.Builder(getActivity()).setMessage(
+                            getResources().getString(R.string.update_recovery_off_warning))
+                            .setTitle(R.string.update_recovery_title)
+                            .setPositiveButton(android.R.string.yes, this)
+                            .setNegativeButton(android.R.string.no, this)
+                            .show();
+                }
+                mUpdateRecoveryDialog.setOnDismissListener(this);
+            }
         } else {
             return super.onPreferenceTreeClick(preference);
         }
@@ -2370,6 +2424,10 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             mLogpersistClearDialog.dismiss();
             mLogpersistClearDialog = null;
         }
+        if (mUpdateRecoveryDialog != null) {
+            mUpdateRecoveryDialog.dismiss();
+            mUpdateRecoveryDialog = null;
+        }
     }
 
     public void onClick(DialogInterface dialog, int which) {
@@ -2431,6 +2489,10 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             } else {
                 updateLogpersistValues();
             }
+        } else if (dialog == mUpdateRecoveryDialog) {
+            if (which == DialogInterface.BUTTON_POSITIVE) {
+                writeUpdateRecoveryOptions();
+            }
         }
     }
 
@@ -2454,6 +2516,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             mAdbTcpDialog = null;
         } else if (dialog == mLogpersistClearDialog) {
             mLogpersistClearDialog = null;
+        } else if (dialog == mUpdateRecoveryDialog) {
+            updateUpdateRecoveryOptions();
+            mUpdateRecoveryDialog = null;
         }
     }
 
