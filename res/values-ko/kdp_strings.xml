@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+	
+	<!-- KDP Default strings -->
+	<string name="hexa_title">Hexa 커스텀 설정</string>
+    <string name="ok">OK</string>
+    <string name="loading">로딩중\u2026</string>
+    <string name="dlg_ok">OK</string>
+    <string name="cancel">취소</string>
+	<string name="dlg_reset_values_message">기본 값으로 초기화 할까요?</string>
+    <string name="reset_paranoid">Paranoid</string>
+    <string name="reset_android">Android</string>
+	
+    <!-- About phone screen, KDP version -->
+    <string name="kdp_version_title">헥사 버전</string>
+    <!-- Do NOT translate this -->
+    <string name="kdp_version_default">Alpha - 2</string>
+	
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">색상 편집기</string>
+    <string name="press_color_to_apply">밑의 색상을 탭하여 설정하기</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">헥스값:</string>
+    <string name="hex_hint">#ff000000</string>
+    <string name="set">설정</string>
+    <string name="color_default">기본값</string>
+	<string name="reset">초기화</string>
+	<string name="default_string">기본값</string>
+	<string name="reset_message">초기화</string>
+	<string name="attention">주의</string>
+	
+    <!-- About device screen, CPU and RAM info. -->
+    <string name="cpu_info">CPU</string>
+    <string name="mem_info">RAM</string>
+	
+    <!--Status bar date -->
+	<string name="kdp_status_bar_clock_and_date">상단바 시계 &amp; 날짜 Settings</string>
+    <string name="status_bar_clock_category">시계</string>
+	<string name="status_bar_clock_seconds_title">초시계 사용하기</string>
+    <string name="status_bar_date_title">날짜</string>
+    <string name="status_bar_date_none">숨기기 (기본값)</string>
+    <string name="status_bar_date_small">작게</string>
+    <string name="status_bar_date_normal">기본 크기</string>
+    <string name="status_bar_date_format_title">날짜 형식</string>
+    <string name="status_bar_date_style">날짜 스타일</string>
+    <string name="status_bar_date_style_normal">기본</string>
+    <string name="status_bar_date_style_lowercase">소문자</string>
+    <string name="status_bar_date_style_uppercase">대문자</string>
+    <string name="status_bar_date_format_custom">사용자 설정 포멧</string>
+    <string name="status_bar_date_string_edittext_title">반드시 지정된 형식이어야 합니다 eg. MM/dd/yy</string>
+    <string name="status_bar_date_string_edittext_summary">입력</string>
+	
+    <!-- Status bar - Clock -->
+    <string name="clock_color_title">색상</string>
+    <string name="status_bar_clock_style_reset">색상 초기화</string>
+    <string name="status_bar_clock_style_reset_message">시계 색상을 초기화할까요?</string>
+    <string name="clock_font_style_title">글꼴</string>
+    <string name="clock_font_normal">표준(기본)</string>
+    <string name="clock_font_italic">Italic</string>
+    <string name="clock_font_bold">Bold</string>
+    <string name="clock_font_bold_italic">Bold Italic</string>
+    <string name="clock_font_light">Light</string>
+    <string name="clock_font_light_italic">Light Italic</string>
+    <string name="clock_font_thin">Thin</string>
+    <string name="clock_font_thin_italic">Thin Italic</string>
+    <string name="clock_font_condensed">Condensed</string>
+    <string name="clock_font_condensed_italic">Condensed Italic</string>
+    <string name="clock_font_condensed_bold">Condensed Bold</string>
+    <string name="clock_font_condensed_bold_italic">Condensed Bold Italic</string>
+    <string name="clock_font_medium">Medium</string>
+    <string name="clock_font_medium_italic">Medium Italic</string>
+	<string name="clock_font_size_title">Font size</string>
+    <string name="clock_font_size_4">4</string>
+    <string name="clock_font_size_5">5</string>
+    <string name="clock_font_size_6">6</string>
+    <string name="clock_font_size_7">7</string>
+    <string name="clock_font_size_8">8</string>
+    <string name="clock_font_size_9">9</string>
+    <string name="clock_font_size_10">10</string>
+    <string name="clock_font_size_11">11</string>
+    <string name="clock_font_size_12">12</string>
+    <string name="clock_font_size_13">13</string>
+    <string name="clock_font_size_14">14</string>
+    <string name="clock_font_size_15">15</string>
+    <string name="clock_font_size_16">16</string>
+    <string name="clock_font_size_17">17</string>
+    <string name="clock_font_size_18">18</string>
+    <string name="clock_font_size_19">19</string>
+    <string name="clock_font_size_20">20</string>
+    <string name="clock_font_size_21">21</string>
+    <string name="clock_font_size_22">22</string>
+    <string name="clock_font_size_23">23</string>
+	
+    <!-- Show carrier label and custom -->
+    <string name="carrier_options">통신사 라벨 설정</string>
+    <string name="custom_carrier_label_title">맟춤형 통신사 라벨 </string>
+    <string name="custom_carrier_label_explain">입력하고 싶은 통신사 라벨을 입력해주세요. 빈칸으로 둘시, 기본 통신사 라벨이 설정됩니다.</string>
+    <string name="custom_carrier_label_notset">현재 통신사 라벨이 설정되지 않았습니다.</string>
+    <string name="status_bar_carrier_color">통신사 라벨 색상</string>
+	<string name="status_bar_carrier_size">통신사 라벨 크기</string>
+	<string name="status_bar_carrier_font_style_title">통신사 라벨 글꼴</string>
+    <string name="show_carrier_title">통신사 라벨</string>
+    <string name="show_carrier_disabled">꺼짐</string>
+    <string name="show_carrier_keyguard">잠금화면에 표시</string>
+    <string name="show_carrier_statusbar">상단바에 표시</string>
+    <string name="show_carrier_enabled">켜짐(잠금화면과 상단바 동시)</string>
+    <string name="number_of_notifications_title">알림 수</string>
+    <string name="carrier_label_hide_label_title">알림 수신시 숨기기</string>
+    <string name="carrier_label_number_of_notification_icons_title">라벨 숨기기 전 최대 아이콘 수</string>
+	
+	<!-- Gesture Anywhere - Skipped -->
+	
+    <!-- Network traffic -->
+    <string name="network_traffic_title">네트워크 트래픽</string>
+    <string name="show_network_traffic_state">상단바 트래픽 모니터</string>
+    <string name="network_traffic_summary">상단바에 다양한 트레픽 옵션을 활성화 하는 옵션</string>
+    <string name="show_network_traffic_unit">단위</string>
+    <string name="show_network_traffic_frequency">업데이트 주기</string>
+    <string name="show_network_traffic_disable">비활성화 됨</string>
+    <string name="show_network_traffic_up">Outgoing</string>
+    <string name="show_network_traffic_down">Incoming</string>
+    <string name="show_network_traffic_all">Outgoing and incoming</string>
+    <string name="show_network_traffic_bit">Bits per second</string>
+    <string name="show_network_traffic_byte">Bytes per second</string>
+    <string name="show_network_traffic_500">500 ms</string>
+    <string name="show_network_traffic_1000">1000 ms</string>
+    <string name="show_network_traffic_1500">1500 ms</string>
+    <string name="show_network_traffic_2000">2000 ms</string>
+    <string name="network_traffic_autohide">자동 숨기기</string>
+    <string name="network_traffic_autohide_summary">트래픽 모니터 숨기기</string>
+    <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
+    <string name="network_traffic_color_style">Color style</string>
+    <string name="network_traffic_color_reset">Reset color</string>
+    <string name="network_traffic_color_reset_message">Reset network traffic color to default?</string>
+	
+    <!-- Toast Animation -->
+     <string name="toast_animation_title">Toast animation</string>
+     <string name="toast_none_animation">None</string>
+     <string name="toast_default_animation">Default</string>
+     <string name="toast_fade_animation">Fade</string>
+     <string name="toast_SlideRight_animation">Slide right</string>
+     <string name="toast_SlideLeft_animation">Slide left</string>
+     <string name="toast_Xylon_animation">Xylon</string>
+     <string name="toast_Toko_animation">Toko</string>
+     <string name="toast_Tn_animation">Tn</string>
+     <string name="toast_Honami_animation">Honami</string>
+     <string name="toast_FastFade_animation">Fast fade</string>
+     <string name="toast_GrowFade_animation">Grow fade</string>
+     <string name="toast_GrowFadeCenter_animation">Grow fade center</string>
+     <string name="toast_GrowFadeBottom_animation">Grow fade bottom</string>
+     <string name="toast_Translucent_animation">Translucent</string>
+     <string name="toast_SlideLeftRight_animation">Slide left to right</string>
+     <string name="toast_SlideRightLeft_animation">Slide right to left</string>
+	
+</resources>
