@@ -915,6 +915,7 @@
     <string name="dashboard_columns_landscape_title">Columns (landscape)</string>
 	
 	<!-- Status bar temperature -->
+	<string name="weather_kdp_category">Statusbar Weather</string>
 	<string name="weather_category">Weather Settings</string>
 	<string name="status_bar_temperature_title">Statusbar weather temperature</string>
 	<string name="status_bar_temperature_hidden">Hidden</string>
@@ -990,7 +991,7 @@
 	<string name="lock_screen_weather_city_color">Weather City </string>
 	<string name="lock_screen_weather_wind_color">Weather Wind</string>	
 	<string name="yes">YES</string>
-	<string name="weather_settings_title_cclock">Weather Provider Setting</string>
+	<string name="weather_settings_title_cclock">Weather Provider Settings</string>
 	
     <!-- Navigation Bar -->
     <string name="navbar_interface_title">Interface</string>

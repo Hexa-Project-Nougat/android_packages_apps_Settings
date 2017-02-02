@@ -134,7 +134,7 @@
 		 
          <!-- StatusBar Weather -->
          <PreferenceScreen android:key="statusbar_weather"
-                 android:title="@string/status_bar_temperature_title">
+                 android:title="@string/weather_kdp_category">
              <intent android:action="android.intent.action.MAIN"
                      android:targetPackage="com.android.settings"
                      android:targetClass="com.android.settings.kangdroid.activity.StatusBarWeatherActivity" />
