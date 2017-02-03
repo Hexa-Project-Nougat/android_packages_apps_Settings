@@ -519,10 +519,10 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             removePreferenceForProduction(hdcpChecking);
         }
 
-        PreferenceScreen convertFbePreference =
-            (PreferenceScreen) findPreference(KEY_CONVERT_FBE);
+/*        PreferenceScreen convertFbePreference =
+            (PreferenceScreen) findPreference(KEY_CONVERT_FBE); */
 
-        try {
+/*       try {
             IBinder service = ServiceManager.getService("mount");
             IMountService mountService = IMountService.Stub.asInterface(service);
             if (!mountService.isConvertibleToFBE()) {
@@ -534,7 +534,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             }
         } catch(RemoteException e) {
             removePreference(KEY_CONVERT_FBE);
-        }
+        } */
 
         mOtaDisableAutomaticUpdate = findAndInitSwitchPref(OTA_DISABLE_AUTOMATIC_UPDATE_KEY);
         if (!SystemProperties.getBoolean("ro.build.ab_update", false)) {
