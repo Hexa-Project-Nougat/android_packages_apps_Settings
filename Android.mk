@@ -8,7 +8,7 @@ LOCAL_SRC_FILES := \
 LOCAL_MODULE := settings-logtags
 
 include $(BUILD_STATIC_JAVA_LIBRARY)
-#
+
 # Build the Settings APK
 include $(CLEAR_VARS)
 
