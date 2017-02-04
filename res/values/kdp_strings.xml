@@ -1237,4 +1237,8 @@
     <string name="data_wifi_activity_arrows_summary_on">Show data/wifi activity arrows</string>
     <string name="data_wifi_activity_arrows_summary_off">Hide data/wifi activity arrows</string>
 
+    <!-- Keyguard Statusbar Clock -->
+    <string name="keyguard_statusbar_clock_title">Keyguard statusbar clock</string>
+    <string name="keyguard_statusbar_clock_summary">Show the left statusbar clock on the keyguard</string>
+
 </resources>
