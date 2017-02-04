@@ -1210,5 +1210,8 @@
     <string name="qs_tile_title_visibility_title">QS tile titles</string>
     <string name="qs_tile_title_visibility_summary_on">QS tiles titles are now visible</string>
     <string name="qs_tile_title_visibility_summary_off">QS tiles titles are now gone</string>
+	
+    <string name="torch_long_press_power_gesture_title">Long-press power button for torch</string>
+    <string name="torch_long_press_power_gesture_desc">Activate the torch by long-pressing the power button while the display is off</string>
 
 </resources>
