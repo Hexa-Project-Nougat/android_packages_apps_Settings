@@ -13,6 +13,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:cm="http://schemas.android.com/apk/res/cyanogenmod.platform"
 	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
 	android:title="@string/hexa_lockscreen_settings" >
 	
@@ -56,6 +57,13 @@
 	 <PreferenceCategory
 		 android:key="advanced_lockscreen_settings"
 		 android:title="@string/advanced_lockscreen_settings">
+
+        <cyanogenmod.preference.CMSystemSettingSwitchPreference
+            android:key="torch_long_press_power_gesture"
+            android:title="@string/torch_long_press_power_gesture_title"
+            android:summary="@string/torch_long_press_power_gesture_desc"
+            android:defaultValue="false"
+            cm:requiresConfig="@*android:bool/config_supportLongPressPowerWhenNonInteractive" />
 		 
          <!-- Lockscreen Weather -->
          <PreferenceScreen android:key="lockscreen_weather"
