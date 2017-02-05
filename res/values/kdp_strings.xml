@@ -1208,5 +1208,15 @@
 	
     <string name="powermenu_lockscreen_title">Power menu on lock screen</string>
     <string name="powermenu_lockscreen_summary">Show power menu on the lock screen</string>
+	
+	<!-- Hexa-Project Developers -->
+	<string name="kdp_dev_info_title">Developers</string>
+	<string name="kdp_dev_info_summary">See Developers of Hexa-Project</string>
+	<string name="kangdroid">KangDroid</string>
+	<string name="kangdroid_summary">Main Source developer &amp; Pixel, PixelXL, Nexus5X, Nexus6, Nexus6P Device maintainer</string>
+	<string name="andro_g">Andro_G</string>
+	<string name="andro_g_summary">Main Design - Layout</string>
+	<string name="nazunamoe">nazunamoe</string>
+	<string name="nazunamoe_summary">Nexus 5 Device Maintainer</string>
 
 </resources>

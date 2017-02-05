@@ -55,6 +55,12 @@
 	<PreferenceCategory
 		android:key="kdp_kangdroid"
 		android:title="@string/kdp_kangdroid_title">
+		
+		<PreferenceScreen
+			android:key="kdp_dev_info"
+			android:title="@string/kdp_dev_info_title"
+			android:summary="@string/kdp_dev_info_summary"
+			android:fragment="com.android.settings.kangdroid.KangDroidDevInfoSettings" />
 
 	<!-- KDP ROM version -->
         <Preference android:key="kdp_version"
