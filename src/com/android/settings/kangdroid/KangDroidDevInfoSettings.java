@@ -51,7 +51,7 @@ import java.util.regex.Pattern;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class KangDroidDevInfoSettings extends SettingsPreferenceFragment implements Indexable {
+public class KangDroidDevInfoSettings extends SettingsPreferenceFragment {
 	private static final String LOG_TAG = "KangDroidDevInfoSettings";
 	
 	private static final String DEV_KANGDROID = "kdp_kangdroid";
