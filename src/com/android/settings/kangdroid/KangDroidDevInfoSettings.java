@@ -37,6 +37,8 @@ import android.widget.Toast;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.R;
 
 import java.io.BufferedReader;
@@ -51,7 +53,7 @@ import java.util.regex.Pattern;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class KangDroidDevInfoSettings extends SettingsPreferenceFragment {
+public class KangDroidDevInfoSettings extends SettingsPreferenceFragment implements Indexable {
 	private static final String LOG_TAG = "KangDroidDevInfoSettings";
 	
 	private static final String DEV_KANGDROID = "kdp_kangdroid";
@@ -71,4 +73,25 @@ public class KangDroidDevInfoSettings extends SettingsPreferenceFragment {
 		
 		// TODO: Add some intent action when teammate's site is realdy
 	}
+	
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                                                                            boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.kangdroid_dev_info;
+                    result.add(sir);
+
+                    return result;
+                }
+
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    return new ArrayList<String>();
+                }
+            };
 }
