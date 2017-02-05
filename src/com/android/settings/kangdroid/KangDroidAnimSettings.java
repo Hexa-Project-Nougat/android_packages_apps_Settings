@@ -27,14 +27,22 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v14.preference.SwitchPreference;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.widget.Toast;
 
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.R;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
 public class KangDroidAnimSettings extends SettingsPreferenceFragment
-            implements OnPreferenceChangeListener  {
+            implements OnPreferenceChangeListener, Indexable  {
 		
 	private static final String TAG = "KangDroidAnimSettings";
 	
@@ -139,4 +147,25 @@ public class KangDroidAnimSettings extends SettingsPreferenceFragment
    protected int getMetricsCategory() {
        return MetricsEvent.APPLICATION;
    }
+   
+   public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+           new BaseSearchIndexProvider() {
+               @Override
+               public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                                                                           boolean enabled) {
+                   ArrayList<SearchIndexableResource> result =
+                           new ArrayList<SearchIndexableResource>();
+
+                   SearchIndexableResource sir = new SearchIndexableResource(context);
+                   sir.xmlResId = R.xml.kangdroid_anim_settings;
+                   result.add(sir);
+
+                   return result;
+               }
+
+               @Override
+               public List<String> getNonIndexableKeys(Context context) {
+                   return new ArrayList<String>();
+               }
+           };
 }

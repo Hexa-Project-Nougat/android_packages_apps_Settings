@@ -41,7 +41,7 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.provider.Settings;
-import android.provider.Settings;
+import android.provider.SearchIndexableResource;
 import android.util.Log;
 import android.view.WindowManagerGlobal;
 import android.view.IWindowManager;
@@ -69,7 +69,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public class KangDroidQuickSettings extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
+public class KangDroidQuickSettings extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener, Indexable {
 	private static final String PREF_QSLOCK = "lockscreen_qs_disabled";
 	private static final String QS_CAT = "qs_main_category";
 	private static final int MY_USER_ID = UserHandle.myUserId();
@@ -106,4 +106,25 @@ public class KangDroidQuickSettings extends SettingsPreferenceFragment implement
     protected int getMetricsCategory() {
         return MetricsEvent.APPLICATION;
     }
+	
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                                                                            boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.kangdroid_qs_settings;
+                    result.add(sir);
+
+                    return result;
+                }
+
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    return new ArrayList<String>();
+                }
+            };
 }
