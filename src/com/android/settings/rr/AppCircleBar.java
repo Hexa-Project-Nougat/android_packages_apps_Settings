@@ -49,7 +49,7 @@ import com.android.settings.R;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.preference.AppMultiSelectListPreference;
-import com.android.settings.SeekBarPreference;
+import com.android.settings.kangdroid.KangDroidSeekBarPreference;
 
 import java.io.File;
 import java.lang.Thread;
@@ -70,9 +70,9 @@ public class AppCircleBar extends SettingsPreferenceFragment implements
 
     private AppMultiSelectListPreference mIncludedAppCircleBar;
 
-    private SeekBarPreference mTriggerWidthPref;
-    private SeekBarPreference mTriggerTopPref;
-    private SeekBarPreference mTriggerBottomPref;
+    private KangDroidSeekBarPreference mTriggerWidthPref;
+    private KangDroidSeekBarPreference mTriggerTopPref;
+    private KangDroidSeekBarPreference mTriggerBottomPref;
 
 
     @Override
@@ -90,18 +90,18 @@ public class AppCircleBar extends SettingsPreferenceFragment implements
         if (includedApps != null) mIncludedAppCircleBar.setValues(includedApps);
         mIncludedAppCircleBar.setOnPreferenceChangeListener(this);
 
-        mTriggerWidthPref = (SeekBarPreference) findPreference(KEY_TRIGGER_WIDTH);
-        mTriggerWidthPref.setProgress(Settings.System.getInt(getContentResolver(),
+        mTriggerWidthPref = (KangDroidSeekBarPreference) findPreference(KEY_TRIGGER_WIDTH);
+        mTriggerWidthPref.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.APP_CIRCLE_BAR_TRIGGER_WIDTH, 40));
         mTriggerWidthPref.setOnPreferenceChangeListener(this);
 
-        mTriggerTopPref = (SeekBarPreference) findPreference(KEY_TRIGGER_TOP);
-        mTriggerTopPref.setProgress(Settings.System.getInt(getContentResolver(),
+        mTriggerTopPref = (KangDroidSeekBarPreference) findPreference(KEY_TRIGGER_TOP);
+        mTriggerTopPref.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.APP_CIRCLE_BAR_TRIGGER_TOP, 0));
         mTriggerTopPref.setOnPreferenceChangeListener(this);
 
-        mTriggerBottomPref = (SeekBarPreference) findPreference(KEY_TRIGGER_BOTTOM);
-        mTriggerBottomPref.setProgress(Settings.System.getInt(getContentResolver(),
+        mTriggerBottomPref = (KangDroidSeekBarPreference) findPreference(KEY_TRIGGER_BOTTOM);
+        mTriggerBottomPref.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.APP_CIRCLE_BAR_TRIGGER_HEIGHT, 100));
         mTriggerBottomPref.setOnPreferenceChangeListener(this);
 
