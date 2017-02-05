@@ -218,4 +218,25 @@ public class KangDroidQSHeaderSettings extends SettingsPreferenceFragment implem
     protected int getMetricsCategory() {
         return MetricsEvent.APPLICATION;
     }
+	
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                                                                            boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.kangdroid_qs_header_settings;
+                    result.add(sir);
+
+                    return result;
+                }
+
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    return new ArrayList<String>();
+                }
+            };
 }
