@@ -55,6 +55,7 @@ import com.android.settings.users.UserSettings;
 import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
+import com.android.settings.kangdroid.*;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -326,6 +327,13 @@ public final class SearchIndexableResources {
                         R.xml.zen_mode_visual_interruptions_settings,
                         ZenModeVisualInterruptionSettings.class.getName(),
                         R.drawable.ic_settings_notifications));
+		
+        sResMap.put(KangDroidClockDateSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidClockDateSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidClockDateSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
     }
 
     private SearchIndexableResources() {
