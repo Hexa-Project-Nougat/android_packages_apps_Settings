@@ -17,6 +17,7 @@
 package com.android.settings.kangdroid;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -36,6 +37,7 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.Spannable;
 import android.text.TextUtils;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
 import android.widget.EditText;
@@ -45,9 +47,14 @@ import com.android.settings.SettingsPreferenceFragment;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.SeekBarPreference;
 
-public class KangDroidCarrierLabel extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
+import java.util.ArrayList;
+import java.util.List;
+
+public class KangDroidCarrierLabel extends SettingsPreferenceFragment implements OnPreferenceChangeListener, Indexable{
 
     private static final String TAG = "CarrierLabel";
 
@@ -204,4 +211,25 @@ public class KangDroidCarrierLabel extends SettingsPreferenceFragment implements
         }
 		return super.onPreferenceTreeClick(preference);
     }
+	
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                                                                            boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.kangdroid_carrier_label;
+                    result.add(sir);
+
+                    return result;
+                }
+
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    return new ArrayList<String>();
+                }
+            };
 }

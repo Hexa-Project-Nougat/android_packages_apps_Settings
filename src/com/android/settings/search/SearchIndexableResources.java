@@ -55,6 +55,8 @@ import com.android.settings.users.UserSettings;
 import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
+import com.android.settings.kangdroid.*;
+import com.android.settings.kangdroid.gestureanywhere.*;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -326,6 +328,104 @@ public final class SearchIndexableResources {
                         R.xml.zen_mode_visual_interruptions_settings,
                         ZenModeVisualInterruptionSettings.class.getName(),
                         R.drawable.ic_settings_notifications));
+		
+        sResMap.put(KangDroidClockDateSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidClockDateSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidClockDateSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+		
+        sResMap.put(KangDroidAnimSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidAnimSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidAnimSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+		
+        sResMap.put(KangDroidCarrierLabel.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidCarrierLabel.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidCarrierLabel.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+		
+        sResMap.put(KangDroidDevInfoSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidDevInfoSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidDevInfoSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+		
+        sResMap.put(KangDroidDeviceInfoSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidDeviceInfoSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidDeviceInfoSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+		
+        sResMap.put(KangDroidLockscreenSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidLockscreenSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidLockscreenSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+		
+        sResMap.put(KangDroidNavBarSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidNavBarSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidNavBarSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+		
+        sResMap.put(KangDroidQSHeaderSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidQSHeaderSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidQSHeaderSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+		
+        sResMap.put(KangDroidQSUISettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidQSUISettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidQSUISettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+		
+        sResMap.put(KangDroidQuickSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidQuickSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidQuickSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+		
+        sResMap.put(KangDroidRecentsSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidRecentsSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidRecentsSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+		
+        sResMap.put(KangDroidStatusBarSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidStatusBarSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidStatusBarSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+		
+        sResMap.put(NetworkTraffic.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(NetworkTraffic.class.getName()),
+                        NO_DATA_RES_ID,
+                        NetworkTraffic.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+		
+        sResMap.put(GestureAnywhereSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(GestureAnywhereSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        GestureAnywhereSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
     }
 
     private SearchIndexableResources() {
