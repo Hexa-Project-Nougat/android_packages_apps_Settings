@@ -109,7 +109,7 @@ public class AppCircleBar extends SettingsPreferenceFragment implements
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.RESURRECTED;
+        return MetricsEvent.KANGDROID;
     }
 
     @Override

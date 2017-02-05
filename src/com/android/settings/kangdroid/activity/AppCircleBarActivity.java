@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import com.android.settings.rr.AppCircleBar;
 
-public class KangDroidClockDateActivity extends Activity {
+public class AppCircleBarActivity extends Activity {
 
  @Override
  protected void onCreate(Bundle savedInstanceState) {
