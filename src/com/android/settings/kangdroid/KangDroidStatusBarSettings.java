@@ -161,6 +161,7 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
         mDataWifiActivityArrows = (SwitchPreference) findPreference(DATA_WIFI_ACTIVITY_ARROWS);
         mDataWifiActivityArrows.setChecked((Settings.System.getInt(resolver,
                 Settings.System.DATA_ACTIVITY_ARROWS, 0) == 1));
+		mDataWifiActivityArrows.setOnPreferenceChangeListener(this);
 		
     }
 	
