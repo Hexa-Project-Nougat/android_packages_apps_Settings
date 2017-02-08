@@ -344,7 +344,7 @@
 	<string name="kdp_advanced_carrier_title">Advanced Carrier Customization</string>
 	
 	<!-- Lock Clock Fonts Category -->
-	<string name="kdp_lockscreen_clock_fonts_title">Lockscreen Fonts Customization</string>
+	<string name="kdp_lockscreen_clock_fonts_title">Lockscreen Clock Customization</string>
 	<!-- Lockscreen Notfication Category -->
 	<string name="kdp_lockscreen_notification_title">Lockscreen Notification Customization</string>
 	<!-- Lockscreen Shortcut Category -->
