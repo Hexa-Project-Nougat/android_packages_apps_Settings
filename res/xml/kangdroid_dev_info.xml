@@ -30,6 +30,11 @@
 		android:key="kdp_nazunamoe"
 		android:title="@string/nazunamoe"
 		android:summary="@string/nazunamoe_summary" />
+		
+	<Preference
+		android:key="kdp_mzo"
+		android:title="@string/mzo"
+		android:summary="@string/mzo_summary" />
 				
 <!--	<Preference
 		android:key="kdp_kangdroid"
