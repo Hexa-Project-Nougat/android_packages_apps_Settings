@@ -54,7 +54,6 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
     private static final String VOICEMAIL_BREATH = "voicemail_breath";
     private static final String SMS_BREATH = "sms_breath";
     private static final String BREATHING_NOTIFICATIONS = "breathing_notifications";
-	private static final String DATA_WIFI_ACTIVITY_ARROWS = "data_activity_arrows";
 	
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
@@ -68,8 +67,6 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
     private SwitchPreference mMissedCallBreath;
     private SwitchPreference mVoicemailBreath;
     private SwitchPreference mSmsBreath;
-	
-	private SwitchPreference mDataWifiActivityArrows;
 
 	public KangDroidStatusBarSettings() {
 	}
@@ -159,11 +156,6 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
             prefSet.removePreference(mSmsBreath);
         }
 		
-        mDataWifiActivityArrows = (SwitchPreference) findPreference(DATA_WIFI_ACTIVITY_ARROWS);
-        mDataWifiActivityArrows.setChecked((Settings.System.getInt(resolver,
-                Settings.System.DATA_ACTIVITY_ARROWS, 0) == 1));
-		mDataWifiActivityArrows.setOnPreferenceChangeListener(this);
-		
     }
 	
     @Override
@@ -224,11 +216,6 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
             boolean value = (Boolean) newValue;
             Settings.Global.putInt(getContentResolver(), SMS_BREATH,
                     value ? 1 : 0);
-            return true;
-        } else if  (preference == mDataWifiActivityArrows) {
-            boolean checked = ((SwitchPreference)preference).isChecked();
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.DATA_ACTIVITY_ARROWS, checked ? 1:0);
             return true;
 		}
         return false;
