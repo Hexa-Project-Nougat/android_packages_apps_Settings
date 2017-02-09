@@ -72,12 +72,12 @@ public class KangDroidQSHeaderSettings extends SettingsPreferenceFragment implem
     private static final String CUSTOM_HEADER_IMAGE = "status_bar_custom_header";
     private static final String DAYLIGHT_HEADER_PACK = "daylight_header_pack";
     private static final String DEFAULT_HEADER_PACKAGE = "com.android.systemui";
-//private static final String CUSTOM_HEADER_IMAGE_SHADOW = "status_bar_custom_header_shadow";
+	private static final String CUSTOM_HEADER_IMAGE_SHADOW = "status_bar_custom_header_shadow";
         private static final String CUSTOM_HEADER_PROVIDER = "custom_header_provider";
         private static final String CUSTOM_HEADER_BROWSE = "custom_header_browse";
 
     private ListPreference mDaylightHeaderPack;
-//    private KangDroidSeekBarPreference mHeaderShadow;
+    private KangDroidSeekBarPreference mHeaderShadow;
     private ListPreference mHeaderProvider;
     private String mDaylightHeaderProvider;
     private PreferenceScreen mHeaderBrowse;
@@ -116,11 +116,11 @@ public class KangDroidQSHeaderSettings extends SettingsPreferenceFragment implem
              mDaylightHeaderPack.setSummary(mDaylightHeaderPack.getEntry());
              mDaylightHeaderPack.setOnPreferenceChangeListener(this);
  
-            /* mHeaderShadow = (KangDroidSeekBarPreference) findPreference(CUSTOM_HEADER_IMAGE_SHADOW);
+             mHeaderShadow = (KangDroidSeekBarPreference) findPreference(CUSTOM_HEADER_IMAGE_SHADOW);
              final int headerShadow = Settings.System.getInt(resolver,
                      Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, 80);
              mHeaderShadow.setValue((int)(((double) headerShadow / 255) * 100));
-             mHeaderShadow.setOnPreferenceChangeListener(this); */
+             mHeaderShadow.setOnPreferenceChangeListener(this); 
 
             mDaylightHeaderProvider = getResources().getString(R.string.daylight_header_provider);
             String providerName = Settings.System.getString(resolver,
@@ -157,12 +157,12 @@ public class KangDroidQSHeaderSettings extends SettingsPreferenceFragment implem
                   int valueIndex = mDaylightHeaderPack.findIndexOfValue(value);
                   mDaylightHeaderPack.setSummary(mDaylightHeaderPack.getEntries()[valueIndex]);
                   return true;
-/*              } else if (preference == mHeaderShadow) {
+              } else if (preference == mHeaderShadow) {
                   Integer headerShadow = (Integer) objValue;
                   int realHeaderValue = (int) (((double) headerShadow / 100) * 255);
                   Settings.System.putInt(resolver,
                           Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, realHeaderValue);
-                  return true; */
+                  return true; 
               }  else if (preference == mHeaderProvider) {
                 String value = (String) objValue;
                 Settings.System.putString(resolver,
