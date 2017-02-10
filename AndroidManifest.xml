@@ -3349,7 +3349,6 @@
 		<activity android:name="com.android.settings.kangdroid.activity.AppCircleBarActivity" />
 		<activity android:name="com.android.settings.kangdroid.activity.LockscreenColorsActivity" />
 
-        </activity>
 
     </application>
 </manifest>
