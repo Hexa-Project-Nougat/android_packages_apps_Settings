@@ -33,7 +33,7 @@
 		android:key="kdp_others"
 		android:title="@string/kdp_others_category">
 
-		<SwitchPreference
+		<com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         	android:key="flashlight_notification"
          	android:title="@string/flashlight_notification_title"
          	android:summary="@string/flashlight_notification_summary"
@@ -74,12 +74,6 @@
                     android:targetPackage="com.android.settings"
                     android:targetClass="com.android.settings.kangdroid.activity.AppCircleBarActivity" />
         </PreferenceScreen>
-		
-        <PreferenceScreen
-            android:key="app_circle_bar"
-            android:fragment="com.android.settings.rr.AppCircleBar"
-            android:title="@string/app_circle_bar_title"
-            android:icon="@drawable/rr_appcirclebar_icon" />
 
         <!-- Transparency Settings -->
         <PreferenceScreen android:key="trans_porn"

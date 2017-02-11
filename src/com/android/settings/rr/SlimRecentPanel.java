@@ -241,6 +241,6 @@ public class SlimRecentPanel extends /*Slim*/SettingsPreferenceFragment implemen
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.RESURRECTED;
+        return MetricsEvent.KANGDROID;
     }
 }
