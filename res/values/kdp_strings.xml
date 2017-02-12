@@ -428,7 +428,6 @@
     <string name="qs_rows_portrait_title">Rows (portrait)</string>
     <string name="qs_rows_landscape_title">Rows (landscape)</string>
     <string name="qs_columns_title">Columns</string>
-	<string name="sysui_qqs_count_title">Small QS tiles</string>
 
 	<!-- HexaProject Information -->
 	<string name="kdp_device_info_title">Hexa-Project Info</string>
@@ -1282,5 +1281,8 @@
     <!-- ATTENTION: RTL languages need to replace left with right -->
     <string name="recent_panel_lefty_mode_title">Show on the left edge</string>
     <string name="recent_panel_lefty_mode_summary">Show recent apps panel on the left edge</string>
+	
+    <string name="qqs_scroll_title">Scroll small QS tiles</string>
+    <string name="qqs_scroll_summary">Allow scrolling through the small QS tiles</string>
 
 </resources>

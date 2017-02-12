@@ -26,11 +26,11 @@
         android:summaryOff="@string/qs_tile_title_visibility_summary_off"
         android:defaultValue="true"/>
 		
-    <ListPreference
-        android:key="sysui_qqs_count_key"
-        android:title="@string/sysui_qqs_count_title"
-        android:entries="@array/sysui_qqs_count_entries"
-        android:entryValues="@array/sysui_qqs_count_values" />      
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="qs_quickbar_scroll_enabled"
+        android:title="@string/qqs_scroll_title"
+        android:summary="@string/qqs_scroll_summary"
+        android:defaultValue="false"/> 
 
     <ListPreference
         android:key="qs_rows_portrait"
