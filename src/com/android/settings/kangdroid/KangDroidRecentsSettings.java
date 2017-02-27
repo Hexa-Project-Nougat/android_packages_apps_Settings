@@ -100,24 +100,11 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
         mRecentsUseOmniSwitch = (SwitchPreference) findPreference(RECENTS_USE_OMNISWITCH);
 		mRecentMemBar = (SwitchPreference) findPreference(RECENTS_MEMBAR);
 
-        try {
-            mRecentsUseOmniSwitch.setChecked(Settings.System.getInt(resolver,
-                    Settings.System.RECENTS_USE_OMNISWITCH) == 1);
-            mOmniSwitchInitCalled = true;
-        } catch(SettingNotFoundException e){
-            // if the settings value is unset
-        }
-        mRecentsUseOmniSwitch.setOnPreferenceChangeListener(this);
-
         mOmniSwitchSettings = (Preference) findPreference(OMNISWITCH_START_SETTINGS);
         mOmniSwitchSettings.setEnabled(mRecentsUseOmniSwitch.isChecked());
 		
-		
-        boolean slimRecents = Settings.System.getInt(getActivity().getContentResolver(),
-                    Settings.System.USE_SLIM_RECENTS, 0) == 0;
 		mRecentSlim = (SwitchPreference) findPreference(SLIM_RECENTS);
-        mRecentSlim.setChecked(slimRecents);
-		mRecentSlim.setOnPreferenceChangeListener(this);
+		updatePreference();
 
     }
 	
@@ -133,11 +120,13 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
             mImmersiveRecents.setEnabled(false);
             mRecentsClearAllLocation.setEnabled(false);
 			mRecentMemBar.setEnabled(false);
+			mRecentsUseOmniSwitch.setEnabled(false);
         } else if (omniSwitch) {
             mImmersiveRecents.setEnabled(false);
 			mRecentClearAllSwitch.setEnabled(false);
             mRecentsClearAllLocation.setEnabled(false);
 			mRecentMemBar.setEnabled(false);
+			mRecentSlim.setEnabled(false);
 		} else {
 			mRecentClearAllSwitch.setEnabled(true);
             mImmersiveRecents.setEnabled(true);
@@ -149,6 +138,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     @Override
     public void onResume() {
         super.onResume();
+		updatePreference();
     }
 	
     @Override
@@ -162,6 +152,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
+		updatePreference();
         if (preference == mImmersiveRecents) {
             Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_FULL_SCREEN,
                     Integer.valueOf((String) newValue));
@@ -175,24 +166,6 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
             mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntries()[index]);
             return true;
-		} else if (preference == mRecentsUseOmniSwitch) {
-            boolean value = (Boolean) newValue;
-
-            // if value has never been set before
-            if (value && !mOmniSwitchInitCalled){
-                openOmniSwitchFirstTimeWarning();
-                mOmniSwitchInitCalled = true;
-            }
-
-            Settings.System.putInt(
-                    resolver, Settings.System.RECENTS_USE_OMNISWITCH, value ? 1 : 0);
-			mOmniSwitchSettings.setEnabled(value);
-			updatePreference();
-		} else if (preference == mRecentSlim) {
-            boolean value = (Boolean) newValue;
-
-			Settings.System.putInt(resolver, Settings.System.USE_SLIM_RECENTS, value ? 1 : 0);
-			updatePreference();
         }
         return false;
     }
