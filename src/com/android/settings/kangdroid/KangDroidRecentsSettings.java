@@ -55,7 +55,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
 	
 	private static final String CLEAR_ALL_SWITCH = "show_clear_all_recents";
 	private static final String RECENTS_MEMBAR = "systemui_recents_mem_display";
-	private static final Swtring SLIM_RECENTS = "use_slim_recents";
+	private static final String SLIM_RECENTS = "use_slim_recents";
     // Package name of the omnniswitch app
     public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
     // Intent for launching the omniswitch settings actvity
@@ -112,9 +112,11 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
         mOmniSwitchSettings = (Preference) findPreference(OMNISWITCH_START_SETTINGS);
         mOmniSwitchSettings.setEnabled(mRecentsUseOmniSwitch.isChecked());
 		
+		
+        boolean slimRecents = Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.USE_SLIM_RECENTS, 0) == 0;
 		mRecentSlim = (SwitchPreference) findPreference(SLIM_RECENTS);
-        mRecentSlim.setValue(String.valueOf(Settings.System.getInt(
-                getContentResolver(), Settings.System.USE_SLIM_RECENTS, 0)));
+        mRecentSlim.setChecked(slimRecents);
 		mRecentSlim.setOnPreferenceChangeListener(this);
 
     }
