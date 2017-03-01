@@ -42,6 +42,12 @@
          android:entryValues="@array/lock_clock_fonts_values"
          android:summary="@string/lock_clock_font_summary"
          android:persistent="false" />
+	
+    	<com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+                android:key="lockscreen_hide_status_bar"
+                android:title="@string/lockscreen_hide_status_bar_title"
+                android:summary="@string/lockscreen_hide_status_bar_summary"
+                android:defaultValue="false" />
 		 
 	 </PreferenceCategory>
 	 
