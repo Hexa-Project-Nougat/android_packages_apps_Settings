@@ -177,6 +177,12 @@
                    android:targetClass="com.android.settings.kangdroid.activity.TickerActivity" />
        </PreferenceScreen>
 
+      <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="disable_fc_notifications"
+        android:title="@string/disable_fc_notifications_title"
+        android:summary="@string/disable_fc_notifications_summary"
+        android:defaultValue="false" />
+
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="force_expanded_notifications"
         android:title="@string/force_expanded_notifications_title"

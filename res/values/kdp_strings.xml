@@ -1319,5 +1319,9 @@
     <string name="weather_config_title">Service settings</string>
     <string name="weather_config_summary"></string>
     <string name="weather_icon_pack_title">Condition icon pack</string>
+	
+    <!-- Disabling FC notifications -->
+    <string name="disable_fc_notifications_title">Disable FC Notifications</string>
+    <string name="disable_fc_notifications_summary">This will hide all force close notificaitons</string>
 
 </resources>
