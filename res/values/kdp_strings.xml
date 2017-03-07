@@ -1751,5 +1751,9 @@
 	<string name="omni_switch_settings_kdp">OmniSwitch Settings</string>
 	<string name="slim_recents_settings_kdp">SlimRecents Settings</string>
 	<string name="aosp_settings_kdp">AOSP Recents Settings</string>
+	
+    <!-- Force authorize substratum packages -->
+   <string name="force_authorize_substratum_packages_title">Allow theme apps from unknown sources</string>
+   <string name="force_authorize_substratum_packages_summary">Force authorize every theme app</string>
 
 </resources>
