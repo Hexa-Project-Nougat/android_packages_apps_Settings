@@ -68,6 +68,12 @@
            android:key="weather_icon_pack"
            android:title="@string/weather_icon_pack_title"
            android:persistent="false" />
+
+        <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+            android:key="qs_location_easy_toggle"
+            android:title="@string/qs_location_easy_toggle_title"
+            android:summary="@string/qs_location_easy_toggle_summary"
+            android:defaultValue="false" />
 		
 	</PreferenceCategory>
 	

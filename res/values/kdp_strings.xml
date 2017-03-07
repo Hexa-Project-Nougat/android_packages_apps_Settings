@@ -1485,5 +1485,9 @@
     <string name="animation13">Fast Fade Out </string>
     <string name="animation14">Slide Out Up </string>
     <string name="animation15">Fast Rotation</string>
+	
+    <!-- Location easy toggle -->
+    <string name="qs_location_easy_toggle_title">Location easy toggle</string>
+    <string name="qs_location_easy_toggle_summary">One click will turn location services on or off instead of taking you to settings</string>
 
 </resources>
