@@ -133,16 +133,16 @@ public class KangDroidQuickSettings extends SettingsPreferenceFragment implement
              List<String> entriesJaws = new ArrayList<String>();
              List<String> valuesJaws = new ArrayList<String>();
              getAvailableWeatherIconPacks(entriesJaws, valuesJaws);
-             mWeatherIconPack.setEntries(entries.toArray(new String[entriesJaws.size()]));
-             mWeatherIconPack.setEntryValues(values.toArray(new String[valuesJaws.size()]));
+             mWeatherIconPack.setEntries(entriesJaws.toArray(new String[entriesJaws.size()]));
+             mWeatherIconPack.setEntryValues(valuesJaws.toArray(new String[valuesJaws.size()]));
  
-             int valueJawsIndex = mWeatherIconPack.findIndexOfValue(settingHeaderPackage);
+             int valueJawsIndex = mWeatherIconPack.findIndexOfValue(settingsJaws);
              if (valueJawsIndex == -1) {
                  // no longer found
                  settingHeaderPackage = DEFAULT_WEATHER_ICON_PACKAGE;
                  Settings.System.putString(getContentResolver(),
-                         Settings.System.OMNIJAWS_WEATHER_ICON_PACK, settingHeaderPackage);
-                 valueJawsIndex = mWeatherIconPack.findIndexOfValue(settingHeaderPackage);
+                         Settings.System.OMNIJAWS_WEATHER_ICON_PACK, settingsJaws);
+                 valueJawsIndex = mWeatherIconPack.findIndexOfValue(settingsJaws);
              }
              mWeatherIconPack.setValueIndex(valueJawsIndex >= 0 ? valueJawsIndex : 0);
              mWeatherIconPack.setSummary(mWeatherIconPack.getEntry());
