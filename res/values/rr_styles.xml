@@ -21,5 +21,6 @@
         <item name="android:windowNoTitle">false</item>
         <item name="preferenceTheme">@style/rr_settings</item>
     </style>
+	<style name="rr_settings" parent="Theme.SettingsBase"></style>
 
 </resources>
