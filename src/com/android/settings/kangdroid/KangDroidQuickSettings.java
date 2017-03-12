@@ -158,7 +158,7 @@ public class KangDroidQuickSettings extends SettingsPreferenceFragment implement
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
          if (preference == mWeatherIconPack) {
-            String value = (String) newValue;
+            String value = (String) objValue;
             Settings.System.putString(getContentResolver(),
                     Settings.System.OMNIJAWS_WEATHER_ICON_PACK, value);
             int valueIndex = mWeatherIconPack.findIndexOfValue(value);

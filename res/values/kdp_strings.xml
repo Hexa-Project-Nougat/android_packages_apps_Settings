@@ -43,6 +43,7 @@
 	<string name="default_string">Default</string>
 	<string name="reset_message">Reset</string>
 	<string name="attention">Attention</string>
+	<string name="help">Help</string>
 	
     <!-- About device screen, CPU and RAM info. -->
     <string name="cpu_info">CPU</string>
