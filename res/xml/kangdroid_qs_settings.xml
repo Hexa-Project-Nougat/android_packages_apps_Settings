@@ -80,15 +80,12 @@
 	<PreferenceCategory
 		android:key="qs_ui_category_key"
 		android:title="@string/qs_ui_hexa">
-		
-        <!-- TaskManager -->
-        <PreferenceScreen android:key="qs_ui_pref"
-                android:title="@string/qs_ui_pref_title"
- 			   android:summary="@string/qs_ui_pref_title_summary">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.KangDroidQSUISettingsActivity" />
-        </PreferenceScreen>
+
+	    <PreferenceScreen
+	            android:key="qs_ui_pref"
+	            android:fragment="com.android.settings.kangdroid.KangDroidQSUISettings"
+	            android:title="@string/battery_bar_title"
+				android:summary="@string/qs_ui_pref_title_summary" />
 		
 	</PreferenceCategory>
 	
@@ -96,14 +93,11 @@
 		android:key="qs_header_customization"
 		android:title="@string/qs_header_customization_category">
 		
-        <!-- TaskManager -->
-        <PreferenceScreen android:key="qs_header_pref_cat"
-                android:title="@string/qs_header_pref"
- 			   android:summary="@string/qs_header_pref_summary">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.KangDroidQSHeaderSettingsActivity" />
-        </PreferenceScreen>
+	    <PreferenceScreen
+	            android:key="qs_header_pref_cat"
+	            android:fragment="com.android.settings.kangdroid.KangDroidQSHeaderSettings"
+	            android:title="@string/qs_header_pref"
+				android:summary="@string/qs_header_pref_summary" />
 		
 	</PreferenceCategory>
 </PreferenceScreen>

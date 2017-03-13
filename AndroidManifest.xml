@@ -1004,7 +1004,7 @@
         </activity>
 		
 	<!-- Hexa settings -->
-        <activity android:name="com.android.settings.kangdroid.KangDroidMainTabSettings"
+        <activity android:name="Settings$KangDroidMainSettingsActivity"
                 android:label="@string/hexa_title"
                 android:icon="@drawable/ic_settings_statusbar">
             <intent-filter android:priority="1">
@@ -1013,6 +1013,8 @@
             </intent-filter>
             <meta-data android:name="com.android.settings.category"
                 android:value="com.android.settings.category.kangdroid" />
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.kangdroid.KangDroidMainSettings" />
         </activity>
 
         <!-- Keep compatibility with old shortcuts. -->
@@ -3060,13 +3062,6 @@
 
         <activity android:name=".kangdroid.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".kangdroid.gestureanywhere.GestureAnywhereCreateGestureActivity" />
-		
-        <activity
-            android:name="com.android.settings.kangdroid.KangDroidTabViewTesting">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
 
         <provider
             android:name=".search.SettingsSearchIndexablesProvider"
@@ -3311,74 +3306,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-		
-        <!-- BatteryBar Activity -->
-        <activity android:name="com.android.settings.kangdroid.activity.BatteryBarActivity" />
-		
-        <!-- Ticker Activity -->
-        <activity android:name="com.android.settings.kangdroid.activity.TickerActivity" />
-		
-        <!-- Clock and Date Activity -->
-        <activity android:name="com.android.settings.kangdroid.activity.KangDroidClockDateActivity" />
-		
-        <!-- Carrier Label Activity -->
-        <activity android:name="com.android.settings.kangdroid.activity.KangDroidCarrierLabelActivity" />
-		
-        <!-- SmartBarSettings -->
-        <activity android:name="com.android.settings.kangdroid.activity.SmartbarSettingsActivity" />
-		
-        <!-- Fling Settings -->
-        <activity android:name="com.android.settings.kangdroid.activity.FlingSettingsActivity" />
-
-        <!-- Pulse Settings -->
-        <activity android:name="com.android.settings.kangdroid.activity.PulseSettingsActivity" />
-		
-        <!-- Pie Settings -->
-        <activity android:name="com.android.settings.kangdroid.activity.PieControlActivity" />
-		
-        <!-- Pie Color Settings -->
-        <activity android:name="com.android.settings.kangdroid.activity.PieColorActivity" />
-		
-		<!-- Pie Targets Settings -->
-		<activity android:name="com.android.settings.kangdroid.activity.PieTargetsActivity" />
-		
-		<!-- Main System Animations -->
-		<activity android:name="com.android.settings.kangdroid.activity.AnimationControlsActivity" />
-		
-		<!-- Gesture Anywhere Settigns -->
-		<activity android:name="com.android.settings.kangdroid.activity.GestureAnywhereSettingsActivity" />
-		
-		<!-- Transparency Settings -->
-		<activity android:name="com.android.settings.kangdroid.activity.TransparencyPornActivity" />
-		
-		<!-- Blur Settings -->
-		<activity android:name="com.android.settings.kangdroid.activity.BlurPersonalizationsActivity" />
-		
-		<!-- Network Traffic -->
-		<activity android:name="com.android.settings.kangdroid.activity.NetworkTrafficActivity" />
-		
-		<!-- Task Manager -->
-		<activity android:name="com.android.settings.kangdroid.activity.TaskManagerSettingsActivity" />
-		
-		<!-- QSUI Settings -->
-		<activity android:name="com.android.settings.kangdroid.activity.KangDroidQSUISettingsActivity" />
-		
-		<!-- QS Header -->
-		<activity android:name="com.android.settings.kangdroid.activity.KangDroidQSHeaderSettingsActivity" />
-		
-		<!-- StatusBar Weather -->
-		<activity android:name="com.android.settings.kangdroid.activity.StatusBarWeatherActivity" />
-		
-		<!-- Lockscreen Weather -->
-		<activity android:name="com.android.settings.kangdroid.activity.LockScreenWeatherSettingsActivity" />
-		
-		<activity android:name="com.android.settings.kangdroid.activity.SmartBarSettingsActivity" />
-		
-		<activity android:name="com.android.settings.kangdroid.activity.AppCircleBarActivity" />
-		<activity android:name="com.android.settings.kangdroid.activity.LockscreenColorsActivity" />
-		<activity android:name="com.android.settings.kangdroid.activity.SlimRecentPanelActivity" />
-		<activity android:name="com.android.settings.kangdroid.activity.RecentsStylesActivity" />
-
 
     </application>
 </manifest>

@@ -42,16 +42,14 @@
             android:title="@string/use_slim_recents_title"
             android:summary="@string/use_slim_recents_summary"
             android:defaultValue="false" />
-
-	        <!-- App Circle Bar -->
-	        <PreferenceScreen android:key="slim_recent_panel"
-	                android:title="@string/slim_recents_settings_title"
+			
+		    <!-- BatteryBar -->
+		    <PreferenceScreen
+		            android:key="slim_recent_panel"
+		            android:fragment="com.android.settings.rr.SlimRecentPanel"
+		            android:title="@string/slim_recents_settings_title"
 					android:summary="@string/slim_recents_settings_summary"
-					android:dependency="use_slim_recents">
-	            <intent android:action="android.intent.action.MAIN"
-	                    android:targetPackage="com.android.settings"
-	                    android:targetClass="com.android.settings.kangdroid.activity.SlimRecentPanelActivity" />
-	        </PreferenceScreen>
+					android:dependency="use_slim_recents" />
 
     </PreferenceCategory>
 	
@@ -59,13 +57,11 @@
 		android:key="aosp_clear_location"
 		android:title="@string/aosp_clear_location_title">
 		
-        <PreferenceScreen android:key="recent_styles"
+        <PreferenceScreen
+				android:key="recent_styles"
                 android:title="@string/recent_styles"
-				android:summary="@string/recent_styles_summary">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.RecentsStylesActivity" />
-        </PreferenceScreen>
+				android:summary="@string/recent_styles_summary"
+				android:fragment="com.android.settings.rr.RecentsStyles" />
 		
         <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
             android:key="show_clear_all_recents"

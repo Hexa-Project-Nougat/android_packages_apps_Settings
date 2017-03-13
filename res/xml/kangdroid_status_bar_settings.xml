@@ -69,12 +69,10 @@
 		android:title="@string/status_bar_battery_cus_title">
 		
     <!-- BatteryBar -->
-    <PreferenceScreen android:key="batterybar"
-            android:title="@string/battery_bar_title">
-        <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.android.settings"
-                android:targetClass="com.android.settings.kangdroid.activity.BatteryBarActivity" />
-    </PreferenceScreen>
+    <PreferenceScreen
+            android:key="batterybar"
+            android:fragment="com.crdroid.settings.fragments.BatteryBar"
+            android:title="@string/battery_bar_title" />
 
     <ListPreference
         android:key="status_bar_battery_style"
@@ -97,12 +95,10 @@
 		android:title="@string/kdp_clock_date_settings_title">
 
     <!-- Clock and date -->
-    <PreferenceScreen android:key="kdp_status_bar_clock_and_date_key"
-            android:title="@string/kdp_status_bar_clock_and_date">
-        <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.android.settings"
-                android:targetClass="com.android.settings.kangdroid.activity.KangDroidClockDateActivity" />
-    </PreferenceScreen>
+    <PreferenceScreen
+           android:key="kdp_status_bar_clock_and_date_key"
+           android:title="@string/kdp_status_bar_clock_and_date"
+           android:fragment="com.android.settings.kangdroid.KangDroidClockDateSettings" />
 		   
    </PreferenceCategory>
    
@@ -138,13 +134,10 @@
          android:key="weather"
          android:title="@string/weather_category" >
 		 
-         <!-- StatusBar Weather -->
-         <PreferenceScreen android:key="statusbar_weather"
-                 android:title="@string/weather_kdp_category">
-             <intent android:action="android.intent.action.MAIN"
-                     android:targetPackage="com.android.settings"
-                     android:targetClass="com.android.settings.kangdroid.activity.StatusBarWeatherActivity" />
-         </PreferenceScreen>
+         <PreferenceScreen
+                 android:key="statusbar_weather"
+                 android:title="@string/weather_kdp_category"
+                 android:fragment="com.android.settings.rr.StatusBarWeather" />
  
       </PreferenceCategory>
    
@@ -153,29 +146,21 @@
 	   android:title="@string/kdp_other_status_bar_settings_title">
 
        <!-- Clock and date -->
-       <PreferenceScreen android:key="kdp_carrier_label"
-               android:title="@string/carrier_options">
-           <intent android:action="android.intent.action.MAIN"
-                   android:targetPackage="com.android.settings"
-                   android:targetClass="com.android.settings.kangdroid.activity.KangDroidCarrierLabelActivity" />
-       </PreferenceScreen>
-		   
-       <!-- Network Traffic -->
-       <PreferenceScreen android:key="network_traffic_state"
-               android:title="@string/network_traffic_title"
-			   android:summary="@string/network_traffic_summary">
-           <intent android:action="android.intent.action.MAIN"
-                   android:targetPackage="com.android.settings"
-                   android:targetClass="com.android.settings.kangdroid.activity.NetworkTrafficActivity" />
-       </PreferenceScreen>
+      <PreferenceScreen
+              android:key="kdp_carrier_label"
+              android:title="@string/carrier_options"
+              android:fragment="com.android.settings.kangdroid.KangDroidCarrierLabel" />
+			  
+	          <PreferenceScreen
+	                  android:key="network_traffic_state"
+	                  android:title="@string/network_traffic_title"
+	                  android:fragment="com.android.settings.kangdroid.NetworkTraffic" />
 	   
        <!-- Ticker -->
-       <PreferenceScreen android:key="ticker"
-               android:title="@string/ticker_screen_title">
-           <intent android:action="android.intent.action.MAIN"
-                   android:targetPackage="com.android.settings"
-                   android:targetClass="com.android.settings.kangdroid.activity.TickerActivity" />
-       </PreferenceScreen>
+    <PreferenceScreen
+            android:key="ticker"
+            android:fragment="com.crdroid.settings.fragments.Ticker"
+            android:title="@string/ticker_screen_title" />
 
       <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="disable_fc_notifications"

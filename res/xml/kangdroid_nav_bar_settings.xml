@@ -38,32 +38,20 @@
             android:title="@string/navbar_mode"
 			android:dependency="navbar_visibility" />
 		   
-        <!-- Smart Bar Settings -->
-        <PreferenceScreen android:key="smartbar_settings"
-                android:title="@string/smartbar_settings_title"
-				android:dependency="navbar_visibility">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.SmartbarSettingsActivity" />
-        </PreferenceScreen>
+        <PreferenceScreen
+            android:key="smartbar_settings"
+            android:title="@string/smartbar_settings_title"
+            android:fragment="com.android.settings.rr.SmartbarSettings" />
 
-        <!-- Fling Settings -->
-        <PreferenceScreen android:key="fling_settings"
-                android:title="@string/fling_settings"
-				android:dependency="navbar_visibility">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.FlingSettingsActivity" />
-        </PreferenceScreen>
-			
-        <!-- Pulse Settings -->
-        <PreferenceScreen android:key="pulse_settings"
-                android:title="@string/pulse_settings"
-				android:dependency="navbar_visibility">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.PulseSettingsActivity" />
-        </PreferenceScreen>
+        <PreferenceScreen
+            android:key="fling_settings"
+            android:title="@string/fling_settings"
+            android:fragment="com.android.settings.rr.FlingSettings" />
+  			
+		<PreferenceScreen
+            android:key="pulse_settings"
+            android:title="@string/pulse_settings"
+            android:fragment="com.android.settings.rr.PulseSettings" />  
 
 <!--        <PreferenceScreen
             android:key="navigation_bar"
@@ -105,13 +93,10 @@
 			android:key="kdp_advanced_nav_bar"
 			android:title="@string/kdp_advanced_nav_bar_title">
 
-        <!-- Pulse Settings -->
-        <PreferenceScreen android:key="pa_pie_control"
-                android:title="@string/pa_pie_control_title">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.PieControlActivity" />
-        </PreferenceScreen>
+    <PreferenceScreen
+        android:key="pa_pie_control"
+        android:title="@string/pa_pie_control_title"
+        android:fragment="com.crdroid.settings.fragments.PieControl" />
 
         <cyanogenmod.preference.CMSystemSettingSwitchPreference
             android:key="navigation_bar_left"

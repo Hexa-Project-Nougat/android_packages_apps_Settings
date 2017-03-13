@@ -63,14 +63,11 @@ public class KangDroidStatusBarSettings extends SettingsPreferenceFragment imple
     private ListPreference mQuickPulldown;
 	private ListPreference mHeadsUpTimeOut;
 	private ListPreference mHeadsUpSnoozeTime;
-	
+
     private SwitchPreference mMissedCallBreath;
     private SwitchPreference mVoicemailBreath;
     private SwitchPreference mSmsBreath;
 
-	public KangDroidStatusBarSettings() {
-	}
-	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

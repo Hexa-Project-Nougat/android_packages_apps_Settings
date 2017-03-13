@@ -7,23 +7,18 @@
         android:title="@string/pa_pie_control_enable_title"
         android:defaultValue="false" />
 
-        <!-- Pie Color Settings -->
-        <PreferenceScreen 
-				android:key="pa_pie_targets"
-                android:title="@string/pa_pie_targets_title"
-				android:dependency="pa_pie_state">
-            <intent android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.PieTargetsActivity" />
-        </PreferenceScreen>
+    <PreferenceScreen
+        android:key="pa_pie_targets"
+        android:title="@string/pa_pie_targets_title"
+        android:fragment="com.crdroid.settings.fragments.PieTargets"
+        android:dependency="pa_pie_state" />
 
-        <!-- Pie Color Settings -->
-        <PreferenceScreen 
-				android:key="pa_pie_color"
-                android:title="@string/pa_pie_color_title"
-				android:dependency="pa_pie_state">
-            <intent android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.PieColorActivity" />
-        </PreferenceScreen>
+    <PreferenceScreen
+        android:key="pa_pie_color"
+        android:title="@string/pa_pie_color_title"
+        android:fragment="com.crdroid.settings.fragments.PieColor"
+        android:dependency="pa_pie_state" />
+
 
    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="pa_pie_always_right"

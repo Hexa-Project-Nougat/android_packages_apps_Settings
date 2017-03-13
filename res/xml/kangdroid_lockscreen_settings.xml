@@ -21,13 +21,10 @@
 		android:key="kdp_lockscreen_clock_fonts"
 		android:title="@string/kdp_lockscreen_clock_fonts_title">
 		
-        <!-- Lockscreen Weather -->
-        <PreferenceScreen android:key="lockscreen_colors"
-                android:title="@string/lockscreen_colors">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.LockscreenColorsActivity" />
-        </PreferenceScreen>
+		<PreferenceScreen
+			android:key="lockscreen_colors"
+			android:title="@string/lockscreen_colors"
+			android:fragment="com.android.settings.rr.LockscreenColors" />
 		
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="keyguard_show_clock"
@@ -89,14 +86,11 @@
             android:summary="@string/torch_long_press_power_gesture_desc"
             android:defaultValue="false"
             cm:requiresConfig="@*android:bool/config_supportLongPressPowerWhenNonInteractive" />
-		 
-         <!-- Lockscreen Weather -->
-         <PreferenceScreen android:key="lockscreen_weather"
-                 android:title="@string/lock_screen_weather_settings_title">
-             <intent android:action="android.intent.action.MAIN"
-                     android:targetPackage="com.android.settings"
-                     android:targetClass="com.android.settings.kangdroid.activity.LockScreenWeatherSettingsActivity" />
-         </PreferenceScreen>
+			
+			<PreferenceScreen
+				android:key="lockscreen_weather"
+				android:title="@string/lock_screen_weather_settings_title"
+				android:fragment="com.android.settings.rr.LockScreenWeatherSettings" />
 		 
      	<com.android.settings.cyanogenmod.SystemSettingSwitchPreference
                  android:key="lockscreen_battery_info"

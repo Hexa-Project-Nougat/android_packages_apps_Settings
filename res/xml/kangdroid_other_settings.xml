@@ -18,14 +18,12 @@
 	<PreferenceCategory
 		android:key="kdp_gesture_anywhere"
 		android:title="@string/kdp_gesture_anywhere">
-		
-        <!-- Gesture Anywhere Settings -->
-        <PreferenceScreen android:key="gesture_anywhere"
-                android:title="@string/gesture_anywhere_title">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.GestureAnywhereSettingsActivity" />
-        </PreferenceScreen>
+	
+    <!-- Gesture anywhere -->
+    <PreferenceScreen
+         android:key="gesture_anywhere"
+         android:fragment="com.android.settings.kangdroid.gestureanywhere.GestureAnywhereSettings"
+         android:title="@string/gesture_anywhere_title" />
 		 
 	 </PreferenceCategory>
 		 
@@ -66,30 +64,22 @@
             android:title="@string/screenshot_crop_and_share_title"
             android:summary="@string/screenshot_crop_and_share_summary"
             android:defaultValue="false" />
+			
+	    <!-- Gesture anywhere -->
+	    <PreferenceScreen
+	         android:key="app_circle_bar"
+	         android:fragment="com.android.settings.rr.AppCircleBar"
+	         android:title="@string/app_circle_bar_title" />
 
-        <!-- App Circle Bar -->
-        <PreferenceScreen android:key="app_circle_bar"
-                android:title="@string/app_circle_bar_title">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.AppCircleBarActivity" />
-        </PreferenceScreen>
+       <Preference
+             android:key="trans_porn"
+             android:title="@string/trans"
+             android:fragment="com.crdroid.settings.fragments.TransparencyPornFragment" />
 
-        <!-- Transparency Settings -->
-        <PreferenceScreen android:key="trans_porn"
-                android:title="@string/trans">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.TransparencyPornActivity" />
-        </PreferenceScreen>
-		
-        <!-- Blur Settings -->
-        <PreferenceScreen android:key="blur"
-                android:title="@string/settings_blur_cat">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.kangdroid.activity.BlurPersonalizationsActivity" />
-        </PreferenceScreen>
+        <Preference
+            android:key="blur"
+            android:title="@string/settings_blur_cat"
+            android:fragment="com.crdroid.settings.fragments.BlurPersonalizations" />
 		
 	</PreferenceCategory>
 		
