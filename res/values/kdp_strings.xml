@@ -1746,5 +1746,6 @@
     <string name="status_bar_temperature_hide_scale_hide_image">Show temp without scale</string>
     <string name="status_bar_show_image">Show image</string>
     <string name="status_bar_weather_image_color_title">Image color</string>
+	<string name="sb_weather_ic_title">Icon pack</string>
 
 </resources>
