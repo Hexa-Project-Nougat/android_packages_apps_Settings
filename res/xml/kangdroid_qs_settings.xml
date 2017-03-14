@@ -84,7 +84,7 @@
 	    <PreferenceScreen
 	            android:key="qs_ui_pref"
 	            android:fragment="com.android.settings.kangdroid.KangDroidQSUISettings"
-	            android:title="@string/battery_bar_title"
+	            android:title="@string/qs_ui_pref_title"
 				android:summary="@string/qs_ui_pref_title_summary" />
 		
 	</PreferenceCategory>
