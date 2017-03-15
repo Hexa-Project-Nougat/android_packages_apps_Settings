@@ -19,7 +19,7 @@
 		android:key="omni_switch_category"
 		android:title="@string/omni_switch_category_title">
 		
-	    <SwitchPreference
+	    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
             android:key="recents_use_omniswitch"
             android:title="@string/recents_use_omniswitch_title"
             android:summary="@string/recents_use_omniswitch_summary"
@@ -37,7 +37,7 @@
         android:key="slim_recents"
         android:title="@string/slim_recents_title">
 
-        <SwitchPreference
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
             android:key="use_slim_recents"
             android:title="@string/use_slim_recents_title"
             android:summary="@string/use_slim_recents_summary"

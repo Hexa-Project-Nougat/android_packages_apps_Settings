@@ -65,12 +65,8 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     private ListPreference mImmersiveRecents;
 	private SwitchPreference mRecentsClearAll;
 	private ListPreference mRecentsClearAllLocation;
-	
-    private SwitchPreference mRecentsUseOmniSwitch;
+
     private Preference mOmniSwitchSettings;
-	private SwitchPreference mRecentClearAllSwitch;
-	private SwitchPreference mRecentMemBar;
-	private SwitchPreference mRecentSlim;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,8 +82,6 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
         mImmersiveRecents.setSummary(mImmersiveRecents.getEntry());
         mImmersiveRecents.setOnPreferenceChangeListener(this);
 		
-		mRecentClearAllSwitch = (SwitchPreference) findPreference(CLEAR_ALL_SWITCH);
-		
         // clear all location
         mRecentsClearAllLocation = (ListPreference) findPreference(RECENTS_CLEAR_ALL_LOCATION);
         int location = Settings.System.getIntForUser(resolver,
@@ -96,50 +90,14 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
         mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntry());
         mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
 		
-        mRecentsUseOmniSwitch = (SwitchPreference) findPreference(RECENTS_USE_OMNISWITCH);
-		mRecentsUseOmniSwitch.setOnPreferenceChangeListener(this);
-		mRecentMemBar = (SwitchPreference) findPreference(RECENTS_MEMBAR);
-
         mOmniSwitchSettings = (Preference) findPreference(OMNISWITCH_START_SETTINGS);
-        mOmniSwitchSettings.setEnabled(mRecentsUseOmniSwitch.isChecked());
-		
-		mRecentSlim = (SwitchPreference) findPreference(SLIM_RECENTS);
-		mRecentSlim.setOnPreferenceChangeListener(this);
-		updatePreference();
+        mOmniSwitchSettings.setEnabled(true);
 
-    }
-	
-    public void updatePreference() {
-        boolean slimRecent = Settings.System.getInt(getActivity().getContentResolver(),
-                    Settings.System.USE_SLIM_RECENTS, 0) == 1;
-		
-        boolean omniSwitch = Settings.System.getInt(getActivity().getContentResolver(),
-                    Settings.System.RECENTS_USE_OMNISWITCH, 0) == 1;
-
-        if (slimRecent) {
-			mRecentClearAllSwitch.setEnabled(false);
-            mImmersiveRecents.setEnabled(false);
-            mRecentsClearAllLocation.setEnabled(false);
-			mRecentMemBar.setEnabled(false);
-			mRecentsUseOmniSwitch.setEnabled(false);
-        } else if (omniSwitch) {
-            mImmersiveRecents.setEnabled(false);
-			mRecentClearAllSwitch.setEnabled(false);
-            mRecentsClearAllLocation.setEnabled(false);
-			mRecentMemBar.setEnabled(false);
-			mRecentSlim.setEnabled(false);
-		} else {
-			mRecentClearAllSwitch.setEnabled(true);
-            mImmersiveRecents.setEnabled(true);
-            mRecentsClearAllLocation.setEnabled(true);
-			mRecentMemBar.setEnabled(true);
-		}
     }
 	
     @Override
     public void onResume() {
         super.onResume();
-		updatePreference();
     }
 	
     @Override
@@ -153,7 +111,6 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-		updatePreference();
         if (preference == mImmersiveRecents) {
             Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_FULL_SCREEN,
                     Integer.valueOf((String) newValue));
@@ -167,29 +124,8 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
             mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntries()[index]);
             return true;
-        } else if (preference == mRecentsUseOmniSwitch) {
-            boolean showing = ((Boolean)newValue);
-            Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH,
-                    showing ? 1 : 0);
-			openOmniSwitchFirstTimeWarning();
-			updatePreference();
-        } else if (preference == mRecentSlim) {
-            boolean useslim = ((Boolean)newValue);
-            Settings.System.putInt(getContentResolver(), Settings.System.USE_SLIM_RECENTS,
-                    useslim ? 1 : 0);
-			updatePreference();
         }
         return false;
-    }
-	
-    private void openOmniSwitchFirstTimeWarning() {
-        new AlertDialog.Builder(getActivity())
-                .setTitle(getResources().getString(R.string.omniswitch_first_time_title))
-                .setMessage(getResources().getString(R.string.omniswitch_first_time_message))
-                .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                        }
-                }).show();
     }
 	
     @Override
