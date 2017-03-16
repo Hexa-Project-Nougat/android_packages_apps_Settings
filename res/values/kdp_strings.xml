@@ -28,7 +28,7 @@
     <!-- About phone screen, KDP version -->
     <string name="kdp_version_title">HEXA ROM Version</string>
     <!-- Do NOT translate this -->
-    <string name="kdp_version_default">Alpha - 4</string>
+    <string name="kdp_version_default">Alpha - 5</string>
 	
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
