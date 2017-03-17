@@ -56,7 +56,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_recents_settings);
-		mSlimRecents = (PreferenceScreen) findPreference(SLIM_RECENTS_PREFERNCE);
+		mSlimRecents = (PreferenceScreen) findPreference(SLIM_RECENTS_PREFERENCE);
 		mOmniSwitch = (PreferenceScreen) findPreference(OMNISWITCH_RECENTS_PREFERENCE);
     }
 
@@ -64,11 +64,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     public void onResume() {
         super.onResume();
     }
-	
-    @Override
-    public boolean onPreferenceTreeClick(Preference preference) {
-        return super.onPreferenceTreeClick(preference);
-    }
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         return false;

@@ -60,10 +60,6 @@ public class KangDroidSlimRecents extends SettingsPreferenceFragment implements 
     }
 	
     @Override
-    public boolean onPreferenceTreeClick(Preference preference) {
-    }
-	
-    @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         return false;
     }
