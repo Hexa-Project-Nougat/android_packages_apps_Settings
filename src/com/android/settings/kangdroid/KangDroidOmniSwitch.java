@@ -45,21 +45,27 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KangDroidRecentsSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
-	private static final String SLIM_RECENTS_PREFERENCE = "slim_recents_settings_kdp";
-	private static final String OMNISWITCH_RECENTS_PREFERENCE = "omni_switch_settings_kdp";
+public class KangDroidOmniSwitch extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
+    private static final String OMNISWITCH_START_SETTINGS = "omniswitch_start_settings";
 	
-	private PreferenceScreen mSlimRecents;
-	private PreferenceScreen mOmniSwitch;
+    // Package name of the omnniswitch app
+    public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
+    // Intent for launching the omniswitch settings actvity
+    public static Intent INTENT_OMNISWITCH_SETTINGS = new Intent(Intent.ACTION_MAIN)
+            .setClassName(OMNISWITCH_PACKAGE_NAME, OMNISWITCH_PACKAGE_NAME + ".SettingsActivity");
+
+    private Preference mOmniSwitchSettings;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_recents_settings);
-		mSlimRecents = (PreferenceScreen) findPreference(SLIM_RECENTS_PREFERNCE);
-		mOmniSwitch = (PreferenceScreen) findPreference(OMNISWITCH_RECENTS_PREFERENCE);
-    }
+		
+        mOmniSwitchSettings = (Preference) findPreference(OMNISWITCH_START_SETTINGS);
+        mOmniSwitchSettings.setEnabled(true);
 
+    }
+	
     @Override
     public void onResume() {
         super.onResume();
@@ -67,6 +73,10 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
 	
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference == mOmniSwitchSettings){
+            startActivity(INTENT_OMNISWITCH_SETTINGS);
+            return true;
+        }
         return super.onPreferenceTreeClick(preference);
     }
     @Override
@@ -78,10 +88,6 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     protected int getMetricsCategory() {
         return MetricsEvent.APPLICATION;
     }
-	
-	public void updatePreferences() {
-		
-	}
 	
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {

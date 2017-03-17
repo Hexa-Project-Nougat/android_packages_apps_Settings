@@ -1747,5 +1747,9 @@
     <string name="status_bar_show_image">Show image</string>
     <string name="status_bar_weather_image_color_title">Image color</string>
 	<string name="sb_weather_ic_title">Icon pack</string>
+	
+	<string name="omni_switch_settings_kdp">OmniSwitch Settings</string>
+	<string name="slim_recents_settings_kdp">SlimRecents Settings</string>
+	<string name="aosp_settings_kdp">AOSP Recents Settings</string>
 
 </resources>

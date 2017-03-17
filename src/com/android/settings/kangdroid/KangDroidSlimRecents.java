@@ -45,21 +45,15 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KangDroidRecentsSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
-	private static final String SLIM_RECENTS_PREFERENCE = "slim_recents_settings_kdp";
-	private static final String OMNISWITCH_RECENTS_PREFERENCE = "omni_switch_settings_kdp";
-	
-	private PreferenceScreen mSlimRecents;
-	private PreferenceScreen mOmniSwitch;
+public class KangDroidSlimRecents extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.kangdroid_recents_settings);
-		mSlimRecents = (PreferenceScreen) findPreference(SLIM_RECENTS_PREFERNCE);
-		mOmniSwitch = (PreferenceScreen) findPreference(OMNISWITCH_RECENTS_PREFERENCE);
-    }
+        addPreferencesFromResource(R.xml.kangdroid_slim_recents);
 
+    }
+	
     @Override
     public void onResume() {
         super.onResume();
@@ -67,8 +61,8 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
 	
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
-        return super.onPreferenceTreeClick(preference);
     }
+	
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         return false;
@@ -79,10 +73,6 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
         return MetricsEvent.APPLICATION;
     }
 	
-	public void updatePreferences() {
-		
-	}
-	
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
                 @Override
@@ -92,7 +82,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
                             new ArrayList<SearchIndexableResource>();
 
                     SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.kangdroid_recents_settings;
+                    sir.xmlResId = R.xml.kangdroid_slim_recents;
                     result.add(sir);
 
                     return result;

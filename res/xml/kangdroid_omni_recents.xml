@@ -19,33 +19,18 @@
 		android:key="omni_switch_category"
 		android:title="@string/omni_switch_category_title">
 		
-        <PreferenceScreen
-				android:key="omni_switch_settings_kdp"
-                android:title="@string/omni_switch_settings_kdp"
-				android:fragment="com.android.settings.kangdroid.KangDroidOmniSwitch" />
-		
-	</PreferenceCategory>
-	
-    <PreferenceCategory
-        android:key="slim_recents"
-        android:title="@string/slim_recents_title">
+	    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="recents_use_omniswitch"
+            android:title="@string/recents_use_omniswitch_title"
+            android:summary="@string/recents_use_omniswitch_summary"
+            android:persistent="false" />
 
-        <PreferenceScreen
-				android:key="slim_recents_settings_kdp"
-                android:title="@string/slim_recents_settings_kdp"
-				android:fragment="com.android.settings.kangdroid.KangDroidSlimRecents" />
-
-    </PreferenceCategory>
-	
-	<PreferenceCategory
-		android:key="aosp_clear_location"
-		android:title="@string/aosp_clear_location_title">
+	    <Preference
+            android:key="omniswitch_start_settings"
+            android:title="@string/omniswitch_start_settings_title"
+            android:summary="@string/omniswitch_start_settings_summary"
+            android:persistent="false" />
 		
-        <PreferenceScreen
-				android:key="aosp_settings_kdp"
-                android:title="@string/aosp_settings_kdp"
-				android:fragment="com.android.settings.kangdroid.KangDroidRecentsSettings" />
-				
 	</PreferenceCategory>
 
 </PreferenceScreen>

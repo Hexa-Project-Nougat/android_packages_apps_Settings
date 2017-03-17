@@ -15,37 +15,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings" >
 	
-	<PreferenceCategory
-		android:key="omni_switch_category"
-		android:title="@string/omni_switch_category_title">
-		
-        <PreferenceScreen
-				android:key="omni_switch_settings_kdp"
-                android:title="@string/omni_switch_settings_kdp"
-				android:fragment="com.android.settings.kangdroid.KangDroidOmniSwitch" />
-		
-	</PreferenceCategory>
-	
     <PreferenceCategory
         android:key="slim_recents"
         android:title="@string/slim_recents_title">
 
-        <PreferenceScreen
-				android:key="slim_recents_settings_kdp"
-                android:title="@string/slim_recents_settings_kdp"
-				android:fragment="com.android.settings.kangdroid.KangDroidSlimRecents" />
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="use_slim_recents"
+            android:title="@string/use_slim_recents_title"
+            android:summary="@string/use_slim_recents_summary"
+            android:defaultValue="false" />
+			
+		    <!-- BatteryBar -->
+		    <PreferenceScreen
+		            android:key="slim_recent_panel"
+		            android:fragment="com.android.settings.rr.SlimRecentPanel"
+		            android:title="@string/slim_recents_settings_title"
+					android:summary="@string/slim_recents_settings_summary"
+					android:dependency="use_slim_recents" />
 
     </PreferenceCategory>
-	
-	<PreferenceCategory
-		android:key="aosp_clear_location"
-		android:title="@string/aosp_clear_location_title">
-		
-        <PreferenceScreen
-				android:key="aosp_settings_kdp"
-                android:title="@string/aosp_settings_kdp"
-				android:fragment="com.android.settings.kangdroid.KangDroidRecentsSettings" />
-				
-	</PreferenceCategory>
 
 </PreferenceScreen>

@@ -45,21 +45,37 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KangDroidRecentsSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
-	private static final String SLIM_RECENTS_PREFERENCE = "slim_recents_settings_kdp";
-	private static final String OMNISWITCH_RECENTS_PREFERENCE = "omni_switch_settings_kdp";
-	
-	private PreferenceScreen mSlimRecents;
-	private PreferenceScreen mOmniSwitch;
+public class KangDroidAOSPRecents extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
+
+    private static final String IMMERSIVE_RECENTS = "immersive_recents";
+	private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
+
+    private ListPreference mImmersiveRecents;
+	private ListPreference mRecentsClearAllLocation;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_recents_settings);
-		mSlimRecents = (PreferenceScreen) findPreference(SLIM_RECENTS_PREFERNCE);
-		mOmniSwitch = (PreferenceScreen) findPreference(OMNISWITCH_RECENTS_PREFERENCE);
+		
+		PreferenceScreen prefSet = getPreferenceScreen();
+		final ContentResolver resolver = getActivity().getContentResolver();
+		
+        mImmersiveRecents = (ListPreference) findPreference(IMMERSIVE_RECENTS);
+        mImmersiveRecents.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.RECENTS_FULL_SCREEN, 0)));
+        mImmersiveRecents.setSummary(mImmersiveRecents.getEntry());
+        mImmersiveRecents.setOnPreferenceChangeListener(this);
+		
+        // clear all location
+        mRecentsClearAllLocation = (ListPreference) findPreference(RECENTS_CLEAR_ALL_LOCATION);
+        int location = Settings.System.getIntForUser(resolver,
+                Settings.System.RECENTS_CLEAR_ALL_LOCATION, 3, UserHandle.USER_CURRENT);
+        mRecentsClearAllLocation.setValue(String.valueOf(location));
+        mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntry());
+        mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
     }
-
+	
     @Override
     public void onResume() {
         super.onResume();
@@ -71,6 +87,21 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     }
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mImmersiveRecents) {
+            Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_FULL_SCREEN,
+                    Integer.valueOf((String) newValue));
+            mImmersiveRecents.setValue(String.valueOf(newValue));
+            mImmersiveRecents.setSummary(mImmersiveRecents.getEntry());
+            return true;
+        } else if (preference == mRecentsClearAllLocation) {
+            int location = Integer.valueOf((String) newValue);
+            int index = mRecentsClearAllLocation.findIndexOfValue((String) newValue);
+            Settings.System.putIntForUser(resolver,
+                    Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
+            mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntries()[index]);
+            return true;
+        }
         return false;
     }
 	
@@ -78,10 +109,6 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     protected int getMetricsCategory() {
         return MetricsEvent.APPLICATION;
     }
-	
-	public void updatePreferences() {
-		
-	}
 	
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
@@ -92,7 +119,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
                             new ArrayList<SearchIndexableResource>();
 
                     SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.kangdroid_recents_settings;
+                    sir.xmlResId = R.xml.kangdroid_aosp_recents;
                     result.add(sir);
 
                     return result;
