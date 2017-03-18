@@ -59,7 +59,7 @@ public class KangDroidOmniSwitch extends SettingsPreferenceFragment implements I
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.kangdroid_recents_settings);
+        addPreferencesFromResource(R.xml.kangdroid_omni_recents);
 		
         mOmniSwitchSettings = (Preference) findPreference(OMNISWITCH_START_SETTINGS);
         mOmniSwitchSettings.setEnabled(true);
@@ -98,7 +98,7 @@ public class KangDroidOmniSwitch extends SettingsPreferenceFragment implements I
                             new ArrayList<SearchIndexableResource>();
 
                     SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.kangdroid_recents_settings;
+                    sir.xmlResId = R.xml.kangdroid_omni_recents;
                     result.add(sir);
 
                     return result;

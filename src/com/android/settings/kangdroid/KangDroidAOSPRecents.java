@@ -56,7 +56,7 @@ public class KangDroidAOSPRecents extends SettingsPreferenceFragment implements 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.kangdroid_recents_settings);
+        addPreferencesFromResource(R.xml.kangdroid_aosp_recents);
 		
 		PreferenceScreen prefSet = getPreferenceScreen();
 		final ContentResolver resolver = getActivity().getContentResolver();
