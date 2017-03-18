@@ -39,12 +39,12 @@
 	
 	<PreferenceCategory
 		android:key="aosp_clear_location"
-		android:title="@string/aosp_clear_location_title">
+		android:title="@string/aosp_settings_kdp">
 		
         <PreferenceScreen
 				android:key="aosp_settings_kdp"
                 android:title="@string/aosp_settings_kdp"
-				android:fragment="com.android.settings.kangdroid.KangDroidRecentsSettings" />
+				android:fragment="com.android.settings.kangdroid.KangDroidAOSPRecents" />
 				
 	</PreferenceCategory>
 
