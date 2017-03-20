@@ -27,8 +27,6 @@
 	
     <!-- About phone screen, KDP version -->
     <string name="kdp_version_title">헥사 버전</string>
-    <!-- Do NOT translate this -->
-    <string name="kdp_version_default">Alpha - 2</string>
 	
     <!-- Color Picker -->
     <string name="dialog_color_picker">색상 편집기</string>
