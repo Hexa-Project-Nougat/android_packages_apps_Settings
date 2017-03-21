@@ -43,12 +43,16 @@
         android:title="@string/mod_version"
         android:summary="@string/mod_version_default" />
 				
-    <!-- CyanogenMod API Version -->
-    <Preference android:key="mod_api_level"
-        android:enabled="false"
-        android:shouldDisableView="false"
-        android:title="@string/mod_api_level"
-        android:summary="@string/mod_api_level_default" />
+        <!-- CyanogenMod API Version -->
+        <com.android.settings.DividerPreference
+                android:key="mod_api_level"
+                android:enabled="false"
+                android:selectable="false"
+                android:shouldDisableView="false"
+                android:title="@string/mod_api_level"
+                android:summary="@string/mod_api_level_default"
+                settings:allowDividerAbove="true"
+                settings:allowDividerBelow="true" />
 		
 	</PreferenceCategory>
 	
@@ -68,11 +72,16 @@
                 android:title="@string/kdp_version_title"
                 android:summary="@string/kdp_version_default"/>
 
-    <!-- Build date -->
-        <Preference android:key="build_date"
-                style="?android:preferenceInformationStyle"
-                android:title="@string/build_date"
-                android:summary="@string/build_date_default" />
+		        <!-- Build date -->
+		        <com.android.settings.DividerPreference
+		                android:key="build_date"
+		                android:enabled="false"
+		                android:selectable="false"
+		                android:shouldDisableView="false"
+		                android:title="@string/build_date"
+		                android:summary="@string/build_date_default"
+		                settings:allowDividerAbove="true"
+		                settings:allowDividerBelow="true" />
 				
 	</PreferenceCategory>
 			
