@@ -24,4 +24,7 @@
 		<attr name="units" format="string|reference" />
     </declare-styleable>
 
+    <!-- Icon pack picker -->
+    <dimen name="alert_dialog_padding_material">20dp</dimen>
+
 </resources>

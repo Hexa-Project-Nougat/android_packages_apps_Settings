@@ -89,6 +89,10 @@
 	            android:defaultValue="false"
 	            android:dependency="slim_recents_mem_display" />
 
+        <Preference
+            android:key="slim_icon_pack"
+            android:title="@string/slim_icon_pack_title"
+            android:summary="@string/slim_icon_pack_summary" />
 
         <PreferenceCategory
             android:title="@string/recent_app_sidebar_title">
