@@ -42,6 +42,12 @@
             android:title="@string/allow_signature_fake"
             android:summary="@string/allow_signature_fake_summary"
             android:defaultValue="false" />
+
+    <!-- In-Call DND -->
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="dnd_when_call"
+            android:title="@string/dnd_when_call_title"
+            android:summary="@string/dnd_when_call_summary" />
 		 
 	 </PreferenceCategory>
 	 
