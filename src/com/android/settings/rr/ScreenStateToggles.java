@@ -25,6 +25,7 @@ import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v14.preference.SwitchPreference;
+import com.android.settings.kangdroid.KangDroidSeekBarPreference;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
@@ -62,8 +63,8 @@ public class ScreenStateToggles extends SettingsPreferenceFragment
     private SwitchPreference mEnableScreenStateTogglesTwoG;
     private SwitchPreference mEnableScreenStateTogglesGps;
     private SwitchPreference mEnableScreenStateTogglesMobileData;
-    private SeekBarPreference mSecondsOffDelay;
-    private SeekBarPreference mSecondsOnDelay;
+    private KangDroidSeekBarPreference mSecondsOffDelay;
+    private KangDroidSeekBarPreference mSecondsOnDelay;
     private PreferenceCategory mMobileDateCategory;
     private PreferenceCategory mLocationCategory;
 
@@ -89,13 +90,13 @@ public class ScreenStateToggles extends SettingsPreferenceFragment
         mEnableScreenStateToggles.setChecked(enabled != 0);
         mEnableScreenStateToggles.setOnPreferenceChangeListener(this);
 
-        mSecondsOffDelay = (SeekBarPreference) findPreference(SCREEN_STATE_OFF_DELAY);
+        mSecondsOffDelay = (KangDroidSeekBarPreference) findPreference(SCREEN_STATE_OFF_DELAY);
         int offd = Settings.System.getInt(resolver,
                 Settings.System.SCREEN_STATE_OFF_DELAY, 0);
         mSecondsOffDelay.setValue(offd / 1);
         mSecondsOffDelay.setOnPreferenceChangeListener(this);
 
-        mSecondsOnDelay = (SeekBarPreference) findPreference(SCREEN_STATE_ON_DELAY);
+        mSecondsOnDelay = (KangDroidSeekBarPreference) findPreference(SCREEN_STATE_ON_DELAY);
         int ond = Settings.System.getInt(resolver,
                 Settings.System.SCREEN_STATE_ON_DELAY, 0);
         mSecondsOnDelay.setValue(ond / 1);
