@@ -89,8 +89,6 @@ public class SlimRecentPanel extends /*Slim*/SettingsPreferenceFragment implemen
             "recent_panel_bg_color";
     private static final String RECENT_CARD_BG_COLOR =
             "recent_card_bg_color";
-    private static final String RECENT_CARD_TEXT_COLOR =
-            "recent_card_text_color";
     private static final String APP_SIDEBAR_CONTENT =
             "recent_app_sidebar_content";
 
@@ -111,7 +109,6 @@ public class SlimRecentPanel extends /*Slim*/SettingsPreferenceFragment implemen
     private ListPreference mRecentPanelExpandedMode;
     private ColorPickerPreference mRecentPanelBgColor;
     private ColorPickerPreference mRecentCardBgColor;
-    private ColorPickerPreference mRecentCardTextColor;
     private Preference mAppSidebarContent;
 
     private AlertDialog mDialog;
@@ -169,19 +166,6 @@ public class SlimRecentPanel extends /*Slim*/SettingsPreferenceFragment implemen
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getContext().getContentResolver(),
                     Settings.System.RECENT_CARD_BG_COLOR,
-                    intHex);
-            return true;
-        } else if (preference == mRecentCardTextColor) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(newValue)));
-            if (hex.equals("#00ffffff")) {
-                preference.setSummary(R.string.default_string);
-            } else {
-                preference.setSummary(hex);
-            }
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getContext().getContentResolver(),
-                    Settings.System.RECENT_CARD_TEXT_COLOR,
                     intHex);
             return true;
         } else if (preference == mMaxApps) {
@@ -256,20 +240,6 @@ public class SlimRecentPanel extends /*Slim*/SettingsPreferenceFragment implemen
             mRecentCardBgColor.setSummary(hexColorCard);
         }
         mRecentCardBgColor.setNewPreviewColor(intColorCard);
-
-        // Recent card text color
-        mRecentCardTextColor =
-                (ColorPickerPreference) findPreference(RECENT_CARD_TEXT_COLOR);
-        mRecentCardTextColor.setOnPreferenceChangeListener(this);
-        final int intColorText = Settings.System.getInt(getContext().getContentResolver(),
-                Settings.System.RECENT_CARD_TEXT_COLOR, 0x00ffffff);
-        String hexColorText = String.format("#%08x", (0x00ffffff & intColorText));
-        if (hexColorText.equals("#00ffffff")) {
-            mRecentCardTextColor.setSummary(R.string.default_string);
-        } else {
-            mRecentCardTextColor.setSummary(hexColorText);
-        }
-        mRecentCardTextColor.setNewPreviewColor(intColorText);
 
         mRecentPanelScale =
                 (KangDroidSeekBarPreference) findPreference(RECENT_PANEL_SCALE);
