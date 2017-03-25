@@ -70,7 +70,7 @@ public class ScreenStateToggles extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.RESURRECTED;
+        return MetricsEvent.KANGDROID;
     }
 
     @Override
