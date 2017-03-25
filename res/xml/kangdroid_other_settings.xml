@@ -76,11 +76,6 @@
 	         android:key="app_circle_bar"
 	         android:fragment="com.android.settings.rr.AppCircleBar"
 	         android:title="@string/app_circle_bar_title" />
-			 
-        <PreferenceScreen
-            android:key="screenstate_category"
-            android:title="@string/screen_state_toggles_title"
-            android:fragment="com.android.settings.rr.ScreenStateToggles" />
 
        <Preference
              android:key="trans_porn"
