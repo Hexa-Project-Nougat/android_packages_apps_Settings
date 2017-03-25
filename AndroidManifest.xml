@@ -1951,7 +1951,7 @@
 
         <activity android:name="Settings$StorageSettingsActivity"
                 android:label="@string/storage_settings_title"
-                android:icon="@drawable/ic_settings_storage"
+                android:icon="@drawable/ic_storage_kdpother"
                 android:taskAffinity="com.android.settings"
                 android:parentActivityName="Settings">
             <intent-filter android:priority="1">

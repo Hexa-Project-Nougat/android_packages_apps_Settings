@@ -24,6 +24,7 @@
     <PreferenceScreen
         android:key="kdp_status_bar_settings"
         android:title="@string/kdp_status_bar_settings_title"
+		android:icon="@drawable/ic_settings_statusbar"
         android:fragment="com.android.settings.kangdroid.KangDroidStatusBarSettings" />	
 		
 	</PreferenceCategory>
@@ -35,6 +36,7 @@
     <PreferenceScreen
         android:key="kdp_quick_settings"
         android:title="@string/kdp_quick_settings_title"
+		android:icon="@drawable/ic_settings_storage"
         android:fragment="com.android.settings.kangdroid.KangDroidQuickSettings" />	
 		
 	</PreferenceCategory>
@@ -46,6 +48,7 @@
     <PreferenceScreen
         android:key="nav_settings"
         android:title="@string/nav_bar_settings_hexa_screen"
+		android:icon="@drawable/ic_navigation"
         android:fragment="com.android.settings.kangdroid.KangDroidNavBarSettings" />	
 		
 	</PreferenceCategory>
@@ -58,6 +61,7 @@
     <PreferenceScreen
         android:key="kdp_recents_settings"
         android:title="@string/kdp_recents_settings_title"
+		android:icon="@drawable/ic_recents_kdp"
         android:fragment="com.android.settings.kangdroid.KangDroidRecentsSettings" />	
 		
 	</PreferenceCategory>
@@ -69,6 +73,7 @@
     <PreferenceScreen
         android:key="kdp_anim_settings"
         android:title="@string/kdp_anim_settings_title"
+		android:icon="@drawable/ic_anim_kdp_temp"
         android:fragment="com.android.settings.kangdroid.KangDroidAnimSettings" />
 		
 	</PreferenceCategory>
@@ -80,6 +85,7 @@
     <PreferenceScreen
         android:key="kdp_lockscreen_settings_pref"
         android:title="@string/hexa_lockscreen_settings"
+		android:icon="@drawable/ic_lockscreen_kdp"
         android:fragment="com.android.settings.kangdroid.KangDroidLockscreenSettings" />
 		
 	</PreferenceCategory>
@@ -91,6 +97,7 @@
     <PreferenceScreen
         android:key="kdp_other_settings_pref"
         android:title="@string/kdp_other_settings_pref_title"
+		android:icon="@drawable/ic_others_kdp"
         android:fragment="com.android.settings.kangdroid.KangDroidOtherSettings" />
 		
 	</PreferenceCategory>
