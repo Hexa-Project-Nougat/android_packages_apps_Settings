@@ -1146,6 +1146,7 @@
     <string name="navbar_buttons_alpha_title">Button transparency</string>
 	<string name="navbar_tint_switch">Navigation Button Tint</string>
 	<string name="navbar_button_color">Navigation Bar Buttons</string>
+	<string name="navbar_button_custom_icon_switch_title">Add color filter to application buttons</string>
 	
     <!-- Doze pulse options -->
     <string name="summary_doze_enabled">Enabled</string>
