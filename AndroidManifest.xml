@@ -3297,6 +3297,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+		
+		<activity android:name="com.android.settings.kangdroid.ChangeLog" />
 
     </application>
 </manifest>

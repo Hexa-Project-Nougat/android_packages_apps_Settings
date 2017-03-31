@@ -30,6 +30,12 @@
                 android:targetPackage="com.ota.updates"
                 android:targetClass="com.ota.updates.activities.MainActivity" />
     </PreferenceScreen>
+	
+    <!-- Change Log -->
+    <PreferenceScreen android:key="changelog"
+        android:title="@string/changelog_title"
+        android:fragment="com.android.settings.kangdroid.ChangeLog" >
+    </PreferenceScreen>
 		
 	<PreferenceCategory
 		android:key="kdp_cyanogenmod_info"
