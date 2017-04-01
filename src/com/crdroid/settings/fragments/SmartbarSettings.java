@@ -71,7 +71,8 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
     private ListPreference mButtonAnim;
     private KangDroidSeekBarPreference mButtonsAlpha;
 	private ColorPickerPreference mNavbuttoncolor;
-
+	private PreferenceScreen mPixel;
+	
     private static final int MENU_RESET = Menu.FIRST;
     private static final int MENU_SAVE = Menu.FIRST + 1;
     private static final int MENU_RESTORE = Menu.FIRST + 2;
@@ -87,6 +88,7 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
     private static final String KEY_SMARTBAR_RESTORE = "smartbar_profile_restore";
     private static final String PREF_NAVBAR_BUTTONS_ALPHA = "navbar_buttons_alpha";
 	private static final String NAVBAR_COLOR = "navbar_button_color";
+	private static final String PIXEL = "pixel_anim";
 	
 	static final int DEFAULT = 0xffffffff;
 
@@ -122,7 +124,7 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
                 Settings.Secure.NAVBAR_BUTTONS_ALPHA, 255, UserHandle.USER_CURRENT);
         mButtonsAlpha.setValue(bAlpha / 1);
         mButtonsAlpha.setOnPreferenceChangeListener(this);
-		
+        mPixel = (PreferenceScreen) findPreference(PIXEL);
         mNavbuttoncolor = (ColorPickerPreference) findPreference(NAVBAR_COLOR);
         mNavbuttoncolor.setOnPreferenceChangeListener(this);
         intColor = Settings.System.getInt(getContentResolver(),
@@ -130,6 +132,8 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mNavbuttoncolor.setSummary(hexColor);
         mNavbuttoncolor.setNewPreviewColor(intColor);
+
+        updateAnimDurationPref(buttonAnimVal);
 
         setHasOptionsMenu(true);
     }
@@ -256,6 +260,7 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
             int val = Integer.parseInt(((String) newValue).toString());
             Settings.Secure.putInt(getContentResolver(), "smartbar_button_animation_style",
                     val);
+            updateAnimDurationPref(val);
             return true;
         } else if (preference.equals(mImeActions)) {
             int val = Integer.parseInt(((String) newValue).toString());
@@ -277,6 +282,14 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    public void updateAnimDurationPref(int buttonAnimVal) {
+         if (buttonAnimVal == 0 || buttonAnimVal == 1 || buttonAnimVal == 2) {
+             mPixel.setEnabled(false);
+         } else {
+             mPixel.setEnabled(true);
+         }
     }
 
     private void resetSmartbar() {

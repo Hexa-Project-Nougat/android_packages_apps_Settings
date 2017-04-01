@@ -74,5 +74,11 @@
         settings:min="0"
         settings:units=""
         android:persistent="false" />
+		
+	    <PreferenceScreen
+	        android:key="pixel_anim"
+	        android:fragment="com.android.settings.rr.navbar.PixelAnimDurationSettings"
+	        android:title="@string/pixel_anim_title"
+	        android:summary="@string/pixel_anim_summary"/>
 
 </PreferenceScreen>
