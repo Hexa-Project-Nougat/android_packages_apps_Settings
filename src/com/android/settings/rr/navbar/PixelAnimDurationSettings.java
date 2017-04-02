@@ -27,7 +27,7 @@ import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
-import com.android.settings.kangdroid.KangDroidSeekBarPreference
+import com.android.settings.kangdroid.KangDroidSeekBarPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -56,7 +56,7 @@ public class PixelAnimDurationSettings extends SettingsPreferenceFragment implem
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.RESURRECTED;
+        return MetricsEvent.KANGDROID;
     }
 
     @Override
