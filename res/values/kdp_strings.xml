@@ -1217,11 +1217,11 @@
 	<string name="kdp_dev_info_title">Developers</string>
 	<string name="kdp_dev_info_summary">See Developers of Hexa-Project</string>
 	<string name="kangdroid">KangDroid</string>
-	<string name="kangdroid_summary">Main Source developer &amp; Pixel, PixelXL, Nexus5X, Nexus6, Nexus6P Device maintainer</string>
+	<string name="kangdroid_summary">Main Source developer Pixel, PixelXL, Nexus5X, Nexus6, Nexus6P Device maintainer</string>
 	<string name="andro_g">Andro_G</string>
 	<string name="andro_g_summary">Main Design - Layout</string>
 	<string name="nazunamoe">nazunamoe</string>
-	<string name="nazunamoe_summary">Nexus 5 & MI 5S Device Maintainer</string>
+	<string name="nazunamoe_summary">Nexus 5 &amp; MI 5S Device Maintainer</string>
 	<string name="mzo">Mohammad Talha</string>
 	<string name="mzo_summary">OnePlus 2 Device Maintainer</string>
 	
