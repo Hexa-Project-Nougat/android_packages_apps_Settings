@@ -1312,9 +1312,6 @@
     <string name="lockscreen_hide_status_bar_title">Hide status bar</string>
     <string name="lockscreen_hide_status_bar_summary">Touch status bar to toggle visibility</string>
 	
-    <!-- Battery stats reset -->
-    <string name="battery_stats_reset">Reset stats</string>
-    <string name="battery_stats_message">Battery history stats are going to be reset</string>
     <string name="ok_string">Ok</string>
 	
 	<string name="kdp_advanced_qs_settings">Advanced QS Settings</string>
@@ -1792,5 +1789,4 @@
     <string name="diamond_anim_duration_title">Diamond duration</string>
     <string name="dots_anim_duration_title">Dots duration</string>
     <string name="home_resize_anim_duration_title">Button resize duration</string>
-
 </resources>
