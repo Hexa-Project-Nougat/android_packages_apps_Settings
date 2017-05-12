@@ -27,6 +27,7 @@ import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
 import android.provider.SearchIndexableResource;
+import android.telephony.TelephonyManager;
 import com.android.settings.kangdroid.SeekBarPreference;
 
 import com.android.settings.R;
@@ -41,15 +42,33 @@ import java.util.List;
 
 public class KangDroidOtherSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
 	
+	private static final String RR_INCALL = "rr_incall";
+	
+	private PreferenceScreen mIncall;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_other_settings);
+		
+        PreferenceScreen mIncall = (PreferenceScreen) findPreference(RR_INCALL);
+        if (!isVoiceCapable(getActivity())) {
+            getPreferenceScreen().removePreference(mIncall);
+        }
     }
 	
     @Override
     public void onResume() {
         super.onResume();
+    }
+	
+    /**
+     * Returns whether the device is voice-capable (meaning, it is also a phone).
+     */
+    public static boolean isVoiceCapable(Context context) {
+        TelephonyManager telephony =
+                (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        return telephony != null && telephony.isVoiceCapable();
     }
 	
 	@Override
