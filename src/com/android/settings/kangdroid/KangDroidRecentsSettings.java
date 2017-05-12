@@ -39,6 +39,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.util.Helpers;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -46,11 +47,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KangDroidRecentsSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
+	private static final String RECENTS_TYPE = "navigation_bar_recents";
 	private static final String SLIM_RECENTS_PREFERENCE = "slim_recents_settings_kdp";
 	private static final String OMNISWITCH_RECENTS_PREFERENCE = "omni_switch_settings_kdp";
+	private static final String AOSP_RECENTS_SETTINGS = "aosp_settings_kdp";
 	
+	private ListPreference mRecentsType;
 	private PreferenceScreen mSlimRecents;
 	private PreferenceScreen mOmniSwitch;
+	private PreferenceScreen mAOSPRecents;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,16 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
         addPreferencesFromResource(R.xml.kangdroid_recents_settings);
 		mSlimRecents = (PreferenceScreen) findPreference(SLIM_RECENTS_PREFERENCE);
 		mOmniSwitch = (PreferenceScreen) findPreference(OMNISWITCH_RECENTS_PREFERENCE);
+		mAOSPRecents = (PreferenceScreen) findPreference(AOSP_RECENTS_SETTINGS);
+		
+        mRecentsType = (ListPreference) findPreference(RECENTS_TYPE);
+        int type = Settings.System.getIntForUser(getActivity().getContentResolver(),
+                            Settings.System.NAVIGATION_BAR_RECENTS, 0,
+                            UserHandle.USER_CURRENT);
+        mRecentsType.setValue(String.valueOf(type));
+        mRecentsType.setSummary(mRecentsType.getEntry());
+        mRecentsType.setOnPreferenceChangeListener(this);
+        updatePreference(type);
     }
 
     @Override
@@ -67,6 +82,18 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mRecentsType) {
+            Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_RECENTS,
+                    Integer.valueOf((String) newValue));
+            int val = Integer.parseInt((String) newValue);
+            if (val== 0 || val == 1) {
+                Helpers.showSystemUIrestartDialog(getActivity());
+            }
+            mRecentsType.setValue(String.valueOf(newValue));
+            mRecentsType.setSummary(mRecentsType.getEntry());
+            updatePreference(val);
+        } 
+		 
         return false;
     }
 	
@@ -75,9 +102,21 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
         return MetricsEvent.APPLICATION;
     }
 	
-	public void updatePreferences() {
-		
-	}
+    public void updatePreference(int type) {
+        if(type == 0 || type == 2) {
+           mSlimRecents.setEnabled(false);
+           mOmniSwitch.setEnabled(false);
+		   mAOSPRecents.setEnabled(true);
+        } else if (type == 3) {
+           mSlimRecents.setEnabled(true);
+           mOmniSwitch.setEnabled(false);
+		   mAOSPRecents.setEnabled(false);
+        } else if (type == 1) {
+           mSlimRecents.setEnabled(false);
+           mOmniSwitch.setEnabled(true);
+		   mAOSPRecents.setEnabled(false);
+        }
+    }
 	
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
