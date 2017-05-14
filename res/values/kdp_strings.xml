@@ -564,6 +564,9 @@
    <string name="icon_title">Icon</string>
    <string name="colors_title">Colors</string>
    <string name="values_restored_title">Values restored</string>
+   <string name="ticker_disabled">No ticker</string>
+   <string name="ticker_enabled">Notification ticker</string>
+   <string name="ticker_media_enabled">Notifications and music ticker</string>
    
     <!-- PA Pie control -->
      <string name="pa_piecontrol_settings_summary">Customize Pie targets, sytle, size and color</string>
@@ -640,6 +643,8 @@
     <string name="heads_up_time_out_6sec">6 seconds</string>
     <string name="heads_up_time_out_8sec">8 seconds</string>
     <string name="heads_up_time_out_10sec">10 seconds</string>
+    <string name="always_headsup_dialer_title">Force heads up for dialer</string>
+    <string name="always_headsup_dialer_summary">Show heads up for dialer even if heads up is off to avoid fullscreen dialer on incoming calls</string>
 	
     <!-- Heads up snooze -->
     <string name="heads_up_snooze_title">Snooze timer</string>
@@ -1790,6 +1795,25 @@
     <string name="dots_anim_duration_title">Dots duration</string>
     <string name="home_resize_anim_duration_title">Button resize duration</string>
 
+	<!-- Recents Picker -->
+    <string name="recents_type_title">Recents type</string>
+    <string name="recents_stock">Stock AOSP</string>
+    <string name="recents_omniswitch">Omniswitch</string>
+    <string name="recents_grid">Grid</string>
+    <string name="recents_slim">Slim</string>
+	
+    <!-- SystemUI restart prompt -->
+    <string name="systemui_restart_title">WARNING</string>
+    <string name="systemui_restart_message">SystemUI will be restarted so that selected setting can be applied correctly.</string>
+    <string name="restarting_ui">Restarting UI\u2026</string>
+    <string name="print_restart">Restart</string>
+	
+    <!-- Header Weather -->
+    <string name="header_weather_enabled_title">Weather</string>
+    <string name="header_weather_enabled_summary">Enable weather info in expanded header</string>
+    <string name="header_weather_image_enabled_title">Weather Image</string>
+    <string name="header_weather_image_enabled_summary">Enable weather image in expanded header</string>
+	
 	<!-- Recents Picker -->
     <string name="recents_type_title">Recents type</string>
     <string name="recents_stock">Stock AOSP</string>
