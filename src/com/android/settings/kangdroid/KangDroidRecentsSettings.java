@@ -103,18 +103,30 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     }
 	
     public void updatePreference(int type) {
-        if(type == 0 || type == 2) {
+        if(type == 0 || type == 2) { //aosp-grid enable
            mSlimRecents.setEnabled(false);
            mOmniSwitch.setEnabled(false);
 		   mAOSPRecents.setEnabled(true);
-        } else if (type == 3) {
+            Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH,
+				 	 0);
+            Settings.System.putInt(getContentResolver(), Settings.System.USE_SLIM_RECENTS,
+				 	 0);
+        } else if (type == 3) { //slim-enable
            mSlimRecents.setEnabled(true);
            mOmniSwitch.setEnabled(false);
 		   mAOSPRecents.setEnabled(false);
-        } else if (type == 1) {
+           Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH,
+			 	 0);
+           Settings.System.putInt(getContentResolver(), Settings.System.USE_SLIM_RECENTS,
+			 	 1);
+        } else if (type == 1) { //omniswitch-enable
            mSlimRecents.setEnabled(false);
            mOmniSwitch.setEnabled(true);
 		   mAOSPRecents.setEnabled(false);
+           Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH,
+			 	 1);
+           Settings.System.putInt(getContentResolver(), Settings.System.USE_SLIM_RECENTS,
+			 	 0);
         }
     }
 	
