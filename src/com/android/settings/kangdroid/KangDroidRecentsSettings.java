@@ -107,7 +107,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
            mSlimRecents.setEnabled(false);
            mOmniSwitch.setEnabled(false);
 		   mAOSPRecents.setEnabled(true);
-            Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH,
+            Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_RECENTS,
 				 	 0);
             Settings.System.putInt(getContentResolver(), Settings.System.USE_SLIM_RECENTS,
 				 	 0);
@@ -115,7 +115,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
            mSlimRecents.setEnabled(true);
            mOmniSwitch.setEnabled(false);
 		   mAOSPRecents.setEnabled(false);
-           Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH,
+           Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_RECENTS,
 			 	 0);
            Settings.System.putInt(getContentResolver(), Settings.System.USE_SLIM_RECENTS,
 			 	 1);
@@ -123,7 +123,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
            mSlimRecents.setEnabled(false);
            mOmniSwitch.setEnabled(true);
 		   mAOSPRecents.setEnabled(false);
-           Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH,
+           Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_RECENTS,
 			 	 1);
            Settings.System.putInt(getContentResolver(), Settings.System.USE_SLIM_RECENTS,
 			 	 0);
