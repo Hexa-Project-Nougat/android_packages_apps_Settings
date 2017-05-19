@@ -51,11 +51,19 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
 	private static final String SLIM_RECENTS_PREFERENCE = "slim_recents_settings_kdp";
 	private static final String OMNISWITCH_RECENTS_PREFERENCE = "omni_switch_settings_kdp";
 	private static final String AOSP_RECENTS_SETTINGS = "aosp_settings_kdp";
+    private static final String OMNISWITCH_START_SETTINGS = "omniswitch_start_settings";
+	
+    // Package name of the omnniswitch app
+    public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
+    // Intent for launching the omniswitch settings actvity
+    public static Intent INTENT_OMNISWITCH_SETTINGS = new Intent(Intent.ACTION_MAIN)
+            .setClassName(OMNISWITCH_PACKAGE_NAME, OMNISWITCH_PACKAGE_NAME + ".SettingsActivity");
 	
 	private ListPreference mRecentsType;
 	private PreferenceScreen mSlimRecents;
 	private PreferenceScreen mOmniSwitch;
 	private PreferenceScreen mAOSPRecents;
+	private Preference mOmniSwitchSettings;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,12 +80,25 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
         mRecentsType.setValue(String.valueOf(type));
         mRecentsType.setSummary(mRecentsType.getEntry());
         mRecentsType.setOnPreferenceChangeListener(this);
+		
+        mOmniSwitchSettings = (Preference) findPreference(OMNISWITCH_START_SETTINGS);
+        mOmniSwitchSettings.setEnabled(true);
+		
         updatePreference(type);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference == mOmniSwitchSettings){
+            startActivity(INTENT_OMNISWITCH_SETTINGS);
+            return true;
+        }
+        return super.onPreferenceTreeClick(preference);
     }
 
     @Override
@@ -103,18 +124,29 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     }
 	
     public void updatePreference(int type) {
-        if(type == 0 || type == 2) { //aosp-grid enable
+        if(type == 0) { //aosp enable
            mSlimRecents.setEnabled(false);
            mOmniSwitch.setEnabled(false);
 		   mAOSPRecents.setEnabled(true);
+		   // Disable Omniswitch & Grid-type & Slim Recents
             Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_RECENTS,
 				 	 0);
             Settings.System.putInt(getContentResolver(), Settings.System.USE_SLIM_RECENTS,
 				 	 0);
+       } else if (type == 2) { //Grid-type enable
+          mSlimRecents.setEnabled(false);
+          mOmniSwitch.setEnabled(false);
+		  mAOSPRecents.setEnabled(true);
+		  // Disable Omniswitch & AOSP Type & Slim Recents
+          Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_RECENTS,
+		 	 2);
+          Settings.System.putInt(getContentResolver(), Settings.System.USE_SLIM_RECENTS,
+		 	 0);
         } else if (type == 3) { //slim-enable
            mSlimRecents.setEnabled(true);
            mOmniSwitch.setEnabled(false);
 		   mAOSPRecents.setEnabled(false);
+		   // Disable Omniswitch & Grid-type & AOSP
            Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_RECENTS,
 			 	 0);
            Settings.System.putInt(getContentResolver(), Settings.System.USE_SLIM_RECENTS,
@@ -123,6 +155,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
            mSlimRecents.setEnabled(false);
            mOmniSwitch.setEnabled(true);
 		   mAOSPRecents.setEnabled(false);
+		   // Disable Slim Recents & Grid-type & AOSP
            Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_RECENTS,
 			 	 1);
            Settings.System.putInt(getContentResolver(), Settings.System.USE_SLIM_RECENTS,
