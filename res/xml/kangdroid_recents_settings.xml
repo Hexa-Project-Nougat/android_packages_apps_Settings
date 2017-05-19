@@ -25,11 +25,6 @@
 	<PreferenceCategory
 		android:key="omni_switch_category"
 		android:title="@string/omni_switch_category_title">
-		
-        <PreferenceScreen
-				android:key="omni_switch_settings_kdp"
-                android:title="@string/omni_switch_settings_kdp"
-				android:fragment="com.android.settings.kangdroid.KangDroidOmniSwitch" />
 				
 			    <Preference
 		            android:key="omniswitch_start_settings"

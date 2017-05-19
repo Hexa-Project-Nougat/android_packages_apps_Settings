@@ -49,7 +49,6 @@ import java.util.List;
 public class KangDroidRecentsSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
 	private static final String RECENTS_TYPE = "navigation_bar_recents";
 	private static final String SLIM_RECENTS_PREFERENCE = "slim_recents_settings_kdp";
-	private static final String OMNISWITCH_RECENTS_PREFERENCE = "omni_switch_settings_kdp";
 	private static final String AOSP_RECENTS_SETTINGS = "aosp_settings_kdp";
     private static final String OMNISWITCH_START_SETTINGS = "omniswitch_start_settings";
 	
@@ -61,7 +60,6 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
 	
 	private ListPreference mRecentsType;
 	private PreferenceScreen mSlimRecents;
-	private PreferenceScreen mOmniSwitch;
 	private PreferenceScreen mAOSPRecents;
 	private Preference mOmniSwitchSettings;
 	
@@ -70,7 +68,6 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.kangdroid_recents_settings);
 		mSlimRecents = (PreferenceScreen) findPreference(SLIM_RECENTS_PREFERENCE);
-		mOmniSwitch = (PreferenceScreen) findPreference(OMNISWITCH_RECENTS_PREFERENCE);
 		mAOSPRecents = (PreferenceScreen) findPreference(AOSP_RECENTS_SETTINGS);
 		
         mRecentsType = (ListPreference) findPreference(RECENTS_TYPE);
@@ -126,7 +123,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     public void updatePreference(int type) {
         if(type == 0) { //aosp enable
            mSlimRecents.setEnabled(false);
-           mOmniSwitch.setEnabled(false);
+           mOmniSwitchSettings.setEnabled(false);
 		   mAOSPRecents.setEnabled(true);
 		   // Disable Omniswitch & Grid-type & Slim Recents
             Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_RECENTS,
@@ -135,7 +132,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
 				 	 0);
        } else if (type == 2) { //Grid-type enable
           mSlimRecents.setEnabled(false);
-          mOmniSwitch.setEnabled(false);
+          mOmniSwitchSettings.setEnabled(false);
 		  mAOSPRecents.setEnabled(true);
 		  // Disable Omniswitch & AOSP Type & Slim Recents
           Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_RECENTS,
@@ -144,7 +141,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
 		 	 0);
         } else if (type == 3) { //slim-enable
            mSlimRecents.setEnabled(true);
-           mOmniSwitch.setEnabled(false);
+           mOmniSwitchSettings.setEnabled(false);
 		   mAOSPRecents.setEnabled(false);
 		   // Disable Omniswitch & Grid-type & AOSP
            Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_RECENTS,
@@ -153,7 +150,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
 			 	 1);
         } else if (type == 1) { //omniswitch-enable
            mSlimRecents.setEnabled(false);
-           mOmniSwitch.setEnabled(true);
+           mOmniSwitchSettings.setEnabled(true);
 		   mAOSPRecents.setEnabled(false);
 		   // Disable Slim Recents & Grid-type & AOSP
            Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_RECENTS,
