@@ -30,12 +30,6 @@
         android:title="@string/quick_settings_vibrate_title"
         android:summary="@string/quick_settings_vibrate_summary"
         android:defaultValue="false"/>
-
-    <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
-        android:key="qs_data_advanced"
-        android:title="@string/qs_advanced_data_title"
-        android:summary="@string/qs_advanced_data_summary"
-        android:defaultValue="false" />
 	
     <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
         android:key="qs_show_brightness"
@@ -55,19 +49,12 @@
 	<PreferenceCategory
 		android:key="kdp_advanced_qs_settings_category_key"
 		android:title="@string/kdp_advanced_qs_settings" >
-
-        <PreferenceScreen
-            android:title="@string/weather_config_title"
-            android:summary="@string/weather_config_summary" >
-        <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="org.omnirom.omnijaws"
-                android:targetClass="org.omnirom.omnijaws.SettingsActivity" />
-        </PreferenceScreen>
-
-        <ListPreference
-           android:key="weather_icon_pack"
-           android:title="@string/weather_icon_pack_title"
-           android:persistent="false" />
+		
+	    <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+	        android:key="qs_data_advanced"
+	        android:title="@string/qs_advanced_data_title"
+	        android:summary="@string/qs_advanced_data_summary"
+	        android:defaultValue="false" />
 
         <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
             android:key="qs_location_easy_toggle"

@@ -16,18 +16,6 @@
 	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings" >
 	
 	<PreferenceCategory
-		android:key="kdp_gesture_anywhere"
-		android:title="@string/kdp_gesture_anywhere">
-	
-    <!-- Gesture anywhere -->
-    <PreferenceScreen
-         android:key="gesture_anywhere"
-         android:fragment="com.android.settings.kangdroid.gestureanywhere.GestureAnywhereSettings"
-         android:title="@string/gesture_anywhere_title" />
-		 
-	 </PreferenceCategory>
-		 
-	<PreferenceCategory
 		android:key="kdp_others"
 		android:title="@string/kdp_others_category">
 
@@ -48,6 +36,18 @@
             android:title="@string/rr_incall"
             android:summary="@string/rr_incall_summary"
             android:fragment="com.android.settings.rr.InCallSettings" />
+		 
+	 </PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_gesture_anywhere"
+		android:title="@string/kdp_gesture_anywhere">
+	
+    <!-- Gesture anywhere -->
+    <PreferenceScreen
+         android:key="gesture_anywhere"
+         android:fragment="com.android.settings.kangdroid.gestureanywhere.GestureAnywhereSettings"
+         android:title="@string/gesture_anywhere_title" />
 		 
 	 </PreferenceCategory>
 	 
