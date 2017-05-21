@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:background="#FFFFFF" >
+
+    <LinearLayout
+        android:id="@+id/ll_applock"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp" >
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            android:singleLine="true"
+            android:textColor="#FF464646"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_passcodes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/passcode_1"
+                style="@style/PasscodeInputIStyle" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/passcode_2"
+                style="@style/PasscodeInputIStyle" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/passcode_3"
+                style="@style/PasscodeInputIStyle" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/passcode_4"
+                style="@style/PasscodeInputIStyle" >
+            </EditText>
+        </LinearLayout>
+
+        <TableLayout
+            android:id="@+id/tl_keys"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="30dp"
+            android:shrinkColumns="*"
+            android:stretchColumns="*" >
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/button1"
+                    style="@style/PasscodeButtonStyle"
+                    android:text="@string/one" />
+
+                <Button
+                    android:id="@+id/button2"
+                    style="@style/PasscodeButtonStyle"
+                    android:text="@string/two" />
+
+                <Button
+                    android:id="@+id/button3"
+                    style="@style/PasscodeButtonStyle"
+                    android:text="@string/three" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/button4"
+                    style="@style/PasscodeButtonStyle"
+                    android:text="@string/four" />
+
+                <Button
+                    android:id="@+id/button5"
+                    style="@style/PasscodeButtonStyle"
+                    android:text="@string/five" />
+
+                <Button
+                    android:id="@+id/button6"
+                    style="@style/PasscodeButtonStyle"
+                    android:text="@string/six" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/button7"
+                    style="@style/PasscodeButtonStyle"
+                    android:text="@string/seven" />
+
+                <Button
+                    android:id="@+id/button8"
+                    style="@style/PasscodeButtonStyle"
+                    android:text="@string/eight" />
+
+                <Button
+                    android:id="@+id/button9"
+                    style="@style/PasscodeButtonStyle"
+                    android:text="@string/nine" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/button_clear"
+                    style="@style/PasscodeButtonStyle"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:text="@string/clear_enc" />
+
+                <Button
+                    android:id="@+id/button0"
+                    style="@style/PasscodeButtonStyle"
+                    android:text="@string/zero" />
+
+                <Button
+                    android:id="@+id/button_erase"
+                    style="@style/PasscodeButtonStyle"
+                    android:text="@string/del" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+</ScrollView>

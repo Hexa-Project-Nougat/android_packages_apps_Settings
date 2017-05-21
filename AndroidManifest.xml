@@ -101,7 +101,17 @@
             android:allowBackup="false"
             android:usesCleartextTraffic="true"
             android:defaultToDeviceProtectedStorage="true"
-            android:directBootAware="true">
+            android:directBootAware="true"
+			android:name=".TestingApp">
+			
+	        <activity
+	            android:name="me.dawson.applock.HomePage"
+	            android:windowSoftInputMode="adjustResize">
+	        </activity>
+	        <activity
+	            android:name="me.dawson.applock.core.AppLockActivity"
+	            android:windowSoftInputMode="stateHidden" >
+	        </activity>
 
         <!-- Settings -->
 
