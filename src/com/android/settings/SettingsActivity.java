@@ -138,6 +138,7 @@ import com.android.settingslib.drawer.SettingsDrawerActivity;
 import com.android.settingslib.drawer.Tile;
 import com.android.settings.kangdroid.KangDroidMainSettings;
 import com.crdroid.settings.fragments.SmartbarSettings;
+import me.dawson.applock.core.*;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -445,6 +446,12 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     private Intent mResultIntentData;
     private ComponentName mCurrentSuggestion;
+	
+	private static PageListener pageListener;
+	
+	public static void setListener(PageListener listener) {
+		pageListener = listener;
+	}
 
     public SwitchBar getSwitchBar() {
         return mSwitchBar;
@@ -541,6 +548,9 @@ public class SettingsActivity extends SettingsDrawerActivity
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
+		if (pageListener != null) {
+			pageListener.onActivityCreated(this);
+		}
         long startTime = System.currentTimeMillis();
 
         // Should happen before any call to getIntent()
@@ -814,6 +824,10 @@ public class SettingsActivity extends SettingsDrawerActivity
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
+		if (pageListener != null) {
+			pageListener.onActivitySaveInstanceState(this);
+		}
+
         if (mCategories.size() > 0) {
             outState.putParcelableArrayList(SAVE_KEY_CATEGORIES, mCategories);
         }
@@ -838,6 +852,10 @@ public class SettingsActivity extends SettingsDrawerActivity
     @Override
     protected void onStart() {
         super.onStart();
+		
+		if (pageListener != null) {
+			pageListener.onActivityStarted(this);
+		}
 
         if (mNeedToRevertToInitialFragment) {
             revertToInitialFragment();
@@ -863,10 +881,31 @@ public class SettingsActivity extends SettingsDrawerActivity
         }
         updateTilesList();
     }
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		if (pageListener != null) {
+			pageListener.onActivityResumed(this);
+		}
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+
+		if (pageListener != null) {
+			pageListener.onActivityPaused(this);
+		}
+	}
 
     @Override
     protected void onStop() {
         super.onStop();
+		if (pageListener != null) {
+			pageListener.onActivityStopped(this);
+		}
         unregisterReceiver(mBatteryInfoReceiver);
         unregisterReceiver(mUserAddRemoveReceiver);
         mDynamicIndexableContentMonitor.unregister();
@@ -875,6 +914,9 @@ public class SettingsActivity extends SettingsDrawerActivity
     @Override
     public void onDestroy() {
         super.onDestroy();
+		if (pageListener != null) {
+			pageListener.onActivityDestroyed(this);
+		}
         if (mDevelopmentPreferencesListener != null) {
             mDevelopmentPreferences.unregisterOnSharedPreferenceChangeListener(
                     mDevelopmentPreferencesListener);

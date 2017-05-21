@@ -101,5 +101,14 @@
         android:fragment="com.android.settings.kangdroid.KangDroidOtherSettings" />
 		
 	</PreferenceCategory>
+	
+    <PreferenceScreen
+        android:key="testing"
+        android:title="@string/one"
+        android:persistent="false" >
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.settings"
+                android:targetClass="me.dawson.applock.HomePage" />
+    </PreferenceScreen>
 
 </PreferenceScreen>

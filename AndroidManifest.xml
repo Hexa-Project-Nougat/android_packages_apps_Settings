@@ -101,14 +101,25 @@
             android:allowBackup="false"
             android:usesCleartextTraffic="true"
             android:defaultToDeviceProtectedStorage="true"
-            android:directBootAware="true">
+            android:directBootAware="true"
+			android:name=".TestingApp">
+			
+	        <activity
+	            android:name="me.dawson.applock.HomePage"
+	            android:windowSoftInputMode="adjustResize">
+	        </activity>
+	        <activity
+	            android:name="me.dawson.applock.core.AppLockActivity"
+	            android:windowSoftInputMode="stateHidden" >
+	        </activity>
 
         <!-- Settings -->
 
         <activity android:name="Settings"
                 android:taskAffinity="com.android.settings"
                 android:label="@string/settings_label_launcher"
-                android:launchMode="singleTask">
+                android:launchMode="singleTask"
+				android:windowSoftInputMode="adjustResize">
             <intent-filter android:priority="1">
                 <action android:name="android.settings.SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
