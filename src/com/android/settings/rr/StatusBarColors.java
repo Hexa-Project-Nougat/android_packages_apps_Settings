@@ -71,7 +71,6 @@ public class StatusBarColors extends SettingsPreferenceFragment implements OnPre
      private ColorPickerPreference mSignal;
      private ColorPickerPreference mNoSim;
      private ColorPickerPreference mAirplaneMode;
-     private ColorPickerPreference mColor;
      private ColorPickerPreference mStatus;
      private SwitchPreference mColorSwitch;
      private Preference mEnable;
@@ -127,17 +126,6 @@ public class StatusBarColors extends SettingsPreferenceFragment implements OnPre
          mAirplaneMode.setSummary(hexColor);
          mAirplaneMode.setDefaultColors(WHITE, RED_500);
          mAirplaneMode.setOnPreferenceChangeListener(this);
-
-         mColor =
-                 (ColorPickerPreference) findPreference(PREF_COLOR);
-         intColor = Settings.System.getInt(mResolver,
-                 Settings.System.STATUS_BAR_NOTIFICATION_ICONS_COLOR,
-                 WHITE); 
-         mColor.setNewPreviewColor(intColor);
-         hexColor = String.format("#%08x", (0xffffffff & intColor));
-         mColor.setSummary(hexColor);
-         mColor.setDefaultColors(WHITE, HOLO_BLUE_LIGHT);
-         mColor.setOnPreferenceChangeListener(this);
  
          mStatus =
                  (ColorPickerPreference) findPreference(PREF_STATUS);
@@ -198,14 +186,6 @@ public class StatusBarColors extends SettingsPreferenceFragment implements OnPre
              Settings.System.putInt(mResolver,
                      Settings.System.STATUS_BAR_NETWORK_ICONS_AIRPLANE_MODE_COLOR,
                      intHex);
-             preference.setSummary(hex);
-             return true;
-          } else if (preference == mColor) {
-             hex = ColorPickerPreference.convertToARGB(
-                     Integer.valueOf(String.valueOf(newValue)));
-             intHex = ColorPickerPreference.convertToColorInt(hex);
-             Settings.System.putInt(mResolver,
-                     Settings.System.STATUS_BAR_NOTIFICATION_ICONS_COLOR, intHex);
              preference.setSummary(hex);
              return true;
            } else if (preference == mStatus) {
@@ -282,9 +262,6 @@ public class StatusBarColors extends SettingsPreferenceFragment implements OnPre
                                      Settings.System.STATUS_BAR_NETWORK_ICONS_AIRPLANE_MODE_COLOR,
                                      WHITE);
                              Settings.System.putInt(getOwner().mResolver,
-                                     Settings.System.STATUS_BAR_NOTIFICATION_ICONS_COLOR,
-                                     WHITE);
-                             Settings.System.putInt(getOwner().mResolver,
                                      Settings.System.STATUS_BAR_STATUS_ICONS_COLOR,
                                      WHITE);
                              getOwner().refreshSettings();
@@ -302,9 +279,6 @@ public class StatusBarColors extends SettingsPreferenceFragment implements OnPre
                              Settings.System.putInt(getOwner().mResolver,
                                      Settings.System.STATUS_BAR_NETWORK_ICONS_AIRPLANE_MODE_COLOR,
                                      RED_500);
-                             Settings.System.putInt(getOwner().mResolver,
-                                     Settings.System.STATUS_BAR_NOTIFICATION_ICONS_COLOR,
-                                     HOLO_BLUE_LIGHT);
                              Settings.System.putInt(getOwner().mResolver,
                                      Settings.System.STATUS_BAR_STATUS_ICONS_COLOR,
                                      HOLO_BLUE_LIGHT);
