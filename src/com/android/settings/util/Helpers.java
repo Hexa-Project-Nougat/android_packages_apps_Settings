@@ -17,6 +17,7 @@ import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.util.Log;
 import android.widget.Toast;
+import com.android.server.statusbar.StatusBarManagerService;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -31,16 +32,17 @@ import com.android.settings.R;
 public class Helpers {
     // avoids hardcoding the tag
     private static final String TAG = Thread.currentThread().getStackTrace()[1].getClassName();
+	private StatusBarManagerService mStatusBarMS;
 
     public Helpers() {
         // dummy constructor
     }
 
-    public static void restartSystemUI() {
-        CMDProcessor.startSuCommand("pkill -TERM -f com.android.systemui");
+    public void restartSystemUI() {
+        mStatusBarMS.restartUI();
     }
 
-    public static void showSystemUIrestartDialog(Activity a) {
+    public void showSystemUIrestartDialog(Activity a) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(a);
         builder.setTitle(R.string.systemui_restart_title);
         builder.setMessage(R.string.systemui_restart_message);
@@ -66,7 +68,7 @@ public class Helpers {
                         }
 
                         // Restart the UI
-                        CMDProcessor.startSuCommand("pkill -f com.android.systemui");
+                        mStatusBarMS.restartUI();
                         a.finish();
                         return null;
                     }

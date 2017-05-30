@@ -40,6 +40,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.util.Helpers;
+import com.android.server.statusbar.StatusBarManagerService;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -62,6 +63,8 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
 	private PreferenceScreen mSlimRecents;
 	private PreferenceScreen mAOSPRecents;
 	private Preference mOmniSwitchSettings;
+	private Helpers mHelper;
+	private StatusBarManagerService mStatusBMS;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,7 +108,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
                     Integer.valueOf((String) newValue));
             int val = Integer.parseInt((String) newValue);
             if (val== 0 || val == 1 || val == 2) {
-                Helpers.showSystemUIrestartDialog(getActivity());
+                mStatusBMS.restartUI();
             }
             mRecentsType.setValue(String.valueOf(newValue));
             mRecentsType.setSummary(mRecentsType.getEntry());

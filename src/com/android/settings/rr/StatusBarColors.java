@@ -76,6 +76,7 @@ public class StatusBarColors extends SettingsPreferenceFragment implements OnPre
      private Preference mEnable;
  
      private ContentResolver mResolver;
+	 private Helpers mHelper;
 
      @Override
      public void onCreate(Bundle savedInstanceState) {
@@ -204,16 +205,6 @@ public class StatusBarColors extends SettingsPreferenceFragment implements OnPre
            }
          return false;
      }
-  
-     @Override
-     public boolean onPreferenceTreeClick(Preference preference) {
- 		if (preference == mEnable) {
- 		Helpers.restartSystemUI(); 
-             }    else {
-             return super.onPreferenceTreeClick(preference);
-         } 
- 	return false;
- 	}
 	
      @Override
      protected int getMetricsCategory() {

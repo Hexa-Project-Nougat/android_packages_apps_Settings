@@ -95,6 +95,7 @@ import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 import com.android.settingslib.RestrictedSwitchPreference;
 import com.android.settings.util.Helpers;
+import com.android.server.statusbar.StatusBarManagerService;
 
 import cyanogenmod.providers.CMSettings;
 
@@ -364,6 +365,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private boolean mLogpersistCleared;
     private Dialog mLogpersistClearDialog;
+	
+	private Helpers mHelpers;
+	private StatusBarManagerService mStatusBarMS;
 
     public DevelopmentSettings() {
         super(UserManager.DISALLOW_DEBUGGING_FEATURES);
@@ -2165,7 +2169,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 updateBugreportOptions();
             }
         } else if (preference == mRestartSystemUI) {
-            Helpers.restartSystemUI(); 
+            mStatusBarMS.restartUI();
         } else if (preference == mAdbOverNetwork) {
             if (mAdbOverNetwork.isChecked()) {
                 if (mAdbTcpDialog != null) {
