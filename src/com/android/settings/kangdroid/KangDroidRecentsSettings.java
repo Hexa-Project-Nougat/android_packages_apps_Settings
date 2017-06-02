@@ -108,7 +108,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
                     Integer.valueOf((String) newValue));
             int val = Integer.parseInt((String) newValue);
             if (val== 0 || val == 1 || val == 2) {
-                mStatusBMS.restartUI();
+                //DO nothing for now
             }
             mRecentsType.setValue(String.valueOf(newValue));
             mRecentsType.setSummary(mRecentsType.getEntry());
