@@ -48,6 +48,12 @@
             android:title="@string/recent_panel_show_topmost_title"
             android:summary="@string/recent_panel_show_topmost_summary"
             android:defaultValue="false" />
+
+
+	        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+	            android:key="slim_recents_corner_radius"
+	            android:title="@string/slim_recents_corner_radius_title"
+	            android:defaultValue="true" />
 				
         <com.android.settings.kangdroid.KangDroidSeekBarPreference
             android:key="recent_panel_scale"

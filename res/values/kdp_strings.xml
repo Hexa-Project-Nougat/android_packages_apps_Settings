@@ -1861,4 +1861,5 @@
     <string name="statusbar_color_switch_summary">Enable/Disable Custom Icon Colors</string>
 	<string name="dlg_reset_android">Stock</string>
 	<string name="dlg_reset_rr">Hexa Default</string>
+	<string name="slim_recents_corner_radius_title">Use round corners for cards</string>
 </resources>
