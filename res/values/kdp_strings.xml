@@ -1843,23 +1843,4 @@
     <string name="pocket_title">Pocket</string>
     <string name="pocket_summary">Pulse notifications on removal from pocket</string>
 	
-	<string name="kdp_status_bar_main_color_settings_title">Status Bar Color Settings</string>
-	<!-- Status bar network icons settings -->
-    <string name="status_bar_colors_title">Statusbar Icon Colors</string>
-    <string name="status_bar_network_icons_settings_title">Network icons</string>
-    <string name="status_bar_network_icons_settings_summary">Customize the Network icons</string>
-    <string name="icon_category">Icons</string>	
-    <string name="network_icons_cat_signal_colors_title">Signal colors</string>
-    <string name="network_icons_cat_no_sim_colors_title">No sim card colors</string>
-    <string name="network_icons_cat_airplane_mode_colors_title">Airplane mode colors</string>
-    <string name="status_bar_notification_icons">Notification icons colors</string>
-    <string name="network_status_icons_cat_status_colors_title">Statusbar icons color</string>
-    <string name="apply_status_colors_summary">Use Only If Colors Are Not Applied. Tap To Apply</string>
-    <string name="apply_status_colors">Apply Colors</string>
-    <string name="status_bar_color_enable">Statusbar Colors</string>
-    <string name="statusbar_color_switch">Custom Icon Colors</string>
-    <string name="statusbar_color_switch_summary">Enable/Disable Custom Icon Colors</string>
-	<string name="dlg_reset_android">Stock</string>
-	<string name="dlg_reset_rr">Hexa Default</string>
-	<string name="slim_recents_corner_radius_title">Use round corners for cards</string>
 </resources>
