@@ -1843,4 +1843,8 @@
     <string name="pocket_title">Pocket</string>
     <string name="pocket_summary">Pulse notifications on removal from pocket</string>
 	
+	<string name="dlg_reset_android">Stock</string>
+	<string name="dlg_reset_rr">Hexa Default</string>
+	<string name="slim_recents_corner_radius_title">Use round corners for cards</string>
+	
 </resources>
